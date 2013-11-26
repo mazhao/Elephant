@@ -1,0 +1,490 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F711C05A184480F300D85598 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F711C059184480F300D85598 /* Foundation.framework */; };
+		F711C05C184480F300D85598 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F711C05B184480F300D85598 /* CoreGraphics.framework */; };
+		F711C05E184480F300D85598 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F711C05D184480F300D85598 /* UIKit.framework */; };
+		F711C064184480F300D85598 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F711C062184480F300D85598 /* InfoPlist.strings */; };
+		F711C066184480F300D85598 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F711C065184480F300D85598 /* main.m */; };
+		F711C06A184480F300D85598 /* MZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F711C069184480F300D85598 /* MZAppDelegate.m */; };
+		F711C06D184480F300D85598 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F711C06B184480F300D85598 /* Main_iPhone.storyboard */; };
+		F711C070184480F300D85598 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F711C06E184480F300D85598 /* Main_iPad.storyboard */; };
+		F711C073184480F300D85598 /* MZViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F711C072184480F300D85598 /* MZViewController.m */; };
+		F711C075184480F300D85598 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F711C074184480F300D85598 /* Images.xcassets */; };
+		F711C07C184480F300D85598 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F711C07B184480F300D85598 /* XCTest.framework */; };
+		F711C07D184480F300D85598 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F711C059184480F300D85598 /* Foundation.framework */; };
+		F711C07E184480F300D85598 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F711C05D184480F300D85598 /* UIKit.framework */; };
+		F711C086184480F300D85598 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F711C084184480F300D85598 /* InfoPlist.strings */; };
+		F711C088184480F300D85598 /* ElephantTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F711C087184480F300D85598 /* ElephantTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F711C07F184480F300D85598 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F711C04E184480F300D85598 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F711C055184480F300D85598;
+			remoteInfo = Elephant;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F711C056184480F300D85598 /* Elephant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Elephant.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F711C059184480F300D85598 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F711C05B184480F300D85598 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F711C05D184480F300D85598 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F711C061184480F300D85598 /* Elephant-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Elephant-Info.plist"; sourceTree = "<group>"; };
+		F711C063184480F300D85598 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F711C065184480F300D85598 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F711C067184480F300D85598 /* Elephant-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Elephant-Prefix.pch"; sourceTree = "<group>"; };
+		F711C068184480F300D85598 /* MZAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MZAppDelegate.h; sourceTree = "<group>"; };
+		F711C069184480F300D85598 /* MZAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MZAppDelegate.m; sourceTree = "<group>"; };
+		F711C06C184480F300D85598 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		F711C06F184480F300D85598 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		F711C071184480F300D85598 /* MZViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MZViewController.h; sourceTree = "<group>"; };
+		F711C072184480F300D85598 /* MZViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MZViewController.m; sourceTree = "<group>"; };
+		F711C074184480F300D85598 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F711C07A184480F300D85598 /* ElephantTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElephantTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F711C07B184480F300D85598 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		F711C083184480F300D85598 /* ElephantTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ElephantTests-Info.plist"; sourceTree = "<group>"; };
+		F711C085184480F300D85598 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F711C087184480F300D85598 /* ElephantTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ElephantTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F711C053184480F300D85598 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F711C05C184480F300D85598 /* CoreGraphics.framework in Frameworks */,
+				F711C05E184480F300D85598 /* UIKit.framework in Frameworks */,
+				F711C05A184480F300D85598 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F711C077184480F300D85598 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F711C07C184480F300D85598 /* XCTest.framework in Frameworks */,
+				F711C07E184480F300D85598 /* UIKit.framework in Frameworks */,
+				F711C07D184480F300D85598 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F711C04D184480F300D85598 = {
+			isa = PBXGroup;
+			children = (
+				F711C05F184480F300D85598 /* Elephant */,
+				F711C081184480F300D85598 /* ElephantTests */,
+				F711C058184480F300D85598 /* Frameworks */,
+				F711C057184480F300D85598 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F711C057184480F300D85598 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F711C056184480F300D85598 /* Elephant.app */,
+				F711C07A184480F300D85598 /* ElephantTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F711C058184480F300D85598 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F711C059184480F300D85598 /* Foundation.framework */,
+				F711C05B184480F300D85598 /* CoreGraphics.framework */,
+				F711C05D184480F300D85598 /* UIKit.framework */,
+				F711C07B184480F300D85598 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F711C05F184480F300D85598 /* Elephant */ = {
+			isa = PBXGroup;
+			children = (
+				F711C068184480F300D85598 /* MZAppDelegate.h */,
+				F711C069184480F300D85598 /* MZAppDelegate.m */,
+				F711C06B184480F300D85598 /* Main_iPhone.storyboard */,
+				F711C06E184480F300D85598 /* Main_iPad.storyboard */,
+				F711C071184480F300D85598 /* MZViewController.h */,
+				F711C072184480F300D85598 /* MZViewController.m */,
+				F711C074184480F300D85598 /* Images.xcassets */,
+				F711C060184480F300D85598 /* Supporting Files */,
+			);
+			path = Elephant;
+			sourceTree = "<group>";
+		};
+		F711C060184480F300D85598 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F711C061184480F300D85598 /* Elephant-Info.plist */,
+				F711C062184480F300D85598 /* InfoPlist.strings */,
+				F711C065184480F300D85598 /* main.m */,
+				F711C067184480F300D85598 /* Elephant-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F711C081184480F300D85598 /* ElephantTests */ = {
+			isa = PBXGroup;
+			children = (
+				F711C087184480F300D85598 /* ElephantTests.m */,
+				F711C082184480F300D85598 /* Supporting Files */,
+			);
+			path = ElephantTests;
+			sourceTree = "<group>";
+		};
+		F711C082184480F300D85598 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F711C083184480F300D85598 /* ElephantTests-Info.plist */,
+				F711C084184480F300D85598 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F711C055184480F300D85598 /* Elephant */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F711C08B184480F300D85598 /* Build configuration list for PBXNativeTarget "Elephant" */;
+			buildPhases = (
+				F711C052184480F300D85598 /* Sources */,
+				F711C053184480F300D85598 /* Frameworks */,
+				F711C054184480F300D85598 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Elephant;
+			productName = Elephant;
+			productReference = F711C056184480F300D85598 /* Elephant.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F711C079184480F300D85598 /* ElephantTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F711C08E184480F300D85598 /* Build configuration list for PBXNativeTarget "ElephantTests" */;
+			buildPhases = (
+				F711C076184480F300D85598 /* Sources */,
+				F711C077184480F300D85598 /* Frameworks */,
+				F711C078184480F300D85598 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F711C080184480F300D85598 /* PBXTargetDependency */,
+			);
+			name = ElephantTests;
+			productName = ElephantTests;
+			productReference = F711C07A184480F300D85598 /* ElephantTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F711C04E184480F300D85598 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = MZ;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = mz;
+				TargetAttributes = {
+					F711C079184480F300D85598 = {
+						TestTargetID = F711C055184480F300D85598;
+					};
+				};
+			};
+			buildConfigurationList = F711C051184480F300D85598 /* Build configuration list for PBXProject "Elephant" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F711C04D184480F300D85598;
+			productRefGroup = F711C057184480F300D85598 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F711C055184480F300D85598 /* Elephant */,
+				F711C079184480F300D85598 /* ElephantTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F711C054184480F300D85598 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F711C070184480F300D85598 /* Main_iPad.storyboard in Resources */,
+				F711C075184480F300D85598 /* Images.xcassets in Resources */,
+				F711C06D184480F300D85598 /* Main_iPhone.storyboard in Resources */,
+				F711C064184480F300D85598 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F711C078184480F300D85598 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F711C086184480F300D85598 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F711C052184480F300D85598 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F711C073184480F300D85598 /* MZViewController.m in Sources */,
+				F711C066184480F300D85598 /* main.m in Sources */,
+				F711C06A184480F300D85598 /* MZAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F711C076184480F300D85598 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F711C088184480F300D85598 /* ElephantTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F711C080184480F300D85598 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F711C055184480F300D85598 /* Elephant */;
+			targetProxy = F711C07F184480F300D85598 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F711C062184480F300D85598 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F711C063184480F300D85598 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F711C06B184480F300D85598 /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F711C06C184480F300D85598 /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		F711C06E184480F300D85598 /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F711C06F184480F300D85598 /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		F711C084184480F300D85598 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F711C085184480F300D85598 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F711C089184480F300D85598 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F711C08A184480F300D85598 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F711C08C184480F300D85598 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Elephant/Elephant-Prefix.pch";
+				INFOPLIST_FILE = "Elephant/Elephant-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F711C08D184480F300D85598 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Elephant/Elephant-Prefix.pch";
+				INFOPLIST_FILE = "Elephant/Elephant-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		F711C08F184480F300D85598 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Elephant.app/Elephant";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Elephant/Elephant-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "ElephantTests/ElephantTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		F711C090184480F300D85598 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Elephant.app/Elephant";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Elephant/Elephant-Prefix.pch";
+				INFOPLIST_FILE = "ElephantTests/ElephantTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F711C051184480F300D85598 /* Build configuration list for PBXProject "Elephant" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F711C089184480F300D85598 /* Debug */,
+				F711C08A184480F300D85598 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F711C08B184480F300D85598 /* Build configuration list for PBXNativeTarget "Elephant" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F711C08C184480F300D85598 /* Debug */,
+				F711C08D184480F300D85598 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F711C08E184480F300D85598 /* Build configuration list for PBXNativeTarget "ElephantTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F711C08F184480F300D85598 /* Debug */,
+				F711C090184480F300D85598 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F711C04E184480F300D85598 /* Project object */;
+}
