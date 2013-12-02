@@ -11,7 +11,6 @@
 		F711C05C184480F300D85598 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F711C05B184480F300D85598 /* CoreGraphics.framework */; };
 		F711C05E184480F300D85598 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F711C05D184480F300D85598 /* UIKit.framework */; };
 		F711C064184480F300D85598 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F711C062184480F300D85598 /* InfoPlist.strings */; };
-		F711C066184480F300D85598 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F711C065184480F300D85598 /* main.m */; };
 		F711C06A184480F300D85598 /* MZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F711C069184480F300D85598 /* MZAppDelegate.m */; };
 		F711C06D184480F300D85598 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F711C06B184480F300D85598 /* Main_iPhone.storyboard */; };
 		F711C070184480F300D85598 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F711C06E184480F300D85598 /* Main_iPad.storyboard */; };
@@ -22,6 +21,29 @@
 		F711C07E184480F300D85598 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F711C05D184480F300D85598 /* UIKit.framework */; };
 		F711C086184480F300D85598 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F711C084184480F300D85598 /* InfoPlist.strings */; };
 		F711C088184480F300D85598 /* ElephantTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F711C087184480F300D85598 /* ElephantTests.m */; };
+		F7239D911845E30D00AF44CB /* MZSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F7239D901845E30D00AF44CB /* MZSearchVC.m */; };
+		F7239D9C18460F8E00AF44CB /* libZXingWidget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7239D9918460EE800AF44CB /* libZXingWidget.a */; };
+		F7239DA01846109300AF44CB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7239D9F1846109300AF44CB /* AVFoundation.framework */; };
+		F7239DA21846109900AF44CB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7239DA11846109900AF44CB /* AudioToolbox.framework */; };
+		F7239DA41846109F00AF44CB /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7239DA31846109F00AF44CB /* CoreVideo.framework */; };
+		F7239DA6184610A600AF44CB /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7239DA5184610A600AF44CB /* CoreMedia.framework */; };
+		F7239DA8184610B000AF44CB /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F7239DA7184610B000AF44CB /* libiconv.dylib */; };
+		F7239DAB184610B900AF44CB /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7239DA9184610B900AF44CB /* AddressBook.framework */; };
+		F7239DAC184610B900AF44CB /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7239DAA184610B900AF44CB /* AddressBookUI.framework */; };
+		F7239DB0184612FC00AF44CB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F7239DAF184612FC00AF44CB /* main.m */; };
+		F7239DB21846132B00AF44CB /* MZCollectionShelfVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = F7239DB11846132B00AF44CB /* MZCollectionShelfVC.mm */; };
+		F7239DB518461ED800AF44CB /* beep-beep.aiff in Resources */ = {isa = PBXBuildFile; fileRef = F7239DB418461ED800AF44CB /* beep-beep.aiff */; };
+		F750B93718470C97007D3094 /* MZBookSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = F750B93618470C97007D3094 /* MZBookSummary.m */; };
+		F753CE4D18472F79003169B3 /* MZBookStoreDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = F753CE4C18472F79003169B3 /* MZBookStoreDefault.m */; };
+		F753CE52184743A9003169B3 /* MZBookStoreFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F753CE51184743A9003169B3 /* MZBookStoreFactory.m */; };
+		F78B1B261846E70200A72256 /* MZBook.m in Sources */ = {isa = PBXBuildFile; fileRef = F78B1B251846E70200A72256 /* MZBook.m */; };
+		F7CD1BAE18458FB300BA22A0 /* MZCollectionShelfCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CD1BAD18458FB300BA22A0 /* MZCollectionShelfCell.m */; };
+		F7E5B185184C2F35009E3C2F /* MZBookModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F7E5B183184C2F35009E3C2F /* MZBookModel.xcdatamodeld */; };
+		F7E5B18A184C34DE009E3C2F /* MZBookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E5B189184C34DE009E3C2F /* MZBookModel.m */; };
+		F7E5B18D184C34DF009E3C2F /* MZBookWriterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E5B18C184C34DF009E3C2F /* MZBookWriterModel.m */; };
+		F7E5B190184C34DF009E3C2F /* MZBookExcerptModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E5B18F184C34DF009E3C2F /* MZBookExcerptModel.m */; };
+		F7E5B193184C34DF009E3C2F /* MZBookTagModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E5B192184C34DF009E3C2F /* MZBookTagModel.m */; };
+		F7E9F54018449AB9000568AD /* images in Resources */ = {isa = PBXBuildFile; fileRef = F7E9F53F18449AB9000568AD /* images */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +54,27 @@
 			remoteGlobalIDString = F711C055184480F300D85598;
 			remoteInfo = Elephant;
 		};
+		F7239D9818460EE800AF44CB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F7239D9318460EE700AF44CB /* ZXingWidget.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
+			remoteInfo = ZXingWidget;
+		};
+		F7239D9A18460EE800AF44CB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F7239D9318460EE700AF44CB /* ZXingWidget.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1D60398D13DF7CAD006F4B51;
+			remoteInfo = ZXingTests;
+		};
+		F7239D9D18460FAB00AF44CB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F7239D9318460EE700AF44CB /* ZXingWidget.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = ZXingWidget;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +84,6 @@
 		F711C05D184480F300D85598 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F711C061184480F300D85598 /* Elephant-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Elephant-Info.plist"; sourceTree = "<group>"; };
 		F711C063184480F300D85598 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		F711C065184480F300D85598 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F711C067184480F300D85598 /* Elephant-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Elephant-Prefix.pch"; sourceTree = "<group>"; };
 		F711C068184480F300D85598 /* MZAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MZAppDelegate.h; sourceTree = "<group>"; };
 		F711C069184480F300D85598 /* MZAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MZAppDelegate.m; sourceTree = "<group>"; };
@@ -55,6 +97,40 @@
 		F711C083184480F300D85598 /* ElephantTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ElephantTests-Info.plist"; sourceTree = "<group>"; };
 		F711C085184480F300D85598 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F711C087184480F300D85598 /* ElephantTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ElephantTests.m; sourceTree = "<group>"; };
+		F7239D8F1845E30D00AF44CB /* MZSearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZSearchVC.h; sourceTree = "<group>"; };
+		F7239D901845E30D00AF44CB /* MZSearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZSearchVC.m; sourceTree = "<group>"; };
+		F7239D9318460EE700AF44CB /* ZXingWidget.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZXingWidget.xcodeproj; path = "../zxing-2.2/iphone/ZXingWidget/ZXingWidget.xcodeproj"; sourceTree = "<group>"; };
+		F7239D9F1846109300AF44CB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		F7239DA11846109900AF44CB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		F7239DA31846109F00AF44CB /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		F7239DA5184610A600AF44CB /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		F7239DA7184610B000AF44CB /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		F7239DA9184610B900AF44CB /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		F7239DAA184610B900AF44CB /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		F7239DAF184612FC00AF44CB /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F7239DB11846132B00AF44CB /* MZCollectionShelfVC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MZCollectionShelfVC.mm; sourceTree = "<group>"; };
+		F7239DB418461ED800AF44CB /* beep-beep.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = "beep-beep.aiff"; sourceTree = "<group>"; };
+		F750B93518470C97007D3094 /* MZBookSummary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZBookSummary.h; sourceTree = "<group>"; };
+		F750B93618470C97007D3094 /* MZBookSummary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZBookSummary.m; sourceTree = "<group>"; };
+		F753CE4B18472F79003169B3 /* MZBookStoreDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZBookStoreDefault.h; sourceTree = "<group>"; };
+		F753CE4C18472F79003169B3 /* MZBookStoreDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZBookStoreDefault.m; sourceTree = "<group>"; };
+		F753CE51184743A9003169B3 /* MZBookStoreFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZBookStoreFactory.m; sourceTree = "<group>"; };
+		F753CE541847441D003169B3 /* MZBookStoreAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZBookStoreAPI.h; sourceTree = "<group>"; };
+		F78B1B241846E70200A72256 /* MZBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZBook.h; sourceTree = "<group>"; };
+		F78B1B251846E70200A72256 /* MZBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZBook.m; sourceTree = "<group>"; };
+		F7CD1BA918458F4D00BA22A0 /* MZCollectionShelfVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZCollectionShelfVC.h; sourceTree = "<group>"; };
+		F7CD1BAC18458FB300BA22A0 /* MZCollectionShelfCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZCollectionShelfCell.h; sourceTree = "<group>"; };
+		F7CD1BAD18458FB300BA22A0 /* MZCollectionShelfCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZCollectionShelfCell.m; sourceTree = "<group>"; };
+		F7E5B184184C2F35009E3C2F /* MZBookModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MZBookModel.xcdatamodel; sourceTree = "<group>"; };
+		F7E5B188184C34DE009E3C2F /* MZBookModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZBookModel.h; sourceTree = "<group>"; };
+		F7E5B189184C34DE009E3C2F /* MZBookModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZBookModel.m; sourceTree = "<group>"; };
+		F7E5B18B184C34DF009E3C2F /* MZBookWriterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZBookWriterModel.h; sourceTree = "<group>"; };
+		F7E5B18C184C34DF009E3C2F /* MZBookWriterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZBookWriterModel.m; sourceTree = "<group>"; };
+		F7E5B18E184C34DF009E3C2F /* MZBookExcerptModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZBookExcerptModel.h; sourceTree = "<group>"; };
+		F7E5B18F184C34DF009E3C2F /* MZBookExcerptModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZBookExcerptModel.m; sourceTree = "<group>"; };
+		F7E5B191184C34DF009E3C2F /* MZBookTagModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZBookTagModel.h; sourceTree = "<group>"; };
+		F7E5B192184C34DF009E3C2F /* MZBookTagModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZBookTagModel.m; sourceTree = "<group>"; };
+		F7E9F53F18449AB9000568AD /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +138,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7239DAB184610B900AF44CB /* AddressBook.framework in Frameworks */,
+				F7239DAC184610B900AF44CB /* AddressBookUI.framework in Frameworks */,
+				F7239DA8184610B000AF44CB /* libiconv.dylib in Frameworks */,
+				F7239DA6184610A600AF44CB /* CoreMedia.framework in Frameworks */,
+				F7239DA41846109F00AF44CB /* CoreVideo.framework in Frameworks */,
+				F7239DA21846109900AF44CB /* AudioToolbox.framework in Frameworks */,
+				F7239DA01846109300AF44CB /* AVFoundation.framework in Frameworks */,
+				F7239D9C18460F8E00AF44CB /* libZXingWidget.a in Frameworks */,
 				F711C05C184480F300D85598 /* CoreGraphics.framework in Frameworks */,
 				F711C05E184480F300D85598 /* UIKit.framework in Frameworks */,
 				F711C05A184480F300D85598 /* Foundation.framework in Frameworks */,
@@ -88,6 +172,7 @@
 				F711C081184480F300D85598 /* ElephantTests */,
 				F711C058184480F300D85598 /* Frameworks */,
 				F711C057184480F300D85598 /* Products */,
+				F7239D9318460EE700AF44CB /* ZXingWidget.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,6 +188,13 @@
 		F711C058184480F300D85598 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F7239DA9184610B900AF44CB /* AddressBook.framework */,
+				F7239DAA184610B900AF44CB /* AddressBookUI.framework */,
+				F7239DA7184610B000AF44CB /* libiconv.dylib */,
+				F7239DA5184610A600AF44CB /* CoreMedia.framework */,
+				F7239DA31846109F00AF44CB /* CoreVideo.framework */,
+				F7239DA11846109900AF44CB /* AudioToolbox.framework */,
+				F7239D9F1846109300AF44CB /* AVFoundation.framework */,
 				F711C059184480F300D85598 /* Foundation.framework */,
 				F711C05B184480F300D85598 /* CoreGraphics.framework */,
 				F711C05D184480F300D85598 /* UIKit.framework */,
@@ -114,12 +206,14 @@
 		F711C05F184480F300D85598 /* Elephant */ = {
 			isa = PBXGroup;
 			children = (
+				F7239DB418461ED800AF44CB /* beep-beep.aiff */,
+				F7E9F53F18449AB9000568AD /* images */,
+				F711C0911844874800D85598 /* VC */,
+				F7239DB71846252300AF44CB /* Framework */,
 				F711C068184480F300D85598 /* MZAppDelegate.h */,
 				F711C069184480F300D85598 /* MZAppDelegate.m */,
 				F711C06B184480F300D85598 /* Main_iPhone.storyboard */,
 				F711C06E184480F300D85598 /* Main_iPad.storyboard */,
-				F711C071184480F300D85598 /* MZViewController.h */,
-				F711C072184480F300D85598 /* MZViewController.m */,
 				F711C074184480F300D85598 /* Images.xcassets */,
 				F711C060184480F300D85598 /* Supporting Files */,
 			);
@@ -129,9 +223,9 @@
 		F711C060184480F300D85598 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F7239DAF184612FC00AF44CB /* main.m */,
 				F711C061184480F300D85598 /* Elephant-Info.plist */,
 				F711C062184480F300D85598 /* InfoPlist.strings */,
-				F711C065184480F300D85598 /* main.m */,
 				F711C067184480F300D85598 /* Elephant-Prefix.pch */,
 			);
 			name = "Supporting Files";
@@ -155,6 +249,70 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F711C0911844874800D85598 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				F711C071184480F300D85598 /* MZViewController.h */,
+				F711C072184480F300D85598 /* MZViewController.m */,
+				F7CD1BA918458F4D00BA22A0 /* MZCollectionShelfVC.h */,
+				F7239DB11846132B00AF44CB /* MZCollectionShelfVC.mm */,
+				F7CD1BAC18458FB300BA22A0 /* MZCollectionShelfCell.h */,
+				F7CD1BAD18458FB300BA22A0 /* MZCollectionShelfCell.m */,
+				F7239D8F1845E30D00AF44CB /* MZSearchVC.h */,
+				F7239D901845E30D00AF44CB /* MZSearchVC.m */,
+			);
+			name = VC;
+			sourceTree = "<group>";
+		};
+		F7239D9418460EE700AF44CB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F7239D9918460EE800AF44CB /* libZXingWidget.a */,
+				F7239D9B18460EE800AF44CB /* ZXingTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F7239DB71846252300AF44CB /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				F753CE4F1847304B003169B3 /* BookStore */,
+			);
+			name = Framework;
+			sourceTree = "<group>";
+		};
+		F753CE4F1847304B003169B3 /* BookStore */ = {
+			isa = PBXGroup;
+			children = (
+				F7E5B187184C34AF009E3C2F /* Model */,
+				F753CE541847441D003169B3 /* MZBookStoreAPI.h */,
+				F753CE51184743A9003169B3 /* MZBookStoreFactory.m */,
+				F753CE4B18472F79003169B3 /* MZBookStoreDefault.h */,
+				F753CE4C18472F79003169B3 /* MZBookStoreDefault.m */,
+				F78B1B241846E70200A72256 /* MZBook.h */,
+				F78B1B251846E70200A72256 /* MZBook.m */,
+				F750B93518470C97007D3094 /* MZBookSummary.h */,
+				F750B93618470C97007D3094 /* MZBookSummary.m */,
+				F7E5B183184C2F35009E3C2F /* MZBookModel.xcdatamodeld */,
+			);
+			name = BookStore;
+			sourceTree = "<group>";
+		};
+		F7E5B187184C34AF009E3C2F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F7E5B191184C34DF009E3C2F /* MZBookTagModel.h */,
+				F7E5B192184C34DF009E3C2F /* MZBookTagModel.m */,
+				F7E5B18E184C34DF009E3C2F /* MZBookExcerptModel.h */,
+				F7E5B18F184C34DF009E3C2F /* MZBookExcerptModel.m */,
+				F7E5B18B184C34DF009E3C2F /* MZBookWriterModel.h */,
+				F7E5B18C184C34DF009E3C2F /* MZBookWriterModel.m */,
+				F7E5B188184C34DE009E3C2F /* MZBookModel.h */,
+				F7E5B189184C34DE009E3C2F /* MZBookModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -169,6 +327,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				F7239D9E18460FAB00AF44CB /* PBXTargetDependency */,
 			);
 			name = Elephant;
 			productName = Elephant;
@@ -219,6 +378,12 @@
 			mainGroup = F711C04D184480F300D85598;
 			productRefGroup = F711C057184480F300D85598 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = F7239D9418460EE700AF44CB /* Products */;
+					ProjectRef = F7239D9318460EE700AF44CB /* ZXingWidget.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				F711C055184480F300D85598 /* Elephant */,
@@ -227,11 +392,30 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		F7239D9918460EE800AF44CB /* libZXingWidget.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libZXingWidget.a;
+			remoteRef = F7239D9818460EE800AF44CB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F7239D9B18460EE800AF44CB /* ZXingTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ZXingTests.octest;
+			remoteRef = F7239D9A18460EE800AF44CB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		F711C054184480F300D85598 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7E9F54018449AB9000568AD /* images in Resources */,
+				F7239DB518461ED800AF44CB /* beep-beep.aiff in Resources */,
 				F711C070184480F300D85598 /* Main_iPad.storyboard in Resources */,
 				F711C075184480F300D85598 /* Images.xcassets in Resources */,
 				F711C06D184480F300D85598 /* Main_iPhone.storyboard in Resources */,
@@ -254,9 +438,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F753CE52184743A9003169B3 /* MZBookStoreFactory.m in Sources */,
+				F753CE4D18472F79003169B3 /* MZBookStoreDefault.m in Sources */,
+				F7239DB21846132B00AF44CB /* MZCollectionShelfVC.mm in Sources */,
+				F7E5B18A184C34DE009E3C2F /* MZBookModel.m in Sources */,
+				F7CD1BAE18458FB300BA22A0 /* MZCollectionShelfCell.m in Sources */,
+				F7E5B193184C34DF009E3C2F /* MZBookTagModel.m in Sources */,
+				F750B93718470C97007D3094 /* MZBookSummary.m in Sources */,
+				F7E5B18D184C34DF009E3C2F /* MZBookWriterModel.m in Sources */,
 				F711C073184480F300D85598 /* MZViewController.m in Sources */,
-				F711C066184480F300D85598 /* main.m in Sources */,
+				F7E5B185184C2F35009E3C2F /* MZBookModel.xcdatamodeld in Sources */,
+				F7E5B190184C34DF009E3C2F /* MZBookExcerptModel.m in Sources */,
+				F7239D911845E30D00AF44CB /* MZSearchVC.m in Sources */,
+				F7239DB0184612FC00AF44CB /* main.m in Sources */,
 				F711C06A184480F300D85598 /* MZAppDelegate.m in Sources */,
+				F78B1B261846E70200A72256 /* MZBook.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +471,11 @@
 			isa = PBXTargetDependency;
 			target = F711C055184480F300D85598 /* Elephant */;
 			targetProxy = F711C07F184480F300D85598 /* PBXContainerItemProxy */;
+		};
+		F7239D9E18460FAB00AF44CB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ZXingWidget;
+			targetProxy = F7239D9D18460FAB00AF44CB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -320,7 +521,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -360,7 +561,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -395,6 +596,12 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Elephant/Elephant-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"../zxing-2.2/iphone/ZXingWidget/Classes/**",
+					"../zxing-2.2/cpp/core/src",
+				);
 				INFOPLIST_FILE = "Elephant/Elephant-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -408,6 +615,12 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Elephant/Elephant-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"../zxing-2.2/iphone/ZXingWidget/Classes/**",
+					"../zxing-2.2/cpp/core/src",
+				);
 				INFOPLIST_FILE = "Elephant/Elephant-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -475,6 +688,7 @@
 				F711C08D184480F300D85598 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F711C08E184480F300D85598 /* Build configuration list for PBXNativeTarget "ElephantTests" */ = {
 			isa = XCConfigurationList;
@@ -483,8 +697,22 @@
 				F711C090184480F300D85598 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F7E5B183184C2F35009E3C2F /* MZBookModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F7E5B184184C2F35009E3C2F /* MZBookModel.xcdatamodel */,
+			);
+			currentVersion = F7E5B184184C2F35009E3C2F /* MZBookModel.xcdatamodel */;
+			path = MZBookModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F711C04E184480F300D85598 /* Project object */;
 }

@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+// zxing library
+//#import <ZXingWidgetController.h>
+//#import <QRCodeReader.h>
+
+
 #import "MZAppDelegate.h"
 
 int main(int argc, char * argv[])
