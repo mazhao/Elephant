@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import <CoreData/CoreData.h>
+
+#import "MZBookModel.h"
+
 @interface MZAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

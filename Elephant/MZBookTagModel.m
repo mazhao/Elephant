@@ -12,8 +12,9 @@
 
 @implementation MZBookTagModel
 
-@dynamic id;
+@dynamic count;
 @dynamic name;
+@dynamic title;
 @dynamic books;
 
 @end

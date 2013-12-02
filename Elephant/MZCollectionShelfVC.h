@@ -13,9 +13,7 @@
 
 // book store api
 #import "MZBookStoreAPI.h"
-#import "MZBook.h"
-#import "MZBookSummary.h"
-
+#import "MZBookModel.h"
 
 // zxing library
 // << IMPORTANT !!! not .m but .mm to import c++ header >>
@@ -26,10 +24,15 @@
 // std library
 #include <stdlib.h>
 
+// progress alert view
+#import "MBProgressHUD.h"
+
 
 @interface MZCollectionShelfVC : UICollectionViewController<UICollectionViewDataSource, UICollectionViewDelegate, ZXingDelegate, BookShelfRefreshDelegate>
 
-@property (strong, nonatomic) NSMutableArray * bookImgs;
+//@property (strong, nonatomic) NSMutableArray * bookImgs;
+
+@property (strong, nonatomic) NSArray * books;
 
 @property (strong, nonatomic) IBOutlet UIButton * findButton;
 @property (strong, nonatomic) IBOutlet UINavigationItem * scanBtn;

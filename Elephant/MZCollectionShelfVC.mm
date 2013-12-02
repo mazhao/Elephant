@@ -40,13 +40,6 @@ NSInteger  kIconWidht = 22;
     UIImage * image = [UIImage imageWithContentsOfFile:path];
     self.collectionView.backgroundView = [[UIImageView alloc] initWithImage:image];
     
-    // collection 初始化
-    
-    _bookImgs = [@[@"images/unix.png", @"images/b2c.png", @"images/chuangzaomeiguo.jpg",
-                   @"images/feilixing.jpg", @"images/heian.jpg", @"images/shenghuo.jpg",
-                   @"images/jiaolv.jpg",@"images/manmanlai.jpg",@"images/yimin.jpg",
-                   @"images/xia.jpg",] mutableCopy];
-    
     
     // floating button 设计
     [_findButton setFrame:CGRectMake( self.view.frame.size.width - 2*FIND_ICON_WIDTH,
@@ -61,6 +54,12 @@ NSInteger  kIconWidht = 22;
     
     [self.view addSubview:_findButton];
     [self.view bringSubviewToFront:_findButton];
+    
+    
+    // books init
+    id<MZBookStore> bookStore = [MZBookStoreFactory initBookStoreWithBookShelfRefreshDelegate:self
+                                                                                       ofType:kBookStoreDefault];
+    self.books = [bookStore getAllBooksSummary];
   
     
 }
@@ -71,7 +70,8 @@ NSInteger  kIconWidht = 22;
     // Dispose of any resources that can be recreated.
 }
 
-// { collection begin
+
+#pragma mark - Collection view
 
 -(NSInteger)numberOfSectionsInCollectionView:
 (UICollectionView *)collectionView
@@ -82,7 +82,8 @@ NSInteger  kIconWidht = 22;
 -(NSInteger)collectionView:(UICollectionView *)collectionView
     numberOfItemsInSection:(NSInteger)section
 {
-    return _bookImgs.count;
+    return [self.books count];
+    
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
@@ -95,21 +96,26 @@ NSInteger  kIconWidht = 22;
     UIImage *image;
     int row = [indexPath row];
     
-    image = [UIImage imageNamed:_bookImgs[row]];
+    //image = [UIImage imageNamed:_bookImgs[row]];
+    
+    MZBookModel * book =(MZBookModel *)[self.books objectAtIndex:row];
+    
+    NSString *url = book.imagePath;
+    
+    
+    NSURL *imageURL = [NSURL URLWithString: url ];
+    NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+    image = [UIImage imageWithData:imageData];
+    
     
     bookCell.imageView.image = image;
-    
-    int r = arc4random() % 20;
-    bookCell.label.text = [NSString stringWithFormat:@"%d 个摘要", r]; ;
+    bookCell.label.text = [NSString stringWithFormat:@"%d 个摘要", [book.excerpts count]]; ;
     
     return bookCell;
 }
 
 
-// } collection end
-
-
-// { zxing begin
+#pragma mark - Action handler
 
 - (IBAction)scan:(id)sender {
 
@@ -129,31 +135,38 @@ NSInteger  kIconWidht = 22;
     }];
 }
 
+#pragma mark - ZXing barcode scancer handler
+
 - (void)zxingController:(ZXingWidgetController*)controller didScanResult:(NSString *)resultString {
 
     NSLog(@"zxing scan result:%@", resultString);
     
     [self dismissModalViewControllerAnimated:YES ];
     
+    // show loading view
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
     // create
     id<MZBookStore> bookStore = [MZBookStoreFactory initBookStoreWithBookShelfRefreshDelegate:self
                                  ofType:kBookStoreDefault];
     
     if( [bookStore bookExist:resultString]) {
         // alert exist
-        
+        NSLog(@"book exists");
         
     } else {
         if([bookStore fetchBook:resultString] ) {
             // fetch success
-            
+            NSLog(@"fetch success");
             
         } else {
             // fetch error
+            NSLog(@"fetch failed");
         }
         
     }
-    
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+
     // 1. query local database to check if the book dos alreay exist.
     // 1.1 if exist then next to 2
     // 1.2 if not exist then query douban book store with isbn
@@ -168,17 +181,29 @@ NSInteger  kIconWidht = 22;
 - (void)zxingControllerDidCancel:(ZXingWidgetController*)controller {
     NSLog(@"zxing cancel");
     [self dismissModalViewControllerAnimated:YES];
+  //  [MBProgressHUD hideHUDForView:self.view animated:YES];
+
 }
 
 // } zxing end
 
 // BookShelfRefreshDelegate
 // {
--(void) refreshViewforNewBook: (MZBook *) nb {
+-(void) refreshViewforNewBook: (MZBookModel *) nb {
+    NSLog(@"begin refresh view");
     // reload data
     // @TODO: to be comment out
     // [self.collectionView reloadData];
     
+    // books init
+    id<MZBookStore> bookStore = [MZBookStoreFactory initBookStoreWithBookShelfRefreshDelegate:self
+                                                                                       ofType:kBookStoreDefault];
+    self.books = [bookStore getAllBooksSummary];
+
+    [self.collectionView reloadData];
+ 
+   // [MBProgressHUD hideHUDForView:self.view animated:YES];
+
 }
 
 // }

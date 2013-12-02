@@ -13,8 +13,7 @@
 //#import "MZBook.h"
 //#import "MZBookSummary.h"
 
-@class MZBook;
-@class MZBookSummary;
+@class MZBookModel;
 
 
 // ------------------------------------------------------------------------------------------ //
@@ -47,7 +46,7 @@
 // no need for the following method, because View Controller is always the delegate who alreay have the collection view.
 // @property (nonatomic weak) NSCollectionView * collectionView;
 
--(void) refreshViewforNewBook: (MZBook *) nb;
+-(void) refreshViewforNewBook: (MZBookModel *) nb;
 
 @end
 
@@ -73,9 +72,9 @@
         -(BOOL) fetchBook: (NSString*) isbn;
 
         //
-        -(MZBook *) getBookSummary: (NSString *) isbn;
+        -(MZBookModel *) getBookSummary: (NSString *) isbn;
 
-        -(MZBook *) getBookDetail: (NSString *) isbn;
+        -(MZBookModel *) getBookDetail: (NSString *) isbn;
 
 
         // multiple books methods

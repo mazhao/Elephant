@@ -13,8 +13,9 @@
 
 @interface MZBookTagModel : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * id;
+@property (nonatomic, retain) NSNumber * count;
 @property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSSet *books;
 @end
 

@@ -7,6 +7,9 @@
 //
 
 #import "MZBookModel.h"
+#import "MZBookExcerptModel.h"
+#import "MZBookTagModel.h"
+#import "MZBookWriterModel.h"
 
 
 @implementation MZBookModel
@@ -33,6 +36,10 @@
 @dynamic pages;
 @dynamic authorIntro;
 @dynamic summary;
+@dynamic url;
+@dynamic alt;
+@dynamic id;
+@dynamic catalog;
 @dynamic authors;
 @dynamic translators;
 @dynamic tags;
