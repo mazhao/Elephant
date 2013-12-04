@@ -7,13 +7,11 @@
 //
 
 #import "MZCollectionShelfVC.h"
+#import "MZAppDelegate.h"
 
 // constants
-#define FIND_ICON_WIDTH 22
-#define FIND_ICON_HEIGHT 32
-
-// question 2:
-NSInteger  kIconWidht = 22;
+static int kFindIconWidth = 22;
+static int kFindIconHeight = 32;
 
 @interface MZCollectionShelfVC ()
 
@@ -42,9 +40,9 @@ NSInteger  kIconWidht = 22;
     
     
     // floating button 设计
-    [_findButton setFrame:CGRectMake( self.view.frame.size.width - 2*FIND_ICON_WIDTH,
-                                        self.view.frame.size.height - FIND_ICON_HEIGHT,
-                                        FIND_ICON_WIDTH, FIND_ICON_HEIGHT)];
+    [_findButton setFrame:CGRectMake( self.view.frame.size.width - 2*kFindIconWidth,
+                                        self.view.frame.size.height - kFindIconHeight,
+                                        kFindIconWidth, kFindIconHeight)];
 
     
     [_findButton setBackgroundImage:
@@ -56,12 +54,11 @@ NSInteger  kIconWidht = 22;
     [self.view bringSubviewToFront:_findButton];
     
     
-    // books init
-    id<MZBookStore> bookStore = [MZBookStoreFactory initBookStoreWithBookShelfRefreshDelegate:self
-                                                                                       ofType:kBookStoreDefault];
-    self.books = [bookStore getAllBooksSummary];
+    MZAppDelegate * delegate = (MZAppDelegate *)[[UIApplication sharedApplication] delegate];
+    delegate.bookStore = [MZBookStoreFactory initBookStoreWithBookShelfRefreshDelegate:self
+                                                                           ofType:kBookStoreDefault];
+    self.books = [delegate.bookStore getAllBooksSummary];
   
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -107,9 +104,18 @@ NSInteger  kIconWidht = 22;
     NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
     image = [UIImage imageWithData:imageData];
     
-    
     bookCell.imageView.image = image;
+    
+    
+    [bookCell.imageView setImageWithURL:[NSURL URLWithString: url ]
+                      placeholderImage:[UIImage imageNamed:@"images/placeholder.png"]
+                             completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                                 NSLog(@"load image success");
+                             }];
+    
     bookCell.label.text = [NSString stringWithFormat:@"%d 个摘要", [book.excerpts count]]; ;
+    bookCell.isbn13 = book.isbn13;
+    bookCell.isbn10 = book.isbn10;
     
     return bookCell;
 }
@@ -131,7 +137,7 @@ NSInteger  kIconWidht = 22;
     
     
     [self presentViewController:widController animated:YES completion:^{
-        NSLog(@"affter present");
+        NSLog(@"affter zxing barcode reader view controller present");
     }];
 }
 
@@ -139,9 +145,11 @@ NSInteger  kIconWidht = 22;
 
 - (void)zxingController:(ZXingWidgetController*)controller didScanResult:(NSString *)resultString {
 
-    NSLog(@"zxing scan result:%@", resultString);
+    NSLog(@"zxing scan isbn:%@", resultString);
     
-    [self dismissModalViewControllerAnimated:YES ];
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"after zxing barcode reader finished");
+    }];
     
     // show loading view
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -204,6 +212,40 @@ NSInteger  kIconWidht = 22;
  
    // [MBProgressHUD hideHUDForView:self.view animated:YES];
 
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+    id controller = [segue destinationViewController];
+    
+    // if go to book detail
+    if ( [controller class] == [MZDetailVC class]  ) {
+        NSArray * paths = [self.collectionView indexPathsForSelectedItems];
+        
+        NSString * isbn10;
+        NSString * isbn13;
+        
+        if([paths count] >0) {
+            NSIndexPath * path = [paths objectAtIndex:0];
+            MZCollectionShelfCell * cell = (MZCollectionShelfCell*)[self.collectionView cellForItemAtIndexPath:path];
+            NSLog(@"cell isbn10:%@ isbn13:%@", cell.isbn10, cell.isbn13);
+            
+            isbn10 = cell.isbn10;
+            isbn13 = cell.isbn13;
+            
+        } else {
+            NSLog(@"no cell selected or no isbn selected");
+            isbn10 = @"";
+            isbn13 = @"";
+        }
+
+        MZDetailVC * detailVC = (MZDetailVC *) [segue destinationViewController];
+        detailVC.isbn10 = isbn10;
+        detailVC.isbn13 = isbn13;
+    }
+    
+    // other case such as go to setting
 }
 
 // }

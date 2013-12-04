@@ -11,9 +11,12 @@
 #import <CoreData/CoreData.h>
 
 #import "MZBookModel.h"
+#import "MZBookStoreAPI.h"
 
 @interface MZAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+@property (strong, nonatomic) id<MZBookStore>  bookStore;
 
 @end

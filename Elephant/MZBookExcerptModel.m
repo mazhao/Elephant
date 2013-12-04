@@ -2,7 +2,7 @@
 //  MZBookExcerptModel.m
 //  Elephant
 //
-//  Created by mazhao on 13-12-2.
+//  Created by mazhao on 13-12-4.
 //  Copyright (c) 2013年 mz. All rights reserved.
 //
 
@@ -12,8 +12,9 @@
 
 @implementation MZBookExcerptModel
 
-@dynamic text;
 @dynamic image;
+@dynamic text;
+@dynamic datetime;
 @dynamic book;
 
 @end

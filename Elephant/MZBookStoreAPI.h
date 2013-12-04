@@ -14,7 +14,7 @@
 //#import "MZBookSummary.h"
 
 @class MZBookModel;
-
+@class MZBookExcerptModel;
 
 // ------------------------------------------------------------------------------------------ //
 // Sample:
@@ -85,6 +85,8 @@
          */
         -(NSArray *) getAllBooksSummary;
 
+
+- (BOOL) saveExpert:(NSString *) excerpt forBoook:(NSString*) isbn13 ;
 
     // }
 

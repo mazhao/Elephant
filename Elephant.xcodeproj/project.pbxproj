@@ -48,10 +48,17 @@
 		F7E5B1F8184C8FBA009E3C2F /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E5B1F7184C8FBA009E3C2F /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F7E5B214184CB07B009E3C2F /* MZBookTagModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E5B213184CB07B009E3C2F /* MZBookTagModel.m */; };
 		F7E5B217184CB07C009E3C2F /* MZBookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E5B216184CB07C009E3C2F /* MZBookModel.m */; };
-		F7E5B21A184CB07C009E3C2F /* MZBookExcerptModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E5B219184CB07C009E3C2F /* MZBookExcerptModel.m */; };
 		F7E5B21D184CB07C009E3C2F /* MZBookWriterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E5B21C184CB07C009E3C2F /* MZBookWriterModel.m */; };
 		F7E5B221184CE9A8009E3C2F /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E5B220184CE9A8009E3C2F /* MBProgressHUD.m */; };
 		F7E9F54018449AB9000568AD /* images in Resources */ = {isa = PBXBuildFile; fileRef = F7E9F53F18449AB9000568AD /* images */; };
+		F7EE3E3F184DB996007A55FB /* MZDetailHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EE3E3E184DB996007A55FB /* MZDetailHeaderCell.m */; };
+		F7EE3E42184DB9A6007A55FB /* MZDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EE3E41184DB9A6007A55FB /* MZDetailCell.m */; };
+		F7EE3E45184DB9B4007A55FB /* MZDetailFooterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EE3E44184DB9B4007A55FB /* MZDetailFooterCell.m */; };
+		F7EE3E48184DB9CF007A55FB /* MZDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EE3E47184DB9CF007A55FB /* MZDetailVC.m */; };
+		F7EE3E57184E20DD007A55FB /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EE3E56184E20DD007A55FB /* ImageIO.framework */; };
+		F7EE3E59184E228C007A55FB /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EE3E58184E228C007A55FB /* SDWebImage.framework */; };
+		F7FDB334184ED07900986347 /* MZExcerptVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FDB333184ED07900986347 /* MZExcerptVC.m */; };
+		F7FDB337184F6C5C00986347 /* MZBookExcerptModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FDB336184F6C5C00986347 /* MZBookExcerptModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,13 +147,25 @@
 		F7E5B213184CB07B009E3C2F /* MZBookTagModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZBookTagModel.m; sourceTree = "<group>"; };
 		F7E5B215184CB07C009E3C2F /* MZBookModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZBookModel.h; sourceTree = "<group>"; };
 		F7E5B216184CB07C009E3C2F /* MZBookModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZBookModel.m; sourceTree = "<group>"; };
-		F7E5B218184CB07C009E3C2F /* MZBookExcerptModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZBookExcerptModel.h; sourceTree = "<group>"; };
-		F7E5B219184CB07C009E3C2F /* MZBookExcerptModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZBookExcerptModel.m; sourceTree = "<group>"; };
 		F7E5B21B184CB07C009E3C2F /* MZBookWriterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZBookWriterModel.h; sourceTree = "<group>"; };
 		F7E5B21C184CB07C009E3C2F /* MZBookWriterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZBookWriterModel.m; sourceTree = "<group>"; };
 		F7E5B21F184CE9A8009E3C2F /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = "../../MBProgressHUD-master/MBProgressHUD.h"; sourceTree = "<group>"; };
 		F7E5B220184CE9A8009E3C2F /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = "../../MBProgressHUD-master/MBProgressHUD.m"; sourceTree = "<group>"; };
 		F7E9F53F18449AB9000568AD /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
+		F7EE3E3D184DB996007A55FB /* MZDetailHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZDetailHeaderCell.h; sourceTree = "<group>"; };
+		F7EE3E3E184DB996007A55FB /* MZDetailHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZDetailHeaderCell.m; sourceTree = "<group>"; };
+		F7EE3E40184DB9A6007A55FB /* MZDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZDetailCell.h; sourceTree = "<group>"; };
+		F7EE3E41184DB9A6007A55FB /* MZDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZDetailCell.m; sourceTree = "<group>"; };
+		F7EE3E43184DB9B4007A55FB /* MZDetailFooterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZDetailFooterCell.h; sourceTree = "<group>"; };
+		F7EE3E44184DB9B4007A55FB /* MZDetailFooterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZDetailFooterCell.m; sourceTree = "<group>"; };
+		F7EE3E46184DB9CF007A55FB /* MZDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZDetailVC.h; sourceTree = "<group>"; };
+		F7EE3E47184DB9CF007A55FB /* MZDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZDetailVC.m; sourceTree = "<group>"; };
+		F7EE3E56184E20DD007A55FB /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		F7EE3E58184E228C007A55FB /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
+		F7FDB332184ED07900986347 /* MZExcerptVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZExcerptVC.h; sourceTree = "<group>"; };
+		F7FDB333184ED07900986347 /* MZExcerptVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZExcerptVC.m; sourceTree = "<group>"; };
+		F7FDB335184F6C5C00986347 /* MZBookExcerptModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZBookExcerptModel.h; sourceTree = "<group>"; };
+		F7FDB336184F6C5C00986347 /* MZBookExcerptModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZBookExcerptModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,9 +173,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7EE3E57184E20DD007A55FB /* ImageIO.framework in Frameworks */,
 				F7E5B1F3184C81D1009E3C2F /* MobileCoreServices.framework in Frameworks */,
 				F7E5B1F1184C81C8009E3C2F /* SystemConfiguration.framework in Frameworks */,
 				F7E5B1EF184C81C0009E3C2F /* Security.framework in Frameworks */,
+				F7EE3E59184E228C007A55FB /* SDWebImage.framework in Frameworks */,
 				F7E5B1ED184C81B7009E3C2F /* CFNetwork.framework in Frameworks */,
 				F711C05C184480F300D85598 /* CoreGraphics.framework in Frameworks */,
 				F7E5B1EB184C81A7009E3C2F /* libz.dylib in Frameworks */,
@@ -212,6 +233,8 @@
 		F711C058184480F300D85598 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F7EE3E58184E228C007A55FB /* SDWebImage.framework */,
+				F7EE3E56184E20DD007A55FB /* ImageIO.framework */,
 				F7E5B1F2184C81D1009E3C2F /* MobileCoreServices.framework */,
 				F7E5B1F0184C81C8009E3C2F /* SystemConfiguration.framework */,
 				F7E5B1EE184C81C0009E3C2F /* Security.framework */,
@@ -284,12 +307,11 @@
 		F711C0911844874800D85598 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				F7FDB330184ED05B00986347 /* Excerpt */,
+				F7EE3E3C184DB90C007A55FB /* Detail */,
+				F7EE3E3B184DB8F1007A55FB /* Collection */,
 				F711C071184480F300D85598 /* MZViewController.h */,
 				F711C072184480F300D85598 /* MZViewController.m */,
-				F7CD1BA918458F4D00BA22A0 /* MZCollectionShelfVC.h */,
-				F7239DB11846132B00AF44CB /* MZCollectionShelfVC.mm */,
-				F7CD1BAC18458FB300BA22A0 /* MZCollectionShelfCell.h */,
-				F7CD1BAD18458FB300BA22A0 /* MZCollectionShelfCell.m */,
 				F7239D8F1845E30D00AF44CB /* MZSearchVC.h */,
 				F7239D901845E30D00AF44CB /* MZSearchVC.m */,
 			);
@@ -335,10 +357,10 @@
 				F7E5B213184CB07B009E3C2F /* MZBookTagModel.m */,
 				F7E5B215184CB07C009E3C2F /* MZBookModel.h */,
 				F7E5B216184CB07C009E3C2F /* MZBookModel.m */,
-				F7E5B218184CB07C009E3C2F /* MZBookExcerptModel.h */,
-				F7E5B219184CB07C009E3C2F /* MZBookExcerptModel.m */,
 				F7E5B21B184CB07C009E3C2F /* MZBookWriterModel.h */,
 				F7E5B21C184CB07C009E3C2F /* MZBookWriterModel.m */,
+				F7FDB335184F6C5C00986347 /* MZBookExcerptModel.h */,
+				F7FDB336184F6C5C00986347 /* MZBookExcerptModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -359,6 +381,41 @@
 				F7E5B220184CE9A8009E3C2F /* MBProgressHUD.m */,
 			);
 			name = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		F7EE3E3B184DB8F1007A55FB /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				F7CD1BA918458F4D00BA22A0 /* MZCollectionShelfVC.h */,
+				F7239DB11846132B00AF44CB /* MZCollectionShelfVC.mm */,
+				F7CD1BAC18458FB300BA22A0 /* MZCollectionShelfCell.h */,
+				F7CD1BAD18458FB300BA22A0 /* MZCollectionShelfCell.m */,
+			);
+			name = Collection;
+			sourceTree = "<group>";
+		};
+		F7EE3E3C184DB90C007A55FB /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				F7EE3E3D184DB996007A55FB /* MZDetailHeaderCell.h */,
+				F7EE3E3E184DB996007A55FB /* MZDetailHeaderCell.m */,
+				F7EE3E40184DB9A6007A55FB /* MZDetailCell.h */,
+				F7EE3E41184DB9A6007A55FB /* MZDetailCell.m */,
+				F7EE3E43184DB9B4007A55FB /* MZDetailFooterCell.h */,
+				F7EE3E44184DB9B4007A55FB /* MZDetailFooterCell.m */,
+				F7EE3E46184DB9CF007A55FB /* MZDetailVC.h */,
+				F7EE3E47184DB9CF007A55FB /* MZDetailVC.m */,
+			);
+			name = Detail;
+			sourceTree = "<group>";
+		};
+		F7FDB330184ED05B00986347 /* Excerpt */ = {
+			isa = PBXGroup;
+			children = (
+				F7FDB332184ED07900986347 /* MZExcerptVC.h */,
+				F7FDB333184ED07900986347 /* MZExcerptVC.m */,
+			);
+			name = Excerpt;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -486,21 +543,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7EE3E45184DB9B4007A55FB /* MZDetailFooterCell.m in Sources */,
 				F753CE52184743A9003169B3 /* MZBookStoreFactory.m in Sources */,
+				F7EE3E48184DB9CF007A55FB /* MZDetailVC.m in Sources */,
 				F753CE4D18472F79003169B3 /* MZBookStoreDefault.m in Sources */,
+				F7EE3E3F184DB996007A55FB /* MZDetailHeaderCell.m in Sources */,
 				F7239DB21846132B00AF44CB /* MZCollectionShelfVC.mm in Sources */,
 				F7CD1BAE18458FB300BA22A0 /* MZCollectionShelfCell.m in Sources */,
 				F7E5B1F8184C8FBA009E3C2F /* JSONKit.m in Sources */,
 				F711C073184480F300D85598 /* MZViewController.m in Sources */,
+				F7EE3E42184DB9A6007A55FB /* MZDetailCell.m in Sources */,
 				F7E5B185184C2F35009E3C2F /* MZBookModel.xcdatamodeld in Sources */,
 				F7E5B221184CE9A8009E3C2F /* MBProgressHUD.m in Sources */,
 				F7239D911845E30D00AF44CB /* MZSearchVC.m in Sources */,
+				F7FDB337184F6C5C00986347 /* MZBookExcerptModel.m in Sources */,
 				F7239DB0184612FC00AF44CB /* main.m in Sources */,
 				F7E5B214184CB07B009E3C2F /* MZBookTagModel.m in Sources */,
 				F7E5B217184CB07C009E3C2F /* MZBookModel.m in Sources */,
 				F711C06A184480F300D85598 /* MZAppDelegate.m in Sources */,
-				F7E5B21A184CB07C009E3C2F /* MZBookExcerptModel.m in Sources */,
 				F7E5B21D184CB07C009E3C2F /* MZBookWriterModel.m in Sources */,
+				F7FDB334184ED07900986347 /* MZExcerptVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,6 +707,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/mazhao/Dropbox/2013大象（书摘）/Elephant/douban-objc-client",
+					"/Users/mazhao/Dropbox/2013大象（书摘）/Elephant/Elephant",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Elephant/Elephant-Prefix.pch";
@@ -672,6 +735,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/mazhao/Dropbox/2013大象（书摘）/Elephant/douban-objc-client",
+					"/Users/mazhao/Dropbox/2013大象（书摘）/Elephant/Elephant",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Elephant/Elephant-Prefix.pch";

@@ -76,13 +76,82 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
     return [self getBookSummary:isbn] != nil;
 }
 
+- (void)convertDictionaryToBookModel:(NSDictionary *)bookDic bookModel:(MZBookModel *)bookModel {
+    bookModel.price = [bookDic objectForKey:@"price"];
+    bookModel.summary = [bookDic objectForKey:@"summary"];
+    bookModel.authorIntro = [bookDic objectForKey:@"author_intro"];
+    bookModel.altTitle = [bookDic objectForKey:@"alt_title"];
+    bookModel.url = [bookDic objectForKey:@"url"];
+    bookModel.title = [bookDic objectForKey:@"title"];
+    bookModel.isbn10 = [bookDic objectForKey:@"isbn10"];
+    bookModel.isbn13 = [bookDic objectForKey:@"isbn13"];
+    bookModel.publisher = [bookDic objectForKey:@"publisher"];
+    bookModel.id = [bookDic objectForKey:@"id"];
+    bookModel.alt = [bookDic objectForKey:@"alt"];
+    
+    bookModel.imagePathSmall = [((NSDictionary*)[bookDic objectForKey:@"images"]) objectForKey:@"small"];
+    bookModel.imagePathMedium = [((NSDictionary*)[bookDic objectForKey:@"images"]) objectForKey:@"medium"];
+    bookModel.imagePathLarge = [((NSDictionary*)[bookDic objectForKey:@"images"]) objectForKey:@"large"];
+    bookModel.imagePath =[bookDic objectForKey:@"image"];
+    
+    bookModel.pages =[bookDic objectForKey:@"pages"];
+    bookModel.catalog =[bookDic objectForKey:@"catalog"];
+    
+    bookModel.binding  =[bookDic objectForKey:@"binding"];
+    bookModel.originTitle  =[bookDic objectForKey:@"origin_title"];
+    
+    bookModel.pubdate =[bookDic objectForKey:@"pubdate"];
+    
+    bookModel.subTitle =[bookDic objectForKey:@"subtitle"];
+    
+    
+    bookModel.ratingMax = [((NSDictionary*)[bookDic objectForKey:@"rating"]) objectForKey:@"max"];
+    bookModel.ratingMin = [((NSDictionary*)[bookDic objectForKey:@"rating"]) objectForKey:@"min"];
+    bookModel.ratingAvg = [((NSDictionary*)[bookDic objectForKey:@"rating"]) objectForKey:@"average"];
+    bookModel.ratingCount = [((NSDictionary*)[bookDic objectForKey:@"rating"]) objectForKey:@"numRaters"];
+    
+    
+    NSArray * transferArray =[bookDic objectForKey:@"translator"];
+    NSMutableSet * translatorSet = [[NSMutableSet alloc] init];
+    for (NSString* translator in transferArray) {
+        MZBookWriterModel * writer = [NSEntityDescription insertNewObjectForEntityForName:@"MZBookWriterModel"
+                                                                   inManagedObjectContext:self.managedObjectContext];
+        writer.name = translator;
+        [translatorSet addObject: writer ];
+    }
+    [bookModel addTranslators:translatorSet];
+    
+    transferArray =[bookDic objectForKey:@"author"];
+    NSMutableSet * authorSet = [[NSMutableSet alloc] init];
+    for (NSString* translator in transferArray) {
+        MZBookWriterModel* writer = [NSEntityDescription insertNewObjectForEntityForName:@"MZBookWriterModel"
+                                                                  inManagedObjectContext:self.managedObjectContext];
+        writer.name = translator;
+        [authorSet addObject:writer];
+    }
+    [bookModel addAuthors:authorSet];
+    
+    transferArray = [bookDic objectForKey:@"tags"];
+    NSMutableSet * tagSet = [[NSMutableSet alloc]init];
+    for(NSDictionary * tagDic in transferArray) {
+        MZBookTagModel * tag = [NSEntityDescription insertNewObjectForEntityForName:@"MZBookTagModel"
+                                                             inManagedObjectContext:self.managedObjectContext];
+        tag.count = [tagDic objectForKey:@"count"];
+        tag.name = [tagDic objectForKey:@"name"];
+        tag.title = [tagDic objectForKey:@"title"];
+        
+        [tagSet addObject:tag];
+    }
+    [bookModel addTags:tagSet];
+}
+
 // add book to database.
 // 1. fetch book from book.douban.com
 // 2. save to book database
 // 3. invoke delegate's refreshViewforNewBook
 -(BOOL) fetchBook: (NSString*) isbn {
     
-    NSLog(@"begin fetch book the input isbn is:%@", isbn);
+    NSLog(@"begin fetch book, the input isbn is:%@", isbn);
     
     __block BOOL retVal = NO;
     // get book from douban book api then save it to the core data store
@@ -103,79 +172,12 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
             NSLog(@"error description: %@", [error description]);
         } else {
             NSString* json = [req responseString];
-           // NSLog(@"response json string:\r\n%@", json);
-            
             
             NSDictionary * bookDic =[json objectFromJSONString];
             MZBookModel * bookModel = [NSEntityDescription insertNewObjectForEntityForName:@"MZBookModel"
                                                                     inManagedObjectContext:self.managedObjectContext];
-            if(bookModel) {
-                bookModel.price = [bookDic objectForKey:@"price"];
-                bookModel.summary = [bookDic objectForKey:@"summary"];
-                bookModel.authorIntro = [bookDic objectForKey:@"author_intro"];
-                bookModel.altTitle = [bookDic objectForKey:@"alt_title"];
-                bookModel.url = [bookDic objectForKey:@"url"];
-                bookModel.title = [bookDic objectForKey:@"title"];
-                bookModel.isbn10 = [bookDic objectForKey:@"isbn10"];
-                bookModel.isbn13 = [bookDic objectForKey:@"isbn13"];
-                bookModel.publisher = [bookDic objectForKey:@"publisher"];
-                bookModel.id = [bookDic objectForKey:@"id"];
-                bookModel.alt = [bookDic objectForKey:@"alt"];
-                
-                bookModel.imagePathSmall = [((NSDictionary*)[bookDic objectForKey:@"images"]) objectForKey:@"small"];
-                bookModel.imagePathMedium = [((NSDictionary*)[bookDic objectForKey:@"images"]) objectForKey:@"medium"];
-                bookModel.imagePathLarge = [((NSDictionary*)[bookDic objectForKey:@"images"]) objectForKey:@"large"];
-                bookModel.imagePath =[bookDic objectForKey:@"image"];
-                
-                bookModel.pages =[bookDic objectForKey:@"pages"];
-                bookModel.catalog =[bookDic objectForKey:@"catalog"];
-                
-                bookModel.binding  =[bookDic objectForKey:@"binding"];
-                bookModel.originTitle  =[bookDic objectForKey:@"origin_title"];
-                
-                bookModel.pubdate =[bookDic objectForKey:@"pubdate"];
-                
-                bookModel.subTitle =[bookDic objectForKey:@"subtitle"];
-                
-                
-                bookModel.ratingMax = [((NSDictionary*)[bookDic objectForKey:@"rating"]) objectForKey:@"max"];
-                bookModel.ratingMin = [((NSDictionary*)[bookDic objectForKey:@"rating"]) objectForKey:@"min"];
-                bookModel.ratingAvg = [((NSDictionary*)[bookDic objectForKey:@"rating"]) objectForKey:@"average"];
-                bookModel.ratingCount = [((NSDictionary*)[bookDic objectForKey:@"rating"]) objectForKey:@"numRaters"];
-                
-                
-                NSArray * transferArray =[bookDic objectForKey:@"translator"];
-                NSMutableSet * translatorSet = [[NSMutableSet alloc] init];
-                for (NSString* translator in transferArray) {
-                    MZBookWriterModel * writer = [NSEntityDescription insertNewObjectForEntityForName:@"MZBookWriterModel"
-                                                                               inManagedObjectContext:self.managedObjectContext];
-                    writer.name = translator;
-                    [translatorSet addObject: writer ];
-                }
-                [bookModel addTranslators:translatorSet];
-                
-                transferArray =[bookDic objectForKey:@"author"];
-                NSMutableSet * authorSet = [[NSMutableSet alloc] init];
-                for (NSString* translator in transferArray) {
-                    MZBookWriterModel* writer = [NSEntityDescription insertNewObjectForEntityForName:@"MZBookWriterModel"
-                                                                              inManagedObjectContext:self.managedObjectContext];
-                    writer.name = translator;
-                    [authorSet addObject:writer];
-                }
-                [bookModel addAuthors:authorSet];
-                
-                transferArray = [bookDic objectForKey:@"tags"];
-                NSMutableSet * tagSet = [[NSMutableSet alloc]init];
-                for(NSDictionary * tagDic in tagSet) {
-                    MZBookTagModel * tag = [NSEntityDescription insertNewObjectForEntityForName:@"MZBookTagModel"
-                                                                         inManagedObjectContext:self.managedObjectContext];
-                    tag.count = [tagDic objectForKey:@"count"];
-                    tag.name = [tagDic objectForKey:@"name"];
-                    tag.title = [tagDic objectForKey:@"title"];
-                    
-                    [tagSet addObject:tag];
-                }
-                [bookModel addTags:tagSet];
+            if(bookDic && bookModel) {
+                [self convertDictionaryToBookModel:bookDic bookModel:bookModel];
                 
                 NSError * savingError = nil;
                 if ([self.managedObjectContext save:&savingError ] ) {
@@ -188,8 +190,6 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
             } else {
                 NSLog(@"Can not create MZBookModel description");
             }
-            
-            
         }
     }];
 
@@ -260,6 +260,32 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
     return books;    
 }
 
+- (BOOL) saveExpert:(NSString *) excerpt forBoook:(NSString*) isbn13 {
+ 
+    NSLog(@"for book:%@ excerpt:%@", isbn13, excerpt);
+    
+    MZBookModel * bookModel = [self getBookDetail:isbn13];
+    
+    MZBookExcerptModel * excerptModel = [NSEntityDescription insertNewObjectForEntityForName:@"MZBookExcerptModel"
+                                                                      inManagedObjectContext:self.managedObjectContext];
+    
+    excerptModel.text = excerpt;
+    
+    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy/MM/dd HH:mm"];
+    excerptModel.datetime = [formatter stringFromDate:[NSDate date]];
+    
+    [bookModel addExcerptsObject:excerptModel];
+    
+    NSError * error = nil;
+    if ( ![self.managedObjectContext save: &error] ){
+        NSLog(@"can not save excerpt with error code:%d error message:%@", error.code, error.debugDescription);
+    }
+    
+    return YES;
+}
+
+
 #pragma mark - Core Data Stack
 
 // Returns the managed object context for the application.
@@ -294,43 +320,43 @@ return _managedObjectModel;
 // If the coordinator doesn't already exist, it is created and the application's store added to it.
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator
 {
-if (_persistentStoreCoordinator != nil) {
+    if (_persistentStoreCoordinator != nil) {
+        return _persistentStoreCoordinator;
+    }
+
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:kModelSqliteName];
+
+    NSError *error = nil;
+    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+        /*
+         Replace this implementation with code to handle the error appropriately.
+         
+         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+         
+         Typical reasons for an error here include:
+         * The persistent store is not accessible;
+         * The schema for the persistent store is incompatible with current managed object model.
+         Check the error message to determine what the actual problem was.
+         
+         
+         If the persistent store is not accessible, there is typically something wrong with the file path. Often, a file URL is pointing into the application's resources directory instead of a writeable directory.
+         
+         If you encounter schema incompatibility errors during development, you can reduce their frequency by:
+         * Simply deleting the existing store:
+         [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil]
+         
+         * Performing automatic lightweight migration by passing the following dictionary as the options parameter:
+         @{NSMigratePersistentStoresAutomaticallyOption:@YES, NSInferMappingModelAutomaticallyOption:@YES}
+         
+         Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
+         
+         */
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+
     return _persistentStoreCoordinator;
-}
-
-NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:kModelSqliteName];
-
-NSError *error = nil;
-_persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
-    /*
-     Replace this implementation with code to handle the error appropriately.
-     
-     abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-     
-     Typical reasons for an error here include:
-     * The persistent store is not accessible;
-     * The schema for the persistent store is incompatible with current managed object model.
-     Check the error message to determine what the actual problem was.
-     
-     
-     If the persistent store is not accessible, there is typically something wrong with the file path. Often, a file URL is pointing into the application's resources directory instead of a writeable directory.
-     
-     If you encounter schema incompatibility errors during development, you can reduce their frequency by:
-     * Simply deleting the existing store:
-     [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil]
-     
-     * Performing automatic lightweight migration by passing the following dictionary as the options parameter:
-     @{NSMigratePersistentStoresAutomaticallyOption:@YES, NSInferMappingModelAutomaticallyOption:@YES}
-     
-     Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
-     
-     */
-    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-    abort();
-}
-
-return _persistentStoreCoordinator;
 }
 
 #pragma mark - Application's Documents directory
