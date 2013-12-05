@@ -48,16 +48,16 @@
             </objects>
             <point key="canvasLocation" x="-341" y="144"/>
         </scene>
-        <!--Table View Controller - 设置-->
+        <!--Setting View Controller - 设置-->
         <scene sceneID="6JM-1g-6Ia">
             <objects>
-                <tableViewController id="aRn-fU-ZhC" sceneMemberID="viewController">
+                <tableViewController id="aRn-fU-ZhC" customClass="MZSettingViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="8Jj-Fe-O5B">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="hXJ-qi-ksv">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="hXJ-qi-ksv">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hXJ-qi-ksv" id="bop-c4-uvM">
@@ -291,9 +291,9 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2RM-8m-5au">
-                                            <rect key="frame" x="171" y="55" width="129" height="21"/>
+                                            <rect key="frame" x="138" y="55" width="162" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -301,6 +301,7 @@
                                 <connections>
                                     <outlet property="dateTimeLabel" destination="2RM-8m-5au" id="M1w-AD-wwX"/>
                                     <outlet property="excerptLabel" destination="13P-oG-c58" id="mwT-l2-7xn"/>
+                                    <segue destination="GbO-uy-vXh" kind="push" identifier="editExcerpt" id="Ge6-jf-JZR"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailFooterCell" id="O15-34-nMA" customClass="MZDetailFooterCell">
@@ -340,7 +341,7 @@
                     <navigationItem key="navigationItem" title="摘要" id="MS6-TL-af7">
                         <barButtonItem key="rightBarButtonItem" title="+" id="vLv-FN-RJg">
                             <connections>
-                                <segue destination="GbO-uy-vXh" kind="push" id="NBQ-2N-pAW"/>
+                                <segue destination="GbO-uy-vXh" kind="push" identifier="createExcerpt" id="NBQ-2N-pAW"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -370,7 +371,7 @@
                                     <segment title="语音"/>
                                 </segments>
                             </segmentedControl>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="摘要~" translatesAutoresizingMaskIntoConstraints="NO" id="mXP-fw-zC6">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mXP-fw-zC6">
                                 <rect key="frame" x="0.0" y="67" width="320" height="244"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -447,4 +448,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ge6-jf-JZR"/>
+    </inferredMetricsTieBreakers>
 </document>

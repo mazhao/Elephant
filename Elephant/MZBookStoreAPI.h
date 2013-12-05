@@ -16,6 +16,8 @@
 @class MZBookModel;
 @class MZBookExcerptModel;
 
+@class NSManagedObjectID;
+
 // ------------------------------------------------------------------------------------------ //
 // Sample:
 //
@@ -87,6 +89,7 @@
 
 
 - (BOOL) saveExpert:(NSString *) excerpt forBoook:(NSString*) isbn13 ;
+- (BOOL) updateExpert:(NSString *) excerpt forExcerptId:(NSManagedObjectID *)objectID forBoook:(NSString*) isbn13 ;
 
     // }
 

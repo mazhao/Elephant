@@ -36,6 +36,10 @@
     
     [self.excerptText becomeFirstResponder];
     
+    [self.excerptText setText: self.excerpt];
+    NSLog(@"op:%d OID:%@", self.opMode, self.objectID);
+    
+    
 	// Do any additional setup after loading the view.
 }
 
@@ -52,8 +56,17 @@
     
     MZAppDelegate * delegate = (MZAppDelegate *)[[UIApplication sharedApplication] delegate];
     
+    if(self.opMode == MZExcerptOperationModeAdd) {
+        [delegate.bookStore saveExpert: self.excerptText.text forBoook:self.isbn13];
+        
+    } else if(self.opMode == MZExcerptOperationModeEdit) {
+        
+        [delegate.bookStore updateExpert:self.excerptText.text forExcerptId:self.objectID forBoook:self.isbn13];
+        
+    } else {
+        
+    }
     
-    [delegate.bookStore saveExpert: self.excerptText.text forBoook:self.isbn13];
     
     
     [self.navigationController popViewControllerAnimated:YES];

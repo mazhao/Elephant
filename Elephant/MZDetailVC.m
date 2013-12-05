@@ -141,7 +141,7 @@
         
         cell.authorLabel.text = [NSString stringWithFormat:@"作者：%@",   authorMutable];
         
-        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         return cell;
     } else if (  [self isFooterCell:indexPath] ) {
@@ -152,6 +152,8 @@
             cell = [[MZDetailFooterCell alloc] init] ;
         }
         
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
         return cell;
         
     } else {
@@ -168,7 +170,9 @@
         
         cell.excerptLabel.text = excerptModel.text;
         cell.dateTimeLabel.text = excerptModel.datetime;
+        cell.objectID = excerptModel.objectID;
         
+        // cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
    
@@ -202,6 +206,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     
+    NSLog(@"segue id:%@ sender:%@", segue.identifier, sender);
+    
     id controller = [segue destinationViewController];
     
     // if go to book detail
@@ -211,6 +217,14 @@
         MZExcerptVC * excerptVC = (MZExcerptVC *) [segue destinationViewController];
         excerptVC.isbn10 = self.isbn10;
         excerptVC.isbn13 = self.isbn13;
+        
+        if ( [@"editExcerpt" isEqual:segue.identifier] && ( [sender class] == [MZDetailCell class] ) ) {
+            MZDetailCell * detailCell = (MZDetailCell *)sender;
+            excerptVC.excerpt = detailCell.excerptLabel.text;
+            excerptVC.opMode = MZExcerptOperationModeEdit;
+            // @TODO: add excerpt id here
+            excerptVC.objectID = detailCell.objectID;
+        }
     }
     
     // other case such as go to setting

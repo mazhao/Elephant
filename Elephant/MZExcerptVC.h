@@ -8,11 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+#import <CoreData/CoreData.h>
+
+typedef NS_ENUM(NSInteger, MZExcerptOperationMode) {
+    MZExcerptOperationModeAdd,
+    MZExcerptOperationModeEdit,
+    MZExcerptOperationModeDelete
+};
+
 @interface MZExcerptVC : UIViewController
 
 @property (nonatomic, retain) NSString * isbn10;
 @property (nonatomic, retain) NSString * isbn13;
-
+@property (nonatomic, retain) NSString * excerpt;
+@property (nonatomic, retain) NSManagedObjectID * objectID;
+@property (nonatomic) MZExcerptOperationMode opMode;
 
 @property (nonatomic, retain) IBOutlet UITextView * excerptText;
 @property (nonatomic, retain) IBOutlet UISegmentedControl * typeSegment;

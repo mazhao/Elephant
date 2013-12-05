@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+#import <CoreData/CoreData.h>
+
 @interface MZDetailCell : UITableViewCell
 
 
 @property (retain, nonatomic) IBOutlet UILabel * excerptLabel;
 @property (retain, nonatomic) IBOutlet UILabel * dateTimeLabel;
 
+@property (retain, nonatomic) NSManagedObjectID * objectID;
 
 @end

@@ -35,6 +35,7 @@
 		F7239DB518461ED800AF44CB /* beep-beep.aiff in Resources */ = {isa = PBXBuildFile; fileRef = F7239DB418461ED800AF44CB /* beep-beep.aiff */; };
 		F753CE4D18472F79003169B3 /* MZBookStoreDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = F753CE4C18472F79003169B3 /* MZBookStoreDefault.m */; };
 		F753CE52184743A9003169B3 /* MZBookStoreFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F753CE51184743A9003169B3 /* MZBookStoreFactory.m */; };
+		F7A20B091850E6C200ACD69B /* MZSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A20B081850E6C200ACD69B /* MZSettingViewController.m */; };
 		F7CD1BAE18458FB300BA22A0 /* MZCollectionShelfCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CD1BAD18458FB300BA22A0 /* MZCollectionShelfCell.m */; };
 		F7E5B185184C2F35009E3C2F /* MZBookModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F7E5B183184C2F35009E3C2F /* MZBookModel.xcdatamodeld */; };
 		F7E5B195184C5C08009E3C2F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E5B194184C5C08009E3C2F /* CoreData.framework */; };
@@ -129,6 +130,8 @@
 		F753CE4C18472F79003169B3 /* MZBookStoreDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZBookStoreDefault.m; sourceTree = "<group>"; };
 		F753CE51184743A9003169B3 /* MZBookStoreFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZBookStoreFactory.m; sourceTree = "<group>"; };
 		F753CE541847441D003169B3 /* MZBookStoreAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZBookStoreAPI.h; sourceTree = "<group>"; };
+		F7A20B071850E6C200ACD69B /* MZSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZSettingViewController.h; sourceTree = "<group>"; };
+		F7A20B081850E6C200ACD69B /* MZSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZSettingViewController.m; sourceTree = "<group>"; };
 		F7CD1BA918458F4D00BA22A0 /* MZCollectionShelfVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZCollectionShelfVC.h; sourceTree = "<group>"; };
 		F7CD1BAC18458FB300BA22A0 /* MZCollectionShelfCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZCollectionShelfCell.h; sourceTree = "<group>"; };
 		F7CD1BAD18458FB300BA22A0 /* MZCollectionShelfCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZCollectionShelfCell.m; sourceTree = "<group>"; };
@@ -307,6 +310,7 @@
 		F711C0911844874800D85598 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				F7A20B051850E6AB00ACD69B /* Setting */,
 				F7FDB330184ED05B00986347 /* Excerpt */,
 				F7EE3E3C184DB90C007A55FB /* Detail */,
 				F7EE3E3B184DB8F1007A55FB /* Collection */,
@@ -348,6 +352,15 @@
 				F7E5B183184C2F35009E3C2F /* MZBookModel.xcdatamodeld */,
 			);
 			name = BookStore;
+			sourceTree = "<group>";
+		};
+		F7A20B051850E6AB00ACD69B /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				F7A20B071850E6C200ACD69B /* MZSettingViewController.h */,
+				F7A20B081850E6C200ACD69B /* MZSettingViewController.m */,
+			);
+			name = Setting;
 			sourceTree = "<group>";
 		};
 		F7E5B187184C34AF009E3C2F /* Model */ = {
@@ -557,6 +570,7 @@
 				F7E5B221184CE9A8009E3C2F /* MBProgressHUD.m in Sources */,
 				F7239D911845E30D00AF44CB /* MZSearchVC.m in Sources */,
 				F7FDB337184F6C5C00986347 /* MZBookExcerptModel.m in Sources */,
+				F7A20B091850E6C200ACD69B /* MZSettingViewController.m in Sources */,
 				F7239DB0184612FC00AF44CB /* main.m in Sources */,
 				F7E5B214184CB07B009E3C2F /* MZBookTagModel.m in Sources */,
 				F7E5B217184CB07C009E3C2F /* MZBookModel.m in Sources */,

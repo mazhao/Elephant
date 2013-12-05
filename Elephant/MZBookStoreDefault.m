@@ -286,6 +286,29 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
 }
 
 
+
+- (BOOL) updateExpert:(NSString *) excerpt forExcerptId:(NSManagedObjectID *)objectID forBoook:(NSString*) isbn13{
+    MZBookModel * bookModel = [self getBookDetail:isbn13];
+    
+    for (MZBookExcerptModel * excerptModel in bookModel.excerpts) {
+        if (objectID == [excerptModel objectID]) {
+            excerptModel.text = excerpt;
+            
+            NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"yyyy/MM/dd HH:mm"];
+            excerptModel.datetime = [formatter stringFromDate:[NSDate date]];
+        }
+    }
+    
+    NSError * error = nil;
+    if ( ![self.managedObjectContext save: &error] ){
+        NSLog(@"can not update excerpt with error code:%d error message:%@", error.code, error.debugDescription);
+    }
+    
+    return YES;
+
+}
+
 #pragma mark - Core Data Stack
 
 // Returns the managed object context for the application.
