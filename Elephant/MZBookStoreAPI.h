@@ -90,6 +90,9 @@
 
 - (BOOL) saveExpert:(NSString *) excerpt forBoook:(NSString*) isbn13 ;
 - (BOOL) updateExpert:(NSString *) excerpt forExcerptId:(NSManagedObjectID *)objectID forBoook:(NSString*) isbn13 ;
+- (BOOL) deleteExpert:(NSManagedObjectID *) objectID forBook:(NSString*) isbn13 ;
+
+
 
     // }
 

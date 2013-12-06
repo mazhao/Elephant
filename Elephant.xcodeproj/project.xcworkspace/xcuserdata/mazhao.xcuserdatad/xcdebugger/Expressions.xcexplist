@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "__32-[MZBookStoreDefault fetchBook:]_block_invoke:MZBookStoreDefault.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "transferArray">
+            </PersistentString>
+            <PersistentString
+               value = "bookModel.imagePathLarge">
+            </PersistentString>
+            <PersistentString
+               value = "bookModel.ratingCount">
+            </PersistentString>
+            <PersistentString
+               value = "[json UTF8String]">
+            </PersistentString>
+            <PersistentString
+               value = "bookModel.translators ">
+            </PersistentString>
+            <PersistentString
+               value = "[bookDic objectForKey:@&quot;author&quot;]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MZBookStoreDefault bookExist:]:MZBookStoreDefault.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[MZDetailVC tableView:cellForRowAtIndexPath:]:MZDetailVC.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.bookModel">
+            </PersistentString>
+            <PersistentString
+               value = "self.bookModel.excerpts">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MZCollectionShelfVC viewDidLoad]:MZCollectionShelfVC.mm">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.books">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

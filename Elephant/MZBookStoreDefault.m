@@ -303,11 +303,35 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
     NSError * error = nil;
     if ( ![self.managedObjectContext save: &error] ){
         NSLog(@"can not update excerpt with error code:%d error message:%@", error.code, error.debugDescription);
+        return NO;
     }
     
     return YES;
 
 }
+
+- (BOOL) deleteExpert:(NSManagedObjectID *) objectID forBook:(NSString*) isbn13 {
+    MZBookModel * bookModel = [self getBookDetail:isbn13];
+    MZBookExcerptModel * tobeDeleteExcerptModel = nil;
+    for (MZBookExcerptModel * excerptModel in bookModel.excerpts) {
+        if (objectID == [excerptModel objectID]) {
+            tobeDeleteExcerptModel = excerptModel;
+        }
+    }
+    
+    [bookModel removeExcerptsObject:tobeDeleteExcerptModel];
+    
+    NSError * error = nil;
+    if ( ![self.managedObjectContext save: &error] ){
+        NSLog(@"can not update excerpt with error code:%d error message:%@", error.code, error.debugDescription);
+        
+        return NO;
+    }
+
+    
+    return NO;
+}
+
 
 #pragma mark - Core Data Stack
 

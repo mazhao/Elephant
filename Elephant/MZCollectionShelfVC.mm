@@ -53,12 +53,15 @@ static int kFindIconHeight = 32;
     [self.view addSubview:_findButton];
     [self.view bringSubviewToFront:_findButton];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated{
     
     MZAppDelegate * delegate = (MZAppDelegate *)[[UIApplication sharedApplication] delegate];
     delegate.bookStore = [MZBookStoreFactory initBookStoreWithBookShelfRefreshDelegate:self
-                                                                           ofType:kBookStoreDefault];
+                                            ofType:kBookStoreDefault];
     self.books = [delegate.bookStore getAllBooksSummary];
-  
+    [self.collectionView reloadData];
 }
 
 - (void)didReceiveMemoryWarning

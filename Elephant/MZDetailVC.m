@@ -230,28 +230,40 @@
     // other case such as go to setting
 }
 
-/*
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    
+    if ([self isHeaderCell:indexPath] || [self isFooterCell:indexPath]) {
+        return NO;
+    } else {
+        return YES;
+    }
 }
-*/
 
-/*
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        // [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        
+        MZDetailCell* cell = (MZDetailCell*)[tableView cellForRowAtIndexPath:indexPath];
+        NSLog(@"excerpt id:%@, excerpt:%@", cell.objectID, cell.excerptLabel.text);
+        
+        MZAppDelegate * delegate = (MZAppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        [delegate.bookStore deleteExpert:cell.objectID forBook:self.isbn13];
+        
+        [tableView reloadData];
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-*/
+
 
 /*
 // Override to support rearranging the table view.

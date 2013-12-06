@@ -57,13 +57,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="hXJ-qi-ksv">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="hXJ-qi-ksv">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hXJ-qi-ksv" id="bop-c4-uvM">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Ub7-0u-fBw" kind="push" id="3vL-iq-i8L"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -76,6 +79,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CsS-pz-Pub" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1128" y="-569"/>
+        </scene>
+        <!--Table View Controller - 书单-->
+        <scene sceneID="rv5-B3-Xzb">
+            <objects>
+                <tableViewController id="Ub7-0u-fBw" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="8bR-Ni-Taa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Rfx-Iz-YWz">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rfx-Iz-YWz" id="gqn-1o-Nen">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Ub7-0u-fBw" id="64i-Zc-uEJ"/>
+                            <outlet property="delegate" destination="Ub7-0u-fBw" id="gnI-qn-0hr"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="书单" id="d7Y-wp-AAX"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dPW-1f-Cpe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1641" y="-569"/>
         </scene>
         <!--Collection ShelfVC - CollectionShelfVC-->
         <scene sceneID="vNU-Dh-b9t">
@@ -396,33 +428,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="twK-o7-2Vr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1641" y="144"/>
-        </scene>
-        <!--View Controller - 扫码添加-->
-        <scene sceneID="IY6-VU-VgJ">
-            <objects>
-                <viewController id="Bkr-nz-mca" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="W6u-nb-1Z3"/>
-                        <viewControllerLayoutGuide type="bottom" id="HaU-OR-8uL"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="xss-cr-Xpj">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="扫码直接添加图书" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vPj-aZ-I2l">
-                                <rect key="frame" x="20" y="69" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="扫码添加" id="zZ9-W0-XlC"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="t1g-qT-RMv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1641" y="-569"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dxN-8k-Wso">
