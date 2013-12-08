@@ -131,6 +131,7 @@ static int kFindIconHeight = 32;
     NSLog(@"scan clicked " );
     
     ZXingWidgetController *widController = [[ZXingWidgetController alloc] initWithDelegate:self showCancel:YES OneDMode:NO];
+    
     MultiFormatReader* qrcodeReader = [[MultiFormatReader alloc] init];
     NSSet *readers = [[NSSet alloc ] initWithObjects:qrcodeReader,nil];
     widController.readers = readers;

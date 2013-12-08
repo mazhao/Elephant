@@ -6,13 +6,12 @@
 //  Copyright (c) 2013年 mz. All rights reserved.
 //
 
-#import "MZBookStoreDefault.h"
-
+#import "MZBookStoreDefault.h"l99o
 
 
 /**
-*  singleton instance - static instance variable
-*/
+ *  singleton instance - static instance variable
+ */
 static MZBookStoreDefault *instance = nil;
 
 
@@ -55,7 +54,7 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
         else {
             doubanService.apiBaseUrlString = kHttpApiBaseUrl;
         }
-
+        
     }
     
     return instance;
@@ -162,7 +161,7 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
     
     NSString *subPath = [NSString stringWithFormat:@"/v2/book/isbn/%@", isbn];
     DOUQuery *query = [[DOUQuery alloc] initWithSubPath:subPath parameters:nil];
-
+    
     query.apiBaseUrlString = service.apiBaseUrlString;
     
     [service get:query callback:^(DOUHttpRequest * req) {
@@ -192,7 +191,7 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
             }
         }
     }];
-
+    
     return retVal;
 }
 
@@ -228,7 +227,7 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
         NSLog(@"get book success");
         return [books objectAtIndex:0];
     }
-
+    
     
     return nil;
 }
@@ -250,18 +249,16 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
     
     NSEntityDescription *bookModel = [NSEntityDescription entityForName:@"MZBookModel"
                                                  inManagedObjectContext:self.managedObjectContext];
-    
     [request setEntity:bookModel];
-    
     
     NSError * error = [[NSError alloc] init];
     NSArray * books = [self.managedObjectContext executeFetchRequest:request error:&error];
     
-    return books;    
+    return books;
 }
 
 - (BOOL) saveExpert:(NSString *) excerpt forBoook:(NSString*) isbn13 {
- 
+    
     NSLog(@"for book:%@ excerpt:%@", isbn13, excerpt);
     
     MZBookModel * bookModel = [self getBookDetail:isbn13];
@@ -307,7 +304,7 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
     }
     
     return YES;
-
+    
 }
 
 - (BOOL) deleteExpert:(NSManagedObjectID *) objectID forBook:(NSString*) isbn13 {
@@ -323,15 +320,35 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
     
     NSError * error = nil;
     if ( ![self.managedObjectContext save: &error] ){
-        NSLog(@"can not update excerpt with error code:%d error message:%@", error.code, error.debugDescription);
+        NSLog(@"can not update excerpt with error code:%d and error message:%@", error.code, error.debugDescription);
         
         return NO;
     }
-
+    
     
     return NO;
 }
 
+- (BOOL) deleteBook:(NSString*) isbn {
+    MZBookModel * model = [self getBookDetail:isbn];
+    [self.managedObjectContext deleteObject:model];
+    
+    return YES;
+}
+- (BOOL) deleteAllExpert:(NSString*) isbn  {
+    MZBookModel * model = [self getBookDetail:isbn];
+    
+    [model removeExcerpts:model.excerpts];
+    
+    NSError * error = nil;
+    if ( ![self.managedObjectContext save: &error] ){
+        NSLog(@"can not delete book with error:%d and error message:%@", error.code, error.debugDescription);
+        
+        return NO;
+    }
+    
+    return YES;
+}
 
 #pragma mark - Core Data Stack
 
@@ -339,28 +356,28 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
 // If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
 - (NSManagedObjectContext *)managedObjectContext
 {
-if (_managedObjectContext != nil) {
+    if (_managedObjectContext != nil) {
+        return _managedObjectContext;
+    }
+    
+    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
+    if (coordinator != nil) {
+        _managedObjectContext = [[NSManagedObjectContext alloc] init];
+        [_managedObjectContext setPersistentStoreCoordinator:coordinator];
+    }
     return _managedObjectContext;
-}
-
-NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-if (coordinator != nil) {
-    _managedObjectContext = [[NSManagedObjectContext alloc] init];
-    [_managedObjectContext setPersistentStoreCoordinator:coordinator];
-}
-return _managedObjectContext;
 }
 
 // Returns the managed object model for the application.
 // If the model doesn't already exist, it is created from the application's model.
 - (NSManagedObjectModel *)managedObjectModel
 {
-if (_managedObjectModel != nil) {
+    if (_managedObjectModel != nil) {
+        return _managedObjectModel;
+    }
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource: kModelName withExtension:kModelExtension];
+    _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
-}
-NSURL *modelURL = [[NSBundle mainBundle] URLForResource: kModelName withExtension:kModelExtension];
-_managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-return _managedObjectModel;
 }
 
 // Returns the persistent store coordinator for the application.
@@ -370,9 +387,9 @@ return _managedObjectModel;
     if (_persistentStoreCoordinator != nil) {
         return _persistentStoreCoordinator;
     }
-
+    
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:kModelSqliteName];
-
+    
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
@@ -402,7 +419,7 @@ return _managedObjectModel;
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
-
+    
     return _persistentStoreCoordinator;
 }
 
@@ -411,7 +428,7 @@ return _managedObjectModel;
 // Returns the URL to the application's Documents directory.
 - (NSURL *)applicationDocumentsDirectory
 {
-return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
 

@@ -58,40 +58,30 @@
  */
 @protocol MZBookStore <NSObject>
 
-    @required // {
+@required // {
 
-        @property (nonatomic, weak) id<BookShelfRefreshDelegate>  delegate;
+@property (nonatomic, weak) id<BookShelfRefreshDelegate>  delegate;
 
-        // == single book methods ==
+// == single book methods ==
 
-        // to check if book alread saved
-        -(BOOL) bookExist:(NSString *) isbn;
+// to check if book alread saved
+-(BOOL) bookExist:(NSString *) isbn;
 
-        // add book to database.
-        // 1. fetch book from book.douban.com
-        // 2. save to book database
-        // 3. invoke delegate's refreshViewforNewBook
-        -(BOOL) fetchBook: (NSString*) isbn;
-
-        //
-        -(MZBookModel *) getBookSummary: (NSString *) isbn;
-
-        -(MZBookModel *) getBookDetail: (NSString *) isbn;
-
-
-        // multiple books methods
-        /**
-         *
-         *
-         *  @return Summary book store
-         */
-        -(NSArray *) getAllBooksSummary;
+// add book to database.
+// 1. fetch book from book.douban.com
+// 2. save to book database
+// 3. invoke delegate's refreshViewforNewBook
+- (BOOL) fetchBook: (NSString*) isbn;
+- (MZBookModel *) getBookSummary: (NSString *) isbn;
+- (MZBookModel *) getBookDetail: (NSString *) isbn;
+- (BOOL) deleteBook:(NSString*) isbn;
+- (NSArray *) getAllBooksSummary;
 
 
 - (BOOL) saveExpert:(NSString *) excerpt forBoook:(NSString*) isbn13 ;
 - (BOOL) updateExpert:(NSString *) excerpt forExcerptId:(NSManagedObjectID *)objectID forBoook:(NSString*) isbn13 ;
 - (BOOL) deleteExpert:(NSManagedObjectID *) objectID forBook:(NSString*) isbn13 ;
-
+- (BOOL) deleteAllExpert:(NSString*) isbn ;
 
 
     // }
@@ -118,7 +108,7 @@ typedef enum {
  */
 @interface MZBookStoreFactory : NSObject
 
-    +( id<MZBookStore> ) initBookStoreWithBookShelfRefreshDelegate:(id<BookShelfRefreshDelegate>) delegate
-                                                            ofType: (BookStoreType) t;
++( id<MZBookStore> ) initBookStoreWithBookShelfRefreshDelegate:(id<BookShelfRefreshDelegate>) delegate
+                                                        ofType: (BookStoreType) t;
 
 @end

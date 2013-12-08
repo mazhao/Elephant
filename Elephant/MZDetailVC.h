@@ -19,11 +19,19 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 
 
-@interface MZDetailVC : UITableViewController
+@interface MZDetailVC : UITableViewController <UIAlertViewDelegate>
 
 @property (strong, nonatomic) NSString * isbn10;
 @property (strong, nonatomic) NSString * isbn13;
 
 @property (retain, nonatomic) MZBookModel * bookModel;
+@property (retain, nonatomic) NSArray * bookExcerpts;
+
+
+-(IBAction) deleteBook:(id) sender;
+
+-(IBAction) deleteAllExcerpt:(id) sender;
+
+
 
 @end

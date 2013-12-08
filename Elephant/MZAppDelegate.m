@@ -14,6 +14,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    NSLog(@"ios 应用发布后 .app 应用文件 路径::%@",[NSBundle mainBundle] );
+    
+    NSLog(@"ios 应用发布后 .app 应用包(文件) 的详细信息 ::%@",[[NSBundle mainBundle] infoDictionary]);
+    
+
+    
     // Override point for customization after application launch.
     return YES;
 }

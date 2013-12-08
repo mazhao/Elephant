@@ -17,6 +17,8 @@
 #import "MZExcerptVC.h"
 #import "MZBookExcerptModel.h"
 
+#import "MBProgressHUD.h"
+
 @interface MZDetailVC ()
 
 @end
@@ -55,7 +57,12 @@
     if(self.bookModel == nil) {
         self.bookModel = [delegate.bookStore getBookDetail:self.isbn10];
     }
- 
+    
+    // soft bookModel.excerpts
+    NSSortDescriptor *datetimeSortDesc = [NSSortDescriptor sortDescriptorWithKey:@"datetime" ascending:NO];
+    NSArray* sortArray = [NSArray arrayWithObject:datetimeSortDesc];
+    self.bookExcerpts = [self.bookModel.excerpts sortedArrayUsingDescriptors:sortArray];
+    
     [self.tableView reloadData];
     
 }
@@ -166,7 +173,9 @@
         
         // Configure the cell...
         
-        MZBookExcerptModel * excerptModel =(MZBookExcerptModel *)  [[self.bookModel.excerpts allObjects] objectAtIndex: ([indexPath row] - 1 ) ];
+//        MZBookExcerptModel * excerptModel =(MZBookExcerptModel *)  [[self.bookModel.excerpts allObjects] objectAtIndex: ([indexPath row] - 1 ) ];
+
+        MZBookExcerptModel* excerptModel = (MZBookExcerptModel*)[self.bookExcerpts objectAtIndex:([indexPath row] -1)];
         
         cell.excerptLabel.text = excerptModel.text;
         cell.dateTimeLabel.text = excerptModel.datetime;
@@ -263,6 +272,55 @@
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
+
+#pragma mark button action
+static int deleteType ; // 1 for book, 2 for all excerpts
+
+-(IBAction) deleteBook:(id) sender {
+    
+    deleteType = 1;
+    UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"删除图书确认" message:@"您确认要删除本书和所有的摘要吗？" delegate:self cancelButtonTitle:@"不删除" otherButtonTitles:@"删除", nil];
+    [alertView show];
+    
+}
+
+-(IBAction) deleteAllExcerpt:(id) sender {
+    deleteType = 2;
+    UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"删除所有摘要确认" message:@"您确认要删除本书的所有摘要吗？" delegate:self cancelButtonTitle:@"不删除" otherButtonTitles:@"删除", nil];
+    [alertView show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if(buttonIndex == 1  ) {
+   
+        MZAppDelegate * delegate = (MZAppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        if(deleteType == 1) {
+            NSLog(@"delete book %@", self.isbn13);
+            [[delegate bookStore] deleteBook:self.isbn13];
+            
+            [self.navigationController popViewControllerAnimated:YES];
+
+            
+        } else if(deleteType == 2) {
+            NSLog(@"delete all excerpt %@", self.isbn13);
+            
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            [[delegate bookStore] deleteAllExpert:self.isbn13];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            
+            [self.tableView reloadData];
+            
+        } else {
+            NSLog(@"delete other"); // should never get in
+        }
+        
+    } else {
+        NSLog(@" other action, such as cancel ");//
+    }
+}
+
+
 
 
 /*

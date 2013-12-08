@@ -15,7 +15,6 @@
 		F711C06D184480F300D85598 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F711C06B184480F300D85598 /* Main_iPhone.storyboard */; };
 		F711C070184480F300D85598 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F711C06E184480F300D85598 /* Main_iPad.storyboard */; };
 		F711C073184480F300D85598 /* MZViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F711C072184480F300D85598 /* MZViewController.m */; };
-		F711C075184480F300D85598 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F711C074184480F300D85598 /* Images.xcassets */; };
 		F711C07C184480F300D85598 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F711C07B184480F300D85598 /* XCTest.framework */; };
 		F711C07D184480F300D85598 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F711C059184480F300D85598 /* Foundation.framework */; };
 		F711C07E184480F300D85598 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F711C05D184480F300D85598 /* UIKit.framework */; };
@@ -35,6 +34,16 @@
 		F7239DB518461ED800AF44CB /* beep-beep.aiff in Resources */ = {isa = PBXBuildFile; fileRef = F7239DB418461ED800AF44CB /* beep-beep.aiff */; };
 		F753CE4D18472F79003169B3 /* MZBookStoreDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = F753CE4C18472F79003169B3 /* MZBookStoreDefault.m */; };
 		F753CE52184743A9003169B3 /* MZBookStoreFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F753CE51184743A9003169B3 /* MZBookStoreFactory.m */; };
+		F78D11841854B839000D6C14 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F78D11831854B839000D6C14 /* images.xcassets */; };
+		F78D11881854BA5E000D6C14 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F78D11861854BA5E000D6C14 /* Default.png */; };
+		F78D11891854BA5E000D6C14 /* Default@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = F78D11871854BA5E000D6C14 /* Default@2X.png */; };
+		F78D11911854BBC2000D6C14 /* 松鼠29.png in Resources */ = {isa = PBXBuildFile; fileRef = F78D118A1854BBC2000D6C14 /* 松鼠29.png */; };
+		F78D11921854BBC2000D6C14 /* 松鼠40.png in Resources */ = {isa = PBXBuildFile; fileRef = F78D118B1854BBC2000D6C14 /* 松鼠40.png */; };
+		F78D11931854BBC2000D6C14 /* 松鼠58.png in Resources */ = {isa = PBXBuildFile; fileRef = F78D118C1854BBC2000D6C14 /* 松鼠58.png */; };
+		F78D11941854BBC2000D6C14 /* 松鼠76.png in Resources */ = {isa = PBXBuildFile; fileRef = F78D118D1854BBC2000D6C14 /* 松鼠76.png */; };
+		F78D11951854BBC2000D6C14 /* 松鼠80.png in Resources */ = {isa = PBXBuildFile; fileRef = F78D118E1854BBC2000D6C14 /* 松鼠80.png */; };
+		F78D11961854BBC2000D6C14 /* 松鼠120.png in Resources */ = {isa = PBXBuildFile; fileRef = F78D118F1854BBC2000D6C14 /* 松鼠120.png */; };
+		F78D11971854BBC2000D6C14 /* 松鼠152.png in Resources */ = {isa = PBXBuildFile; fileRef = F78D11901854BBC2000D6C14 /* 松鼠152.png */; };
 		F7A20B091850E6C200ACD69B /* MZSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A20B081850E6C200ACD69B /* MZSettingViewController.m */; };
 		F7CD1BAE18458FB300BA22A0 /* MZCollectionShelfCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CD1BAD18458FB300BA22A0 /* MZCollectionShelfCell.m */; };
 		F7E5B185184C2F35009E3C2F /* MZBookModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F7E5B183184C2F35009E3C2F /* MZBookModel.xcdatamodeld */; };
@@ -107,7 +116,6 @@
 		F711C06F184480F300D85598 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		F711C071184480F300D85598 /* MZViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MZViewController.h; sourceTree = "<group>"; };
 		F711C072184480F300D85598 /* MZViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MZViewController.m; sourceTree = "<group>"; };
-		F711C074184480F300D85598 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F711C07A184480F300D85598 /* ElephantTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElephantTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F711C07B184480F300D85598 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		F711C083184480F300D85598 /* ElephantTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ElephantTests-Info.plist"; sourceTree = "<group>"; };
@@ -130,6 +138,16 @@
 		F753CE4C18472F79003169B3 /* MZBookStoreDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZBookStoreDefault.m; sourceTree = "<group>"; };
 		F753CE51184743A9003169B3 /* MZBookStoreFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZBookStoreFactory.m; sourceTree = "<group>"; };
 		F753CE541847441D003169B3 /* MZBookStoreAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZBookStoreAPI.h; sourceTree = "<group>"; };
+		F78D11831854B839000D6C14 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = images.xcassets; path = ../images.xcassets; sourceTree = "<group>"; };
+		F78D11861854BA5E000D6C14 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
+		F78D11871854BA5E000D6C14 /* Default@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2X.png"; path = "../Default@2X.png"; sourceTree = "<group>"; };
+		F78D118A1854BBC2000D6C14 /* 松鼠29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "松鼠29.png"; sourceTree = "<group>"; };
+		F78D118B1854BBC2000D6C14 /* 松鼠40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "松鼠40.png"; sourceTree = "<group>"; };
+		F78D118C1854BBC2000D6C14 /* 松鼠58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "松鼠58.png"; sourceTree = "<group>"; };
+		F78D118D1854BBC2000D6C14 /* 松鼠76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "松鼠76.png"; sourceTree = "<group>"; };
+		F78D118E1854BBC2000D6C14 /* 松鼠80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "松鼠80.png"; sourceTree = "<group>"; };
+		F78D118F1854BBC2000D6C14 /* 松鼠120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "松鼠120.png"; sourceTree = "<group>"; };
+		F78D11901854BBC2000D6C14 /* 松鼠152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "松鼠152.png"; sourceTree = "<group>"; };
 		F7A20B071850E6C200ACD69B /* MZSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZSettingViewController.h; sourceTree = "<group>"; };
 		F7A20B081850E6C200ACD69B /* MZSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZSettingViewController.m; sourceTree = "<group>"; };
 		F7CD1BA918458F4D00BA22A0 /* MZCollectionShelfVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZCollectionShelfVC.h; sourceTree = "<group>"; };
@@ -264,7 +282,16 @@
 		F711C05F184480F300D85598 /* Elephant */ = {
 			isa = PBXGroup;
 			children = (
+				F78D118A1854BBC2000D6C14 /* 松鼠29.png */,
+				F78D118B1854BBC2000D6C14 /* 松鼠40.png */,
+				F78D118C1854BBC2000D6C14 /* 松鼠58.png */,
+				F78D118D1854BBC2000D6C14 /* 松鼠76.png */,
+				F78D118E1854BBC2000D6C14 /* 松鼠80.png */,
+				F78D118F1854BBC2000D6C14 /* 松鼠120.png */,
+				F78D11901854BBC2000D6C14 /* 松鼠152.png */,
 				F7239DB418461ED800AF44CB /* beep-beep.aiff */,
+				F78D11861854BA5E000D6C14 /* Default.png */,
+				F78D11871854BA5E000D6C14 /* Default@2X.png */,
 				F7E9F53F18449AB9000568AD /* images */,
 				F711C0911844874800D85598 /* VC */,
 				F7239DB71846252300AF44CB /* Framework */,
@@ -272,7 +299,7 @@
 				F711C069184480F300D85598 /* MZAppDelegate.m */,
 				F711C06B184480F300D85598 /* Main_iPhone.storyboard */,
 				F711C06E184480F300D85598 /* Main_iPad.storyboard */,
-				F711C074184480F300D85598 /* Images.xcassets */,
+				F78D11831854B839000D6C14 /* images.xcassets */,
 				F711C060184480F300D85598 /* Supporting Files */,
 			);
 			path = Elephant;
@@ -532,12 +559,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F78D11931854BBC2000D6C14 /* 松鼠58.png in Resources */,
+				F78D11891854BA5E000D6C14 /* Default@2X.png in Resources */,
+				F78D11941854BBC2000D6C14 /* 松鼠76.png in Resources */,
 				F7E9F54018449AB9000568AD /* images in Resources */,
+				F78D11841854B839000D6C14 /* images.xcassets in Resources */,
+				F78D11921854BBC2000D6C14 /* 松鼠40.png in Resources */,
 				F7239DB518461ED800AF44CB /* beep-beep.aiff in Resources */,
 				F711C070184480F300D85598 /* Main_iPad.storyboard in Resources */,
-				F711C075184480F300D85598 /* Images.xcassets in Resources */,
+				F78D11881854BA5E000D6C14 /* Default.png in Resources */,
+				F78D11961854BBC2000D6C14 /* 松鼠120.png in Resources */,
 				F711C06D184480F300D85598 /* Main_iPhone.storyboard in Resources */,
+				F78D11971854BBC2000D6C14 /* 松鼠152.png in Resources */,
 				F711C064184480F300D85598 /* InfoPlist.strings in Resources */,
+				F78D11951854BBC2000D6C14 /* 松鼠80.png in Resources */,
+				F78D11911854BBC2000D6C14 /* 松鼠29.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -716,7 +752,6 @@
 		F711C08C184480F300D85598 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -744,7 +779,6 @@
 		F711C08D184480F300D85598 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

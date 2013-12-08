@@ -8,6 +8,36 @@
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>松鼠58</string>
+				<string>松鼠80</string>
+				<string>松鼠120</string>
+				<string>Default</string>
+			</array>
+		</dict>
+	</dict>
+	<key>CFBundleIcons~ipad</key>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>松鼠58</string>
+				<string>松鼠29</string>
+				<string>松鼠40</string>
+				<string>松鼠80</string>
+				<string>松鼠76</string>
+				<string>松鼠152</string>
+				<string>松鼠120</string>
+				<string>Default</string>
+			</array>
+		</dict>
+	</dict>
 	<key>CFBundleIdentifier</key>
 	<string>mz.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
