@@ -34,6 +34,9 @@
 		F7239DB518461ED800AF44CB /* beep-beep.aiff in Resources */ = {isa = PBXBuildFile; fileRef = F7239DB418461ED800AF44CB /* beep-beep.aiff */; };
 		F753CE4D18472F79003169B3 /* MZBookStoreDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = F753CE4C18472F79003169B3 /* MZBookStoreDefault.m */; };
 		F753CE52184743A9003169B3 /* MZBookStoreFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F753CE51184743A9003169B3 /* MZBookStoreFactory.m */; };
+		F75812CF1855C7BA0061F8B8 /* PopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = F75812CE1855C7BA0061F8B8 /* PopoverView.m */; };
+		F75812D31855C8CF0061F8B8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F75812D21855C8CF0061F8B8 /* QuartzCore.framework */; };
+		F75812D61855E2DE0061F8B8 /* MZBookListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F75812D51855E2DE0061F8B8 /* MZBookListVC.m */; };
 		F78D11841854B839000D6C14 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F78D11831854B839000D6C14 /* images.xcassets */; };
 		F78D11881854BA5E000D6C14 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F78D11861854BA5E000D6C14 /* Default.png */; };
 		F78D11891854BA5E000D6C14 /* Default@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = F78D11871854BA5E000D6C14 /* Default@2X.png */; };
@@ -138,6 +141,13 @@
 		F753CE4C18472F79003169B3 /* MZBookStoreDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZBookStoreDefault.m; sourceTree = "<group>"; };
 		F753CE51184743A9003169B3 /* MZBookStoreFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZBookStoreFactory.m; sourceTree = "<group>"; };
 		F753CE541847441D003169B3 /* MZBookStoreAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZBookStoreAPI.h; sourceTree = "<group>"; };
+		F75812CD1855C7BA0061F8B8 /* PopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverView.h; sourceTree = "<group>"; };
+		F75812CE1855C7BA0061F8B8 /* PopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverView.m; sourceTree = "<group>"; };
+		F75812D01855C84F0061F8B8 /* PopoverViewCompatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverViewCompatibility.h; sourceTree = "<group>"; };
+		F75812D11855C8760061F8B8 /* PopoverView_Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverView_Configuration.h; sourceTree = "<group>"; };
+		F75812D21855C8CF0061F8B8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F75812D41855E2DE0061F8B8 /* MZBookListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZBookListVC.h; sourceTree = "<group>"; };
+		F75812D51855E2DE0061F8B8 /* MZBookListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZBookListVC.m; sourceTree = "<group>"; };
 		F78D11831854B839000D6C14 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = images.xcassets; path = ../images.xcassets; sourceTree = "<group>"; };
 		F78D11861854BA5E000D6C14 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		F78D11871854BA5E000D6C14 /* Default@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2X.png"; path = "../Default@2X.png"; sourceTree = "<group>"; };
@@ -194,6 +204,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F75812D31855C8CF0061F8B8 /* QuartzCore.framework in Frameworks */,
 				F7EE3E57184E20DD007A55FB /* ImageIO.framework in Frameworks */,
 				F7E5B1F3184C81D1009E3C2F /* MobileCoreServices.framework in Frameworks */,
 				F7E5B1F1184C81C8009E3C2F /* SystemConfiguration.framework in Frameworks */,
@@ -254,6 +265,7 @@
 		F711C058184480F300D85598 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F75812D21855C8CF0061F8B8 /* QuartzCore.framework */,
 				F7EE3E58184E228C007A55FB /* SDWebImage.framework */,
 				F7EE3E56184E20DD007A55FB /* ImageIO.framework */,
 				F7E5B1F2184C81D1009E3C2F /* MobileCoreServices.framework */,
@@ -361,6 +373,7 @@
 		F7239DB71846252300AF44CB /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				F75812CB1855C7AD0061F8B8 /* PopOver */,
 				F7E5B21E184CE988009E3C2F /* MBProgressHUD */,
 				F7E5B1F9184C8FBE009E3C2F /* JSONKit */,
 				F753CE4F1847304B003169B3 /* BookStore */,
@@ -381,11 +394,24 @@
 			name = BookStore;
 			sourceTree = "<group>";
 		};
+		F75812CB1855C7AD0061F8B8 /* PopOver */ = {
+			isa = PBXGroup;
+			children = (
+				F75812D11855C8760061F8B8 /* PopoverView_Configuration.h */,
+				F75812D01855C84F0061F8B8 /* PopoverViewCompatibility.h */,
+				F75812CD1855C7BA0061F8B8 /* PopoverView.h */,
+				F75812CE1855C7BA0061F8B8 /* PopoverView.m */,
+			);
+			name = PopOver;
+			sourceTree = "<group>";
+		};
 		F7A20B051850E6AB00ACD69B /* Setting */ = {
 			isa = PBXGroup;
 			children = (
 				F7A20B071850E6C200ACD69B /* MZSettingViewController.h */,
 				F7A20B081850E6C200ACD69B /* MZSettingViewController.m */,
+				F75812D41855E2DE0061F8B8 /* MZBookListVC.h */,
+				F75812D51855E2DE0061F8B8 /* MZBookListVC.m */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -598,6 +624,7 @@
 				F753CE4D18472F79003169B3 /* MZBookStoreDefault.m in Sources */,
 				F7EE3E3F184DB996007A55FB /* MZDetailHeaderCell.m in Sources */,
 				F7239DB21846132B00AF44CB /* MZCollectionShelfVC.mm in Sources */,
+				F75812D61855E2DE0061F8B8 /* MZBookListVC.m in Sources */,
 				F7CD1BAE18458FB300BA22A0 /* MZCollectionShelfCell.m in Sources */,
 				F7E5B1F8184C8FBA009E3C2F /* JSONKit.m in Sources */,
 				F711C073184480F300D85598 /* MZViewController.m in Sources */,
@@ -610,6 +637,7 @@
 				F7239DB0184612FC00AF44CB /* main.m in Sources */,
 				F7E5B214184CB07B009E3C2F /* MZBookTagModel.m in Sources */,
 				F7E5B217184CB07C009E3C2F /* MZBookModel.m in Sources */,
+				F75812CF1855C7BA0061F8B8 /* PopoverView.m in Sources */,
 				F711C06A184480F300D85598 /* MZAppDelegate.m in Sources */,
 				F7E5B21D184CB07C009E3C2F /* MZBookWriterModel.m in Sources */,
 				F7FDB334184ED07900986347 /* MZExcerptVC.m in Sources */,

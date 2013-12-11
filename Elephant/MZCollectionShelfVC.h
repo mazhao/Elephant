@@ -25,9 +25,11 @@
 // progress alert view
 #import "MBProgressHUD.h"
 
+#import "PopoverView.h"
+
 #import <SDWebImage/UIImageView+WebCache.h>
 
-@interface MZCollectionShelfVC : UICollectionViewController<UICollectionViewDataSource, UICollectionViewDelegate, ZXingDelegate, BookShelfRefreshDelegate>
+@interface MZCollectionShelfVC : UICollectionViewController<UICollectionViewDataSource, UICollectionViewDelegate, ZXingDelegate, BookShelfRefreshDelegate, PopoverViewDelegate>
 
 @property (strong, nonatomic) NSArray * books;
 @property (strong, nonatomic) IBOutlet UIButton * findButton;

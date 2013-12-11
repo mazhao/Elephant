@@ -400,24 +400,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="VQe-aB-oAJ">
-                                <rect key="frame" x="0.0" y="314" width="320" height="29"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="images/cameraplus" translatesAutoresizingMaskIntoConstraints="NO" id="X2q-NP-Dkc">
+                                <rect key="frame" x="220" y="180" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="文字"/>
-                                    <segment title="图片"/>
-                                    <segment title="语音"/>
-                                </segments>
-                            </segmentedControl>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mXP-fw-zC6">
-                                <rect key="frame" x="0.0" y="67" width="320" height="244"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="images/picplus" translatesAutoresizingMaskIntoConstraints="NO" id="bra-dD-ag4">
+                                <rect key="frame" x="270" y="180" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KZw-bi-ciI">
+                                <rect key="frame" x="6" y="67" width="309" height="114"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Ni-T2-Aqa">
+                                <rect key="frame" x="0.0" y="180" width="204" height="153"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="添加书摘" id="qxT-8a-axN">
                         <barButtonItem key="rightBarButtonItem" title="保存" id="qcg-Cu-OiZ">
@@ -427,8 +429,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="excerptText" destination="mXP-fw-zC6" id="P3r-Oz-454"/>
-                        <outlet property="typeSegment" destination="VQe-aB-oAJ" id="xOR-yL-obB"/>
+                        <outlet property="addImageView" destination="bra-dD-ag4" id="KBs-05-oTq"/>
+                        <outlet property="excerptText" destination="KZw-bi-ciI" id="db4-jW-djf"/>
+                        <outlet property="takePhotoView" destination="X2q-NP-Dkc" id="vrR-Ah-s3Y"/>
+                        <outlet property="targetImageView" destination="3Ni-T2-Aqa" id="Uwa-tE-ugk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="twK-o7-2Vr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -452,6 +456,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="images/cameraplus" width="16" height="16"/>
+        <image name="images/picplus" width="16" height="16"/>
         <image name="images/unix" width="16" height="16"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

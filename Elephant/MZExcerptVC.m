@@ -12,6 +12,8 @@
 
 @interface MZExcerptVC ()
 
+@property (nonatomic) UIImagePickerController *imagePickerController;
+
 @end
 
 @implementation MZExcerptVC
@@ -30,16 +32,23 @@
     [super viewDidLoad];
     
     // text init
-//    [[self.excerptText layer] setBorderColor:[[UIColor grayColor] CGColor]];
-//    [[self.excerptText layer] setBorderWidth:1.0  ];
-//    [[self.excerptText layer] setCornerRadius:5 ];
-    
+    [[self.excerptText layer] setBorderColor:[[UIColor lightGrayColor] CGColor]];
+    [[self.excerptText layer] setBorderWidth:0.5  ];
     [self.excerptText becomeFirstResponder];
-    
     [self.excerptText setText: self.excerpt];
     NSLog(@"op:%d OID:%@", self.opMode, self.objectID);
     
+    // image & photo button event binding
     
+    UITapGestureRecognizer *addImgTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(addImage:)];
+    [self.addImageView addGestureRecognizer:addImgTap];
+    [self.addImageView setMultipleTouchEnabled:YES];
+    [self.addImageView setUserInteractionEnabled:YES];
+    
+    UITapGestureRecognizer *takePhotoTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(takePhoto:)];
+    [self.takePhotoView addGestureRecognizer:takePhotoTap];
+    [self.takePhotoView setMultipleTouchEnabled:YES];
+    [self.takePhotoView setUserInteractionEnabled:YES];
 	// Do any additional setup after loading the view.
 }
 
@@ -67,10 +76,40 @@
         
     }
     
-    
-    
     [self.navigationController popViewControllerAnimated:YES];
+}
 
+
+- (void) addImage:(UITapGestureRecognizer *)gesture {
+    
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    imagePickerController.delegate = self;
+    self.imagePickerController = imagePickerController;
+    [self presentViewController:self.imagePickerController animated:YES completion:nil];
+    NSLog(@"add image tapped");
+}
+
+- (void) takePhoto:(UITapGestureRecognizer *)gesture {
+    NSLog(@"take photo tapped");
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+
+// This method is called when an image has been chosen from the library or taken from the camera.
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+    [self.targetImageView setImage:image];
+    [self dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 

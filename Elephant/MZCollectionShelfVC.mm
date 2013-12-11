@@ -9,9 +9,14 @@
 #import "MZCollectionShelfVC.h"
 #import "MZAppDelegate.h"
 
+#import "PopoverView.h"
+
 // constants
 static int kFindIconWidth = 22;
 static int kFindIconHeight = 32;
+
+static int kIndexBookScan = 0;
+static int kIndexBookSearch = 1;
 
 @interface MZCollectionShelfVC ()
 
@@ -123,26 +128,59 @@ static int kFindIconHeight = 32;
     return bookCell;
 }
 
-
-#pragma mark - Action handler
-
-- (IBAction)scan:(id)sender {
-
+- (void)showScanVC {
     NSLog(@"scan clicked " );
-    
+
     ZXingWidgetController *widController = [[ZXingWidgetController alloc] initWithDelegate:self showCancel:YES OneDMode:NO];
-    
+
     MultiFormatReader* qrcodeReader = [[MultiFormatReader alloc] init];
     NSSet *readers = [[NSSet alloc ] initWithObjects:qrcodeReader,nil];
     widController.readers = readers;
-    
+
     NSBundle *mainBundle = [NSBundle mainBundle];
     widController.soundToPlay = [NSURL fileURLWithPath:[mainBundle pathForResource:@"beep-beep" ofType:@"aiff"] isDirectory:NO];
-    
-    
+
+
     [self presentViewController:widController animated:YES completion:^{
         NSLog(@"affter zxing barcode reader view controller present");
     }];
+
+}
+
+#pragma mark - PopoverView dismiss
+
+//Delegate receives this call as soon as the item has been selected
+- (void)popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index {
+    NSLog(@"dismiss with selected item index:%d" , index);
+    
+    if(kIndexBookScan == index) {
+        [self showScanVC];
+        
+    } else if(kIndexBookSearch == index) {
+        
+    } else {
+        
+    }
+    
+    
+    [popoverView performSelector:@selector(dismiss) withObject:nil afterDelay:0.1f];
+
+}
+
+//Delegate receives this call once the popover has begun the dismissal animation
+- (void)popoverViewDidDismiss:(PopoverView *)popoverView {
+    NSLog(@"dismiss with nothing");
+}
+
+#pragma mark - nativationg bar menu item handler
+
+- (IBAction)scan:(id)sender {
+//    CGPoint point = CGPointMake(500.0f, 50.0f);
+//    [PopoverView showPopoverAtPoint:point inView:self.view withStringArray:@[@"扫描条码", @"书名搜索"] delegate:self ];
+//    
+
+    [self showScanVC];
+    
 }
 
 #pragma mark - ZXing barcode scancer handler

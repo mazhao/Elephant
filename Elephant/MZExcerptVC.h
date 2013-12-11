@@ -16,7 +16,7 @@ typedef NS_ENUM(NSInteger, MZExcerptOperationMode) {
     MZExcerptOperationModeDelete
 };
 
-@interface MZExcerptVC : UIViewController
+@interface MZExcerptVC : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, retain) NSString * isbn10;
 @property (nonatomic, retain) NSString * isbn13;
@@ -25,7 +25,12 @@ typedef NS_ENUM(NSInteger, MZExcerptOperationMode) {
 @property (nonatomic) MZExcerptOperationMode opMode;
 
 @property (nonatomic, retain) IBOutlet UITextView * excerptText;
-@property (nonatomic, retain) IBOutlet UISegmentedControl * typeSegment;
+
+@property (nonatomic, retain) IBOutlet UIImageView * addImageView;
+@property (nonatomic, retain) IBOutlet UIImageView * takePhotoView;
+
+@property (nonatomic, retain) IBOutlet UIImageView * targetImageView;
+
 
 -(IBAction) saveExcerpt:(id) sender;
 
