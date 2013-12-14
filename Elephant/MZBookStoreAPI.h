@@ -78,8 +78,8 @@
 - (NSArray *) getAllBooksSummary;
 
 
-- (BOOL) saveExpert:(NSString *) excerpt forBoook:(NSString*) isbn13 ;
-- (BOOL) updateExpert:(NSString *) excerpt forExcerptId:(NSManagedObjectID *)objectID forBoook:(NSString*) isbn13 ;
+- (BOOL) saveExpert:(NSString *) excerpt withImageData:(NSData*) imgData ofBoook:(NSString*) isbn13 ;
+- (BOOL) updateExpert:(NSString *) excerpt withImageData:(NSData *) imgData withExcerptId:(NSManagedObjectID *)objectID ofBoook:(NSString*) isbn13;
 - (BOOL) deleteExpert:(NSManagedObjectID *) objectID forBook:(NSString*) isbn13 ;
 - (BOOL) deleteAllExpert:(NSString*) isbn ;
 

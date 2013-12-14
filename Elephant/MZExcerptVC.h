@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import <CoreData/CoreData.h>
+#import "MWPhotoBrowser.h"
 
 typedef NS_ENUM(NSInteger, MZExcerptOperationMode) {
     MZExcerptOperationModeAdd,
@@ -16,7 +17,7 @@ typedef NS_ENUM(NSInteger, MZExcerptOperationMode) {
     MZExcerptOperationModeDelete
 };
 
-@interface MZExcerptVC : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface MZExcerptVC : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, MWPhotoBrowserDelegate>
 
 @property (nonatomic, retain) NSString * isbn10;
 @property (nonatomic, retain) NSString * isbn13;

@@ -16,6 +16,8 @@
 @property (retain, nonatomic) IBOutlet UILabel * excerptLabel;
 @property (retain, nonatomic) IBOutlet UILabel * dateTimeLabel;
 
+@property (retain, nonatomic) IBOutlet UIImageView * imageViewId;
+
 @property (retain, nonatomic) NSManagedObjectID * objectID;
 
 @end

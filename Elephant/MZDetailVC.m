@@ -117,7 +117,6 @@
         cell.titleLabel.text = self.bookModel.title;
         cell.subtitleLabel.text = self.bookModel.subTitle;
         
-        
         NSMutableString * tagMutable = [[NSMutableString alloc] init];
         int i = 0;
         for (MZBookTagModel * tag in self.bookModel.tags) {
@@ -173,13 +172,18 @@
         
         // Configure the cell...
         
-//        MZBookExcerptModel * excerptModel =(MZBookExcerptModel *)  [[self.bookModel.excerpts allObjects] objectAtIndex: ([indexPath row] - 1 ) ];
-
         MZBookExcerptModel* excerptModel = (MZBookExcerptModel*)[self.bookExcerpts objectAtIndex:([indexPath row] -1)];
         
         cell.excerptLabel.text = excerptModel.text;
         cell.dateTimeLabel.text = excerptModel.datetime;
         cell.objectID = excerptModel.objectID;
+        
+        if (excerptModel.image != nil ) {
+            cell.imageViewId.image = [UIImage imageNamed:@"images/picplus.png"];
+            //cell.imageViewId.bounds = CGRectMake(177.0, 60.0, 15.0, 15.0);
+        } else {
+            cell.imageViewId.image = nil;
+        }
         
         // cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
@@ -210,7 +214,7 @@
     return [path row] == [self.bookModel.excerpts count] + 1;
 }
 
-#pragma mark -
+#pragma mark - StoryBoard Segue method
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -233,12 +237,14 @@
             excerptVC.opMode = MZExcerptOperationModeEdit;
             // @TODO: add excerpt id here
             excerptVC.objectID = detailCell.objectID;
+            
         }
     }
     
     // other case such as go to setting
 }
 
+#pragma mark - Table View Edit
 
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -259,14 +265,26 @@
         // Delete the row from the data source
         // [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         
-        MZDetailCell* cell = (MZDetailCell*)[tableView cellForRowAtIndexPath:indexPath];
-        NSLog(@"excerpt id:%@, excerpt:%@", cell.objectID, cell.excerptLabel.text);
+        //dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         
-        MZAppDelegate * delegate = (MZAppDelegate *)[[UIApplication sharedApplication] delegate];
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         
-        [delegate.bookStore deleteExpert:cell.objectID forBook:self.isbn13];
+            MZDetailCell* cell = (MZDetailCell*)[tableView cellForRowAtIndexPath:indexPath];
+            NSLog(@"excerpt id:%@, excerpt:%@", cell.objectID, cell.excerptLabel.text);
+            
+            MZAppDelegate * delegate = (MZAppDelegate *)[[UIApplication sharedApplication] delegate];
+            
+            [delegate.bookStore deleteExpert:cell.objectID forBook:self.isbn13];
+            
+            [tableView reloadData];
         
-        [tableView reloadData];
+           // dispatch_async(dispatch_get_main_queue(), ^{
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                
+           // });
+       // });
+        
+        
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view

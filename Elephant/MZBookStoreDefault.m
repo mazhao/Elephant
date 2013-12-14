@@ -69,13 +69,28 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
 
 
 
-// to check if book alread saved
+#pragma mark - Book Section
+
+/**
+ *  Check book existance.
+ *
+ *  @param isbn isbn13 for book to be checked
+ *
+ *  @return YES for exist NO for not exist
+ */
 -(BOOL) bookExist:(NSString *) isbn {
     
     return [self getBookSummary:isbn] != nil;
 }
 
-- (void)convertDictionaryToBookModel:(NSDictionary *)bookDic bookModel:(MZBookModel *)bookModel {
+
+/**
+ *  convert book from NSDictionary to MZBookModel
+ *
+ *  @param bookDic   book NSDictionary
+ *  @param bookModel MZBookModel
+ */
+- (void)convertDictionaryl:(NSDictionary *)bookDic toBookModel:(MZBookModel *)bookModel {
     bookModel.price = [bookDic objectForKey:@"price"];
     bookModel.summary = [bookDic objectForKey:@"summary"];
     bookModel.authorIntro = [bookDic objectForKey:@"author_intro"];
@@ -144,10 +159,16 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
     [bookModel addTags:tagSet];
 }
 
-// add book to database.
-// 1. fetch book from book.douban.com
-// 2. save to book database
-// 3. invoke delegate's refreshViewforNewBook
+/**
+ *  add book to database.
+ *  1. fetch book from book.douban.com
+ *  2. save to book database
+ *  3. invoke delegate's refreshViewforNewBook
+ *
+ *  @param isbn isbn of book to be fetched
+ *
+ *  @return YES for fetch success, NO for fetch failed
+ */
 -(BOOL) fetchBook: (NSString*) isbn {
     
     NSLog(@"begin fetch book, the input isbn is:%@", isbn);
@@ -176,7 +197,7 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
             MZBookModel * bookModel = [NSEntityDescription insertNewObjectForEntityForName:@"MZBookModel"
                                                                     inManagedObjectContext:self.managedObjectContext];
             if(bookDic && bookModel) {
-                [self convertDictionaryToBookModel:bookDic bookModel:bookModel];
+                [self convertDictionaryl:bookDic toBookModel:bookModel];
                 
                 NSError * savingError = nil;
                 if ([self.managedObjectContext save:&savingError ] ) {
@@ -195,7 +216,14 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
     return retVal;
 }
 
-//
+
+/**
+ *  <#Description#>
+ *
+ *  @param isbn <#isbn description#>
+ *
+ *  @return <#return value description#>
+ */
 -(MZBookModel *) getBookSummary: (NSString *) isbn {
     NSFetchRequest * request = [[NSFetchRequest alloc] init];
     
@@ -232,16 +260,23 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
     return nil;
 }
 
+/**
+ *  <#Description#>
+ *
+ *  @param isbn <#isbn description#>
+ *
+ *  @return <#return value description#>
+ */
 -(MZBookModel *) getBookDetail: (NSString *) isbn {
     return [self getBookSummary:isbn];
 }
 
 
-// multiple books methods
+
 /**
+ *  <#Description#>
  *
- *
- *  @return Summary book store
+ *  @return <#return value description#>
  */
 -(NSArray *) getAllBooksSummary {
     
@@ -257,7 +292,23 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
     return books;
 }
 
-- (BOOL) saveExpert:(NSString *) excerpt forBoook:(NSString*) isbn13 {
+/**
+ *  <#Description#>
+ *
+ *  @param isbn <#isbn description#>
+ *
+ *  @return <#return value description#>
+ */
+- (BOOL) deleteBook:(NSString*) isbn {
+    MZBookModel * model = [self getBookDetail:isbn];
+    [self.managedObjectContext deleteObject:model];
+    
+    return YES;
+}
+
+#pragma mark - Excerpt Section
+
+- (BOOL) saveExpert:(NSString *) excerpt withImageData:(NSData*) imgData ofBoook:(NSString*) isbn13 {
     
     NSLog(@"for book:%@ excerpt:%@", isbn13, excerpt);
     
@@ -267,7 +318,7 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
                                                                       inManagedObjectContext:self.managedObjectContext];
     
     excerptModel.text = excerpt;
-    
+    excerptModel.image = imgData;
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy/MM/dd HH:mm"];
     excerptModel.datetime = [formatter stringFromDate:[NSDate date]];
@@ -284,13 +335,13 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
 
 
 
-- (BOOL) updateExpert:(NSString *) excerpt forExcerptId:(NSManagedObjectID *)objectID forBoook:(NSString*) isbn13{
+- (BOOL) updateExpert:(NSString *) excerpt withImageData:(NSData *) imgData withExcerptId:(NSManagedObjectID *)objectID ofBoook:(NSString*) isbn13{
     MZBookModel * bookModel = [self getBookDetail:isbn13];
     
     for (MZBookExcerptModel * excerptModel in bookModel.excerpts) {
         if (objectID == [excerptModel objectID]) {
             excerptModel.text = excerpt;
-            
+            excerptModel.image = imgData;
             NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
             [formatter setDateFormat:@"yyyy/MM/dd HH:mm"];
             excerptModel.datetime = [formatter stringFromDate:[NSDate date]];
@@ -329,12 +380,7 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
     return NO;
 }
 
-- (BOOL) deleteBook:(NSString*) isbn {
-    MZBookModel * model = [self getBookDetail:isbn];
-    [self.managedObjectContext deleteObject:model];
-    
-    return YES;
-}
+
 - (BOOL) deleteAllExpert:(NSString*) isbn  {
     MZBookModel * model = [self getBookDetail:isbn];
     

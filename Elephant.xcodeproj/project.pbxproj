@@ -20,6 +20,7 @@
 		F711C07E184480F300D85598 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F711C05D184480F300D85598 /* UIKit.framework */; };
 		F711C086184480F300D85598 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F711C084184480F300D85598 /* InfoPlist.strings */; };
 		F711C088184480F300D85598 /* ElephantTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F711C087184480F300D85598 /* ElephantTests.m */; };
+		F71C5F19185C12E6005F1C94 /* libMWPhotoBrowser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F71C5F18185C12C9005F1C94 /* libMWPhotoBrowser.a */; };
 		F7239D911845E30D00AF44CB /* MZSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F7239D901845E30D00AF44CB /* MZSearchVC.m */; };
 		F7239D9C18460F8E00AF44CB /* libZXingWidget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7239D9918460EE800AF44CB /* libZXingWidget.a */; };
 		F7239DA01846109300AF44CB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7239D9F1846109300AF44CB /* AVFoundation.framework */; };
@@ -48,6 +49,9 @@
 		F78D11961854BBC2000D6C14 /* 松鼠120.png in Resources */ = {isa = PBXBuildFile; fileRef = F78D118F1854BBC2000D6C14 /* 松鼠120.png */; };
 		F78D11971854BBC2000D6C14 /* 松鼠152.png in Resources */ = {isa = PBXBuildFile; fileRef = F78D11901854BBC2000D6C14 /* 松鼠152.png */; };
 		F7A20B091850E6C200ACD69B /* MZSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A20B081850E6C200ACD69B /* MZSettingViewController.m */; };
+		F7BCFC7E185C0A6C0011D9FD /* MWPhotoBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F7BCFC7D185C0A6C0011D9FD /* MWPhotoBrowser.bundle */; };
+		F7BCFC80185C0B570011D9FD /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7BCFC7F185C0B570011D9FD /* MessageUI.framework */; };
+		F7BCFC82185C0B610011D9FD /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7BCFC81185C0B610011D9FD /* AssetsLibrary.framework */; };
 		F7CD1BAE18458FB300BA22A0 /* MZCollectionShelfCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CD1BAD18458FB300BA22A0 /* MZCollectionShelfCell.m */; };
 		F7E5B185184C2F35009E3C2F /* MZBookModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F7E5B183184C2F35009E3C2F /* MZBookModel.xcdatamodeld */; };
 		F7E5B195184C5C08009E3C2F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E5B194184C5C08009E3C2F /* CoreData.framework */; };
@@ -81,6 +85,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = F711C055184480F300D85598;
 			remoteInfo = Elephant;
+		};
+		F71C5F17185C12C9005F1C94 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F71C5F13185C12C9005F1C94 /* MWPhotoBrowser.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4C6F96C414AF704100F8389A;
+			remoteInfo = MWPhotoBrowser;
 		};
 		F7239D9818460EE800AF44CB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -124,6 +135,7 @@
 		F711C083184480F300D85598 /* ElephantTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ElephantTests-Info.plist"; sourceTree = "<group>"; };
 		F711C085184480F300D85598 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F711C087184480F300D85598 /* ElephantTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ElephantTests.m; sourceTree = "<group>"; };
+		F71C5F13185C12C9005F1C94 /* MWPhotoBrowser.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MWPhotoBrowser.xcodeproj; path = ../MWPhotoBrowser/MWPhotoBrowser/MWPhotoBrowser.xcodeproj; sourceTree = "<group>"; };
 		F7239D8F1845E30D00AF44CB /* MZSearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZSearchVC.h; sourceTree = "<group>"; };
 		F7239D901845E30D00AF44CB /* MZSearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZSearchVC.m; sourceTree = "<group>"; };
 		F7239D9318460EE700AF44CB /* ZXingWidget.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZXingWidget.xcodeproj; path = "../zxing-2.2/iphone/ZXingWidget/ZXingWidget.xcodeproj"; sourceTree = "<group>"; };
@@ -160,6 +172,9 @@
 		F78D11901854BBC2000D6C14 /* 松鼠152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "松鼠152.png"; sourceTree = "<group>"; };
 		F7A20B071850E6C200ACD69B /* MZSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZSettingViewController.h; sourceTree = "<group>"; };
 		F7A20B081850E6C200ACD69B /* MZSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZSettingViewController.m; sourceTree = "<group>"; };
+		F7BCFC7D185C0A6C0011D9FD /* MWPhotoBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MWPhotoBrowser.bundle; path = ../MWPhotoBrowser/MWPhotoBrowser/MWPhotoBrowser.bundle; sourceTree = "<group>"; };
+		F7BCFC7F185C0B570011D9FD /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		F7BCFC81185C0B610011D9FD /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		F7CD1BA918458F4D00BA22A0 /* MZCollectionShelfVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZCollectionShelfVC.h; sourceTree = "<group>"; };
 		F7CD1BAC18458FB300BA22A0 /* MZCollectionShelfCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZCollectionShelfCell.h; sourceTree = "<group>"; };
 		F7CD1BAD18458FB300BA22A0 /* MZCollectionShelfCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZCollectionShelfCell.m; sourceTree = "<group>"; };
@@ -204,8 +219,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F75812D31855C8CF0061F8B8 /* QuartzCore.framework in Frameworks */,
+				F71C5F19185C12E6005F1C94 /* libMWPhotoBrowser.a in Frameworks */,
 				F7EE3E57184E20DD007A55FB /* ImageIO.framework in Frameworks */,
+				F75812D31855C8CF0061F8B8 /* QuartzCore.framework in Frameworks */,
+				F7BCFC82185C0B610011D9FD /* AssetsLibrary.framework in Frameworks */,
+				F7BCFC80185C0B570011D9FD /* MessageUI.framework in Frameworks */,
 				F7E5B1F3184C81D1009E3C2F /* MobileCoreServices.framework in Frameworks */,
 				F7E5B1F1184C81C8009E3C2F /* SystemConfiguration.framework in Frameworks */,
 				F7E5B1EF184C81C0009E3C2F /* Security.framework in Frameworks */,
@@ -249,6 +267,8 @@
 				F711C081184480F300D85598 /* ElephantTests */,
 				F711C058184480F300D85598 /* Frameworks */,
 				F711C057184480F300D85598 /* Products */,
+				F71C5F13185C12C9005F1C94 /* MWPhotoBrowser.xcodeproj */,
+				F7BCFC7D185C0A6C0011D9FD /* MWPhotoBrowser.bundle */,
 				F7239D9318460EE700AF44CB /* ZXingWidget.xcodeproj */,
 			);
 			sourceTree = "<group>";
@@ -265,6 +285,8 @@
 		F711C058184480F300D85598 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F7BCFC81185C0B610011D9FD /* AssetsLibrary.framework */,
+				F7BCFC7F185C0B570011D9FD /* MessageUI.framework */,
 				F75812D21855C8CF0061F8B8 /* QuartzCore.framework */,
 				F7EE3E58184E228C007A55FB /* SDWebImage.framework */,
 				F7EE3E56184E20DD007A55FB /* ImageIO.framework */,
@@ -359,6 +381,14 @@
 				F7239D901845E30D00AF44CB /* MZSearchVC.m */,
 			);
 			name = VC;
+			sourceTree = "<group>";
+		};
+		F71C5F14185C12C9005F1C94 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F71C5F18185C12C9005F1C94 /* libMWPhotoBrowser.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		F7239D9418460EE700AF44CB /* Products */ = {
@@ -551,6 +581,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = F71C5F14185C12C9005F1C94 /* Products */;
+					ProjectRef = F71C5F13185C12C9005F1C94 /* MWPhotoBrowser.xcodeproj */;
+				},
+				{
 					ProductGroup = F7239D9418460EE700AF44CB /* Products */;
 					ProjectRef = F7239D9318460EE700AF44CB /* ZXingWidget.xcodeproj */;
 				},
@@ -564,6 +598,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		F71C5F18185C12C9005F1C94 /* libMWPhotoBrowser.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libMWPhotoBrowser.a;
+			remoteRef = F71C5F17185C12C9005F1C94 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		F7239D9918460EE800AF44CB /* libZXingWidget.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -600,6 +641,7 @@
 				F711C064184480F300D85598 /* InfoPlist.strings in Resources */,
 				F78D11951854BBC2000D6C14 /* 松鼠80.png in Resources */,
 				F78D11911854BBC2000D6C14 /* 松鼠29.png in Resources */,
+				F7BCFC7E185C0A6C0011D9FD /* MWPhotoBrowser.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -706,7 +748,7 @@
 		F711C089184480F300D85598 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libstdc++";
@@ -740,13 +782,14 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "/Users/mazhao/Dropbox/2013大象（书摘）/Elephant/MWPhotoBrowser/MWPhotoBrowser/Classes";
 			};
 			name = Debug;
 		};
 		F711C08A184480F300D85598 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libstdc++";
@@ -773,6 +816,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "/Users/mazhao/Dropbox/2013大象（书摘）/Elephant/MWPhotoBrowser/MWPhotoBrowser/Classes";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
