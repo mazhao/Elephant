@@ -18,7 +18,18 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
 }
+
+- (void)viewDidAppear:(BOOL)animated {
+    //[self performSelector:@selector(gotoCollectionView) withObject:nil afterDelay:2.0f];
+}
+
+
+- (void) gotoCollectionView {
+    [self performSegueWithIdentifier:@"gotoCollection" sender:nil];
+}
+
 
 - (void)didReceiveMemoryWarning
 {

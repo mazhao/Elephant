@@ -41,11 +41,29 @@
 {
     [super viewDidLoad];
     
-    // text init
-    [[self.excerptText layer] setBorderColor:[[UIColor lightGrayColor] CGColor]];
-    [[self.excerptText layer] setBorderWidth:0.5  ];
-    [self.excerptText becomeFirstResponder];
-    [self.excerptText setText: self.excerpt];
+    // text border
+//    [[self.excerptText layer] setBorderColor:[[UIColor lightGrayColor] CGColor]];
+//    [[self.excerptText layer] setBorderWidth:0.5  ];
+    
+    
+    if (self.excerpt == nil  || [self.excerpt length] == 0) {
+        [self.excerptText becomeFirstResponder];
+        
+        // show button
+        self.addImageView.hidden = NO;
+        self.takePhotoView.hidden = NO;
+        
+    } else {
+        [self.excerptText setText: self.excerpt];
+        // hide button
+        self.addImageView.hidden = YES;
+        self.takePhotoView.hidden = YES;
+        
+    }
+    
+    self.excerptText.delegate = self;
+    
+    
     NSLog(@"op:%d OID:%@", self.opMode, self.objectID);
     
     
@@ -215,11 +233,25 @@
     
 }
 
-
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
+
+#pragma mark - UITextViewDelegate
+
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    NSLog(@"text view begin editing");
+    self.addImageView.hidden = NO;
+    self.takePhotoView.hidden = NO;
+}
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    NSLog(@"text view end editing");
+    self.addImageView.hidden = YES;
+    self.takePhotoView.hidden = YES;
+}
+
+
 
 
 @end

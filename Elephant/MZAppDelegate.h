@@ -13,10 +13,14 @@
 #import "MZBookModel.h"
 #import "MZBookStoreAPI.h"
 
+#import <SDWebImage/SDImageCache.h>
+
 @interface MZAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
 @property (strong, nonatomic) id<MZBookStore>  bookStore;
+
+@property (strong, nonatomic) SDImageCache *imageCache ;
 
 @end

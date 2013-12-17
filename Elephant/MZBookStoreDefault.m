@@ -289,6 +289,10 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
     NSError * error = [[NSError alloc] init];
     NSArray * books = [self.managedObjectContext executeFetchRequest:request error:&error];
     
+    // sort by last excerpt add date
+    // @TODO:
+    
+    
     return books;
 }
 
@@ -302,6 +306,12 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
 - (BOOL) deleteBook:(NSString*) isbn {
     MZBookModel * model = [self getBookDetail:isbn];
     [self.managedObjectContext deleteObject:model];
+    
+    NSError * error = nil;
+    if ( ![self.managedObjectContext save: &error] ){
+        NSLog(@"can not delete book with error code:%d error message:%@", error.code, error.debugDescription);
+    }
+
     
     return YES;
 }

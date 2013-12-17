@@ -8,7 +8,7 @@
 
 #import "MZAppDelegate.h"
 
-
+#import "MobClick.h"
 
 @implementation MZAppDelegate
 
@@ -19,6 +19,11 @@
     
     NSLog(@"ios 应用发布后 .app 应用包(文件) 的详细信息 ::%@",[[NSBundle mainBundle] infoDictionary]);
     
+    [MobClick startWithAppkey:@"52ac4dd556240b9353098a52" reportPolicy:REALTIME channelId:@"Beta"];
+    [MobClick setLogSendInterval:60];
+
+    
+    self.imageCache = [SDImageCache.alloc initWithNamespace:@"mzbookstoreimg"];
 
     
     // Override point for customization after application launch.

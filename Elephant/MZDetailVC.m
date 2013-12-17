@@ -182,7 +182,7 @@
             cell.imageViewId.image = [UIImage imageNamed:@"images/picplus.png"];
             //cell.imageViewId.bounds = CGRectMake(177.0, 60.0, 15.0, 15.0);
         } else {
-            cell.imageViewId.image = nil;
+            cell.imageViewId.image = [UIImage imageNamed:@"images/text.png"];
         }
         
         // cell.selectionStyle = UITableViewCellSelectionStyleNone;

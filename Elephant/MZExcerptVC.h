@@ -17,7 +17,7 @@ typedef NS_ENUM(NSInteger, MZExcerptOperationMode) {
     MZExcerptOperationModeDelete
 };
 
-@interface MZExcerptVC : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, MWPhotoBrowserDelegate>
+@interface MZExcerptVC : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, MWPhotoBrowserDelegate, UITextViewDelegate>
 
 @property (nonatomic, retain) NSString * isbn10;
 @property (nonatomic, retain) NSString * isbn13;

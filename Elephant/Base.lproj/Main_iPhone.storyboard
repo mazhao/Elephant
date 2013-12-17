@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="kur-2s-ny1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="kur-2s-ny1">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
@@ -36,7 +36,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="dQT-bz-gOv" kind="push" id="pOj-h0-hhp"/>
+                                    <segue destination="dQT-bz-gOv" kind="push" identifier="gotoCollection" id="pOj-h0-hhp"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -113,19 +113,19 @@
         <scene sceneID="vNU-Dh-b9t">
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" title="CollectionShelfVC" id="dQT-bz-gOv" customClass="MZCollectionShelfVC" sceneMemberID="viewController">
-                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="KFy-Ec-oVO">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.5" maximumZoomScale="2" dataMode="prototypes" id="KFy-Ec-oVO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="La4-IH-nxr">
                             <size key="itemSize" width="100" height="151"/>
-                            <size key="headerReferenceSize" width="0.0" height="5"/>
-                            <size key="footerReferenceSize" width="0.0" height="5"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="bookCell" id="8Yp-nB-VBW" customClass="MZCollectionShelfCell">
-                                <rect key="frame" x="0.0" y="69" width="100" height="151"/>
+                                <rect key="frame" x="0.0" y="64" width="100" height="151"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="100" height="151"/>
@@ -152,26 +152,18 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="fzr-JR-czc">
-                            <rect key="frame" x="0.0" y="64" width="320" height="5"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </collectionReusableView>
-                        <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Oti-t4-0xy">
-                            <rect key="frame" x="0.0" y="220" width="320" height="5"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="dQT-bz-gOv" id="axb-9v-wsL"/>
                             <outlet property="delegate" destination="dQT-bz-gOv" id="as2-GZ-mz0"/>
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="书架" id="CSW-ud-Khb">
-                        <barButtonItem key="leftBarButtonItem" title="..." id="GQO-LY-ChL">
+                        <barButtonItem key="leftBarButtonItem" image="images/nav-settings" id="GQO-LY-ChL">
                             <connections>
                                 <segue destination="aRn-fU-ZhC" kind="push" id="5cg-zK-abb"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="+" id="5Nw-pz-uP8">
+                        <barButtonItem key="rightBarButtonItem" image="images/nav-plus" width="32" id="5Nw-pz-uP8">
                             <connections>
                                 <action selector="scan:" destination="dQT-bz-gOv" id="SMl-Ei-cmm"/>
                             </connections>
@@ -309,27 +301,27 @@
                                     <outlet property="titleLabel" destination="fbA-Wn-6GH" id="izV-ew-hJ6"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailCell" rowHeight="79" id="Py0-dG-D6T" customClass="MZDetailCell">
-                                <rect key="frame" x="0.0" y="254" width="320" height="79"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailCell" rowHeight="74" id="Py0-dG-D6T" customClass="MZDetailCell">
+                                <rect key="frame" x="0.0" y="254" width="320" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Py0-dG-D6T" id="MKv-aP-E2E">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="78"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="73"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="9" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="13P-oG-c58">
-                                            <rect key="frame" x="20" y="0.0" width="280" height="49"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="9" preferredMaxLayoutWidth="226" translatesAutoresizingMaskIntoConstraints="NO" id="13P-oG-c58">
+                                            <rect key="frame" x="74" y="12" width="226" height="33"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2013/12/12 17:58" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2RM-8m-5au">
-                                            <rect key="frame" x="200" y="57" width="100" height="21"/>
+                                            <rect key="frame" x="74" y="41" width="100" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xS9-GU-V5p">
-                                            <rect key="frame" x="177" y="60" width="15" height="15"/>
+                                            <rect key="frame" x="20" y="12" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
@@ -342,7 +334,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailFooterCell" id="O15-34-nMA" customClass="MZDetailFooterCell">
-                                <rect key="frame" x="0.0" y="333" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="328" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O15-34-nMA" id="vLQ-BJ-vcN">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -406,21 +398,21 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="images/cameraplus" translatesAutoresizingMaskIntoConstraints="NO" id="X2q-NP-Dkc">
-                                <rect key="frame" x="220" y="180" width="50" height="50"/>
+                                <rect key="frame" x="277" y="99" width="36" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="images/picplus" translatesAutoresizingMaskIntoConstraints="NO" id="bra-dD-ag4">
-                                <rect key="frame" x="270" y="180" width="50" height="50"/>
+                                <rect key="frame" x="277" y="143" width="36" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KZw-bi-ciI">
-                                <rect key="frame" x="6" y="67" width="309" height="114"/>
+                                <rect key="frame" x="7" y="65" width="269" height="114"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Ni-T2-Aqa">
-                                <rect key="frame" x="6" y="183" width="204" height="153"/>
+                                <rect key="frame" x="7" y="181" width="306" height="230"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -462,6 +454,8 @@
     </scenes>
     <resources>
         <image name="images/cameraplus" width="16" height="16"/>
+        <image name="images/nav-plus" width="16" height="16"/>
+        <image name="images/nav-settings" width="16" height="16"/>
         <image name="images/picplus" width="16" height="16"/>
         <image name="images/unix" width="16" height="16"/>
     </resources>
