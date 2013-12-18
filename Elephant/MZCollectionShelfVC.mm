@@ -69,8 +69,8 @@ static BOOL loaded = NO;
     [self.view bringSubviewToFront:_findButton];
     
     MZAppDelegate * delegate = (MZAppDelegate *)[[UIApplication sharedApplication] delegate];
-    delegate.bookStore = [MZBookStoreFactory initBookStoreWithBookShelfRefreshDelegate:self
-                                                                                ofType:kBookStoreDefault];
+    //delegate.bookStore = [MZBookStoreFactory initBookStoreWithBookShelfRefreshDelegate:self
+    //                                                                            ofType:kBookStoreDefault];
     self.books = [delegate.bookStore getAllBooksSummary];
     [self.collectionView reloadData];
     
@@ -87,8 +87,8 @@ static BOOL loaded = NO;
         //[MBProgressHUD showHUDAddedTo:self.view animated:YES];
         
         MZAppDelegate * delegate = (MZAppDelegate *)[[UIApplication sharedApplication] delegate];
-        delegate.bookStore = [MZBookStoreFactory initBookStoreWithBookShelfRefreshDelegate:self
-                                                                                    ofType:kBookStoreDefault];
+        //delegate.bookStore = [MZBookStoreFactory initBookStoreWithBookShelfRefreshDelegate:self
+        //                                                                            ofType:kBookStoreDefault];
         self.books = [delegate.bookStore getAllBooksSummary];
         [self.collectionView reloadData];
         
@@ -257,15 +257,17 @@ static BOOL loaded = NO;
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 
     // create
-    id<MZBookStore> bookStore = [MZBookStoreFactory initBookStoreWithBookShelfRefreshDelegate:self
-                                 ofType:kBookStoreDefault];
     
-    if( [bookStore bookExist:resultString]) {
+    MZAppDelegate * delegate = (MZAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    
+    
+    if( [delegate.bookStore bookExist:resultString]) {
         // alert exist
         NSLog(@"book exists");
         
     } else {
-        if([bookStore fetchBook:resultString] ) {
+        if([delegate.bookStore fetchBook:resultString] ) {
             // fetch success
             NSLog(@"fetch success");
             
@@ -275,6 +277,10 @@ static BOOL loaded = NO;
         }
         
     }
+    
+    self.books = [delegate.bookStore getAllBooksSummary];
+    [self.collectionView reloadData];
+    
     [MBProgressHUD hideHUDForView:self.view animated:YES];
 
     // 1. query local database to check if the book dos alreay exist.
@@ -299,18 +305,18 @@ static BOOL loaded = NO;
 
 // BookShelfRefreshDelegate
 // {
--(void) refreshViewforNewBook: (MZBookModel *) nb {
-    NSLog(@"begin refresh view");
-    // books init
-    id<MZBookStore> bookStore = [MZBookStoreFactory initBookStoreWithBookShelfRefreshDelegate:self
-                                                                                       ofType:kBookStoreDefault];
-    self.books = [bookStore getAllBooksSummary];
-
-    [self.collectionView reloadData];
- 
-   // [MBProgressHUD hideHUDForView:self.view animated:YES];
-
-}
+//-(void) refreshViewforNewBook: (MZBookModel *) nb {
+//    NSLog(@"begin refresh view");
+//    // books init
+//    id<MZBookStore> bookStore = [MZBookStoreFactory initBookStoreWithBookShelfRefreshDelegate:self
+//                                                                                       ofType:kBookStoreDefault];
+//    self.books = [bookStore getAllBooksSummary];
+//
+//    [self.collectionView reloadData];
+// 
+//   // [MBProgressHUD hideHUDForView:self.view animated:YES];
+//
+//}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

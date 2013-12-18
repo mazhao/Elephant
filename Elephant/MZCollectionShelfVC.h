@@ -29,7 +29,7 @@
 
 #import <SDWebImage/UIImageView+WebCache.h>
 
-@interface MZCollectionShelfVC : UICollectionViewController<UICollectionViewDataSource, UICollectionViewDelegate, ZXingDelegate, BookShelfRefreshDelegate, PopoverViewDelegate>
+@interface MZCollectionShelfVC : UICollectionViewController<UICollectionViewDataSource, UICollectionViewDelegate, ZXingDelegate, PopoverViewDelegate>
 
 @property (strong, nonatomic) NSArray * books;
 @property (strong, nonatomic) IBOutlet UIButton * findButton;

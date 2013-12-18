@@ -43,6 +43,7 @@
  *  delegate to refresh book shelf
  */
 
+/**
 @protocol BookShelfRefreshDelegate <NSObject>
 
 // no need for the following method, because View Controller is always the delegate who alreay have the collection view.
@@ -51,6 +52,7 @@
 -(void) refreshViewforNewBook: (MZBookModel *) nb;
 
 @end
+*/
 
 // ------------------------------------------------------------------------------------------ //
 /**
@@ -60,12 +62,23 @@
 
 @required // {
 
-@property (nonatomic, weak) id<BookShelfRefreshDelegate>  delegate;
+
+// static NSString* kModelName = @"MZBookModel";
+// static NSString* kModelExtension = @"momd";
+// static NSString* kModelSqliteName = @"MZBookModel.sqlite";
+
+
+- (NSString*)modelName;
+- (NSString*)modelExtension;
+- (NSString*)modelSqliteName;
+
+
+// @property (nonatomic, weak) id<BookShelfRefreshDelegate>  delegate;
 
 // == single book methods ==
 
 // to check if book alread saved
--(BOOL) bookExist:(NSString *) isbn;
+- (BOOL) bookExist:(NSString *) isbn;
 
 // add book to database.
 // 1. fetch book from book.douban.com
@@ -83,6 +96,7 @@
 - (BOOL) deleteExpert:(NSManagedObjectID *) objectID forBook:(NSString*) isbn13 ;
 - (BOOL) deleteAllExpert:(NSString*) isbn ;
 
+- (NSManagedObjectModel *)managedObjectModel;
 
     // }
 
@@ -108,7 +122,12 @@ typedef enum {
  */
 @interface MZBookStoreFactory : NSObject
 
-+( id<MZBookStore> ) initBookStoreWithBookShelfRefreshDelegate:(id<BookShelfRefreshDelegate>) delegate
-                                                        ofType: (BookStoreType) t;
+//+( id<MZBookStore> ) initBookStoreWithBookShelfRefreshDelegate:(id<BookShelfRefreshDelegate>) delegate
+//                                                        ofType: (BookStoreType) t;
+
+
++( id<MZBookStore> ) initBookStoreOfType: (BookStoreType) t;
+
+
 
 @end

@@ -6,7 +6,7 @@
 //  Copyright (c) 2013年 mz. All rights reserved.
 //
 
-#import "MZBookStoreDefault.h"l99o
+#import "MZBookStoreDefault.h"
 
 
 /**
@@ -22,13 +22,30 @@ static NSString* kModelName = @"MZBookModel";
 static NSString* kModelExtension = @"momd";
 static NSString* kModelSqliteName = @"MZBookModel.sqlite";
 
+
+// each time to migrate
+//static NSString* sourceVersion = @"";
+//static NSString* targetVersion = @""; // 1_0_0
+
 @implementation MZBookStoreDefault
+
+
+- (NSString*)modelName {
+    return kModelName;
+}
+- (NSString*)modelExtension {
+    return kModelExtension;
+}
+- (NSString*)modelSqliteName {
+    return kModelSqliteName;
+}
+
 
 
 // --------------------------------------------------------------- //
 // delegate call back
 // !!! MUST manually synthesize properties defined in protocol !!!
-@synthesize delegate =_delegate ;
+//@synthesize delegate =_delegate ;
 
 // --------------------------------------------------------------- //
 // singleton init
@@ -39,12 +56,32 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
  *
  *  @return single instance of MZBookStoreDefault
  */
+/*
 +(MZBookStoreDefault *) instance: (id<BookShelfRefreshDelegate> ) delegate {
     if(!instance) {
         instance = [[MZBookStoreDefault alloc] init];
         [instance setDelegate:delegate];
         
         
+        DOUService * doubanService = [DOUService sharedInstance];
+        doubanService.clientId = kClientId;
+        doubanService.clientSecret = kClientSecret;
+        if ([doubanService isValid]) {
+            doubanService.apiBaseUrlString =  kHttpsApiBaseUrl;
+        }
+        else {
+            doubanService.apiBaseUrlString = kHttpApiBaseUrl;
+        }
+        
+    }
+    
+    return instance;
+}
+*/
++(MZBookStoreDefault *) instance {
+    if(!instance) {
+        instance = [[MZBookStoreDefault alloc] init];
+
         DOUService * doubanService = [DOUService sharedInstance];
         doubanService.clientId = kClientId;
         doubanService.clientSecret = kClientSecret;
@@ -188,7 +225,7 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
     [service get:query callback:^(DOUHttpRequest * req) {
         NSError *error = [req doubanError];
         if(error) {
-            NSLog(@"error code: %d", [error code]);
+            NSLog(@"error code: %ld", (long)[error code]);
             NSLog(@"error description: %@", [error description]);
         } else {
             NSString* json = [req responseString];
@@ -203,7 +240,8 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
                 if ([self.managedObjectContext save:&savingError ] ) {
                     NSLog(@"successfully saved the context");
                     retVal = YES;
-                    [self.delegate refreshViewforNewBook:bookModel];
+                    // [self.delegate refreshViewforNewBook:bookModel];
+                    
                 } else {
                     NSLog(@"failed to create the new person");
                 }
@@ -309,7 +347,7 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
     
     NSError * error = nil;
     if ( ![self.managedObjectContext save: &error] ){
-        NSLog(@"can not delete book with error code:%d error message:%@", error.code, error.debugDescription);
+        NSLog(@"can not delete book with error code:%ld error message:%@", (long)error.code, error.debugDescription);
     }
 
     
@@ -431,10 +469,27 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
+//    NSString * targetURL = [kModelName stringByAppendingString:targetVersion];
+    
     NSURL *modelURL = [[NSBundle mainBundle] URLForResource: kModelName withExtension:kModelExtension];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
+
+// !!!for migration only !!!
+//- (NSManagedObjectModel *)managedObjectModelSource
+//{
+//    if (_managedObjectModel != nil) {
+//        return _managedObjectModel;
+//    }
+//    
+//    NSString * sourceURL = [kModelName stringByAppendingString:sourceVersion];
+//    
+//    NSURL *modelURL = [[NSBundle mainBundle] URLForResource: sourceURL withExtension:kModelExtension];
+//    _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+//    return _managedObjectModel;
+//}
+
 
 // Returns the persistent store coordinator for the application.
 // If the coordinator doesn't already exist, it is created and the application's store added to it.
@@ -487,5 +542,30 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
+
+//- (BOOL)migrateStore:(NSURL *)storeURL toVersionTwoStore:(NSURL *)dstStoreURL error:(NSError **)outError {
+//    
+//    NSUrl * storeURL = 
+//    
+//    // Try to get an inferred mapping model.
+//    NSMappingModel *mappingModel =
+//    [NSMappingModel inferredMappingModelForSourceModel: [self managedObjectModelSource]
+//                                      destinationModel:[self managedObjectModel] error:outError];
+//    
+//    // If Core Data cannot create an inferred mapping model, return NO.
+//    if (!mappingModel) {
+//        return NO;
+//    }
+//    
+//    // Create a migration manager to perform the migration.
+//    NSMigrationManager *manager = [[NSMigrationManager alloc]
+//                                   initWithSourceModel:[self managedObjectModelSource] destinationModel:[self managedObjectModel]];
+//    
+//    BOOL success = [manager migrateStoreFromURL:storeURL type:NSSQLiteStoreType
+//                                        options:nil withMappingModel:mappingModel toDestinationURL:dstStoreURL
+//                                destinationType:NSSQLiteStoreType destinationOptions:nil error:outError];
+//    
+//    return success;
+//}
 
 @end

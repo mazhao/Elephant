@@ -19,8 +19,14 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+/** 
+ * 全局使用的MZBookStore类。
+ */
 @property (strong, nonatomic) id<MZBookStore>  bookStore;
 
+/**
+ * 全局使用的SDImageCache类。
+ */
 @property (strong, nonatomic) SDImageCache *imageCache ;
 
 @end

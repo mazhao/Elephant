@@ -35,7 +35,11 @@
  *  singleton instance - class method declaration
  */
 
-+ (MZBookStoreDefault *)instance:(id <BookShelfRefreshDelegate>)delegate;
+// + (MZBookStoreDefault *)instance:(id <BookShelfRefreshDelegate>)delegate;
+
+
++ (MZBookStoreDefault *)instance;
+
 
 @property (nonatomic, retain) NSManagedObjectContext* managedObjectContext;
 @property (nonatomic, retain) NSManagedObjectModel* managedObjectModel;

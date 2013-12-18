@@ -374,7 +374,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="摘要" id="MS6-TL-af7">
-                        <barButtonItem key="rightBarButtonItem" title="+" id="vLv-FN-RJg">
+                        <barButtonItem key="rightBarButtonItem" image="images/nav-plus" id="vLv-FN-RJg">
                             <connections>
                                 <segue destination="GbO-uy-vXh" kind="push" identifier="createExcerpt" id="NBQ-2N-pAW"/>
                             </connections>

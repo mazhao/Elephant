@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13A603" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="MZBookExcerptModel" representedClassName="MZBookExcerptModel" syncable="YES">
         <attribute name="datetime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
@@ -50,9 +50,9 @@
         <relationship name="translatedBooks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MZBookModel" inverseName="translators" inverseEntity="MZBookModel" syncable="YES"/>
     </entity>
     <elements>
-        <element name="MZBookExcerptModel" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="MZBookModel" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="MZBookTagModel" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="MZBookWriterModel" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="MZBookExcerptModel" positionX="-171" positionY="432" width="128" height="103"/>
+        <element name="MZBookModel" positionX="-389" positionY="171" width="128" height="495"/>
+        <element name="MZBookTagModel" positionX="-180" positionY="642" width="128" height="105"/>
+        <element name="MZBookWriterModel" positionX="-675" positionY="576" width="128" height="90"/>
     </elements>
 </model>

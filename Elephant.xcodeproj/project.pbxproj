@@ -55,6 +55,11 @@
 		F7BCFC82185C0B610011D9FD /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7BCFC81185C0B610011D9FD /* AssetsLibrary.framework */; };
 		F7BE5B9C1860AC0F00EF3D0F /* MZCollectionShelfHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = F7BE5B9B1860AC0F00EF3D0F /* MZCollectionShelfHeader.m */; };
 		F7CD1BAE18458FB300BA22A0 /* MZCollectionShelfCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7CD1BAD18458FB300BA22A0 /* MZCollectionShelfCell.m */; };
+		F7E540FF1861CB46003F5939 /* MHWCoreDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E540F81861CB46003F5939 /* MHWCoreDataController.m */; };
+		F7E541001861CB46003F5939 /* MHWMigrationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E540FA1861CB46003F5939 /* MHWMigrationManager.m */; };
+		F7E541011861CB46003F5939 /* NSManagedObjectModel+MHWAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E540FC1861CB46003F5939 /* NSManagedObjectModel+MHWAdditions.m */; };
+		F7E541021861CB46003F5939 /* NSMigrationManager+Lookup.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E540FE1861CB46003F5939 /* NSMigrationManager+Lookup.m */; };
+		F7E541051861CB75003F5939 /* NSFileManager+MHWAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E541041861CB75003F5939 /* NSFileManager+MHWAdditions.m */; };
 		F7E5B185184C2F35009E3C2F /* MZBookModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F7E5B183184C2F35009E3C2F /* MZBookModel.xcdatamodeld */; };
 		F7E5B195184C5C08009E3C2F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E5B194184C5C08009E3C2F /* CoreData.framework */; };
 		F7E5B1E7184C815B009E3C2F /* libDoubanApiEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E5B1E6184C815B009E3C2F /* libDoubanApiEngine.framework */; };
@@ -184,6 +189,16 @@
 		F7CD1BA918458F4D00BA22A0 /* MZCollectionShelfVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZCollectionShelfVC.h; sourceTree = "<group>"; };
 		F7CD1BAC18458FB300BA22A0 /* MZCollectionShelfCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZCollectionShelfCell.h; sourceTree = "<group>"; };
 		F7CD1BAD18458FB300BA22A0 /* MZCollectionShelfCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZCollectionShelfCell.m; sourceTree = "<group>"; };
+		F7E540F71861CB46003F5939 /* MHWCoreDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHWCoreDataController.h; sourceTree = "<group>"; };
+		F7E540F81861CB46003F5939 /* MHWCoreDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHWCoreDataController.m; sourceTree = "<group>"; };
+		F7E540F91861CB46003F5939 /* MHWMigrationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHWMigrationManager.h; sourceTree = "<group>"; };
+		F7E540FA1861CB46003F5939 /* MHWMigrationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHWMigrationManager.m; sourceTree = "<group>"; };
+		F7E540FB1861CB46003F5939 /* NSManagedObjectModel+MHWAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectModel+MHWAdditions.h"; sourceTree = "<group>"; };
+		F7E540FC1861CB46003F5939 /* NSManagedObjectModel+MHWAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectModel+MHWAdditions.m"; sourceTree = "<group>"; };
+		F7E540FD1861CB46003F5939 /* NSMigrationManager+Lookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMigrationManager+Lookup.h"; sourceTree = "<group>"; };
+		F7E540FE1861CB46003F5939 /* NSMigrationManager+Lookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMigrationManager+Lookup.m"; sourceTree = "<group>"; };
+		F7E541031861CB75003F5939 /* NSFileManager+MHWAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+MHWAdditions.h"; sourceTree = "<group>"; };
+		F7E541041861CB75003F5939 /* NSFileManager+MHWAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+MHWAdditions.m"; sourceTree = "<group>"; };
 		F7E5B184184C2F35009E3C2F /* MZBookModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MZBookModel.xcdatamodel; sourceTree = "<group>"; };
 		F7E5B194184C5C08009E3C2F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		F7E5B1E6184C815B009E3C2F /* libDoubanApiEngine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libDoubanApiEngine.framework; path = "../douban-objc-client/libDoubanApiEngine.framework"; sourceTree = "<group>"; };
@@ -378,14 +393,13 @@
 		F711C0911844874800D85598 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				F7F600111861F5DE00551DB7 /* Search */,
 				F7A20B051850E6AB00ACD69B /* Setting */,
 				F7FDB330184ED05B00986347 /* Excerpt */,
 				F7EE3E3C184DB90C007A55FB /* Detail */,
 				F7EE3E3B184DB8F1007A55FB /* Collection */,
 				F711C071184480F300D85598 /* MZViewController.h */,
 				F711C072184480F300D85598 /* MZViewController.m */,
-				F7239D8F1845E30D00AF44CB /* MZSearchVC.h */,
-				F7239D901845E30D00AF44CB /* MZSearchVC.m */,
 			);
 			name = VC;
 			sourceTree = "<group>";
@@ -424,6 +438,7 @@
 				F7E5B21E184CE988009E3C2F /* MBProgressHUD */,
 				F7E5B1F9184C8FBE009E3C2F /* JSONKit */,
 				F753CE4F1847304B003169B3 /* BookStore */,
+				F7E540F61861CB1F003F5939 /* CoreDataMigration */,
 			);
 			name = Framework;
 			sourceTree = "<group>";
@@ -461,6 +476,23 @@
 				F75812D51855E2DE0061F8B8 /* MZBookListVC.m */,
 			);
 			name = Setting;
+			sourceTree = "<group>";
+		};
+		F7E540F61861CB1F003F5939 /* CoreDataMigration */ = {
+			isa = PBXGroup;
+			children = (
+				F7E541031861CB75003F5939 /* NSFileManager+MHWAdditions.h */,
+				F7E541041861CB75003F5939 /* NSFileManager+MHWAdditions.m */,
+				F7E540F71861CB46003F5939 /* MHWCoreDataController.h */,
+				F7E540F81861CB46003F5939 /* MHWCoreDataController.m */,
+				F7E540F91861CB46003F5939 /* MHWMigrationManager.h */,
+				F7E540FA1861CB46003F5939 /* MHWMigrationManager.m */,
+				F7E540FB1861CB46003F5939 /* NSManagedObjectModel+MHWAdditions.h */,
+				F7E540FC1861CB46003F5939 /* NSManagedObjectModel+MHWAdditions.m */,
+				F7E540FD1861CB46003F5939 /* NSMigrationManager+Lookup.h */,
+				F7E540FE1861CB46003F5939 /* NSMigrationManager+Lookup.m */,
+			);
+			name = CoreDataMigration;
 			sourceTree = "<group>";
 		};
 		F7E5B187184C34AF009E3C2F /* Model */ = {
@@ -522,6 +554,15 @@
 				F7EE3E47184DB9CF007A55FB /* MZDetailVC.m */,
 			);
 			name = Detail;
+			sourceTree = "<group>";
+		};
+		F7F600111861F5DE00551DB7 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				F7239D8F1845E30D00AF44CB /* MZSearchVC.h */,
+				F7239D901845E30D00AF44CB /* MZSearchVC.m */,
+			);
+			name = Search;
 			sourceTree = "<group>";
 		};
 		F7FDB330184ED05B00986347 /* Excerpt */ = {
@@ -680,6 +721,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7EE3E45184DB9B4007A55FB /* MZDetailFooterCell.m in Sources */,
+				F7E541021861CB46003F5939 /* NSMigrationManager+Lookup.m in Sources */,
 				F753CE52184743A9003169B3 /* MZBookStoreFactory.m in Sources */,
 				F7BE5B9C1860AC0F00EF3D0F /* MZCollectionShelfHeader.m in Sources */,
 				F7EE3E48184DB9CF007A55FB /* MZDetailVC.m in Sources */,
@@ -687,6 +729,8 @@
 				F7EE3E3F184DB996007A55FB /* MZDetailHeaderCell.m in Sources */,
 				F7239DB21846132B00AF44CB /* MZCollectionShelfVC.mm in Sources */,
 				F75812D61855E2DE0061F8B8 /* MZBookListVC.m in Sources */,
+				F7E541011861CB46003F5939 /* NSManagedObjectModel+MHWAdditions.m in Sources */,
+				F7E540FF1861CB46003F5939 /* MHWCoreDataController.m in Sources */,
 				F7CD1BAE18458FB300BA22A0 /* MZCollectionShelfCell.m in Sources */,
 				F7E5B1F8184C8FBA009E3C2F /* JSONKit.m in Sources */,
 				F711C073184480F300D85598 /* MZViewController.m in Sources */,
@@ -697,6 +741,8 @@
 				F7FDB337184F6C5C00986347 /* MZBookExcerptModel.m in Sources */,
 				F7A20B091850E6C200ACD69B /* MZSettingViewController.m in Sources */,
 				F7239DB0184612FC00AF44CB /* main.m in Sources */,
+				F7E541051861CB75003F5939 /* NSFileManager+MHWAdditions.m in Sources */,
+				F7E541001861CB46003F5939 /* MHWMigrationManager.m in Sources */,
 				F7E5B214184CB07B009E3C2F /* MZBookTagModel.m in Sources */,
 				F7E5B217184CB07C009E3C2F /* MZBookModel.m in Sources */,
 				F75812CF1855C7BA0061F8B8 /* PopoverView.m in Sources */,

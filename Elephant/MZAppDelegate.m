@@ -10,6 +10,10 @@
 
 #import "MobClick.h"
 
+#import "MZBookStoreAPI.h"
+
+#import "MHWCoreDataController.h"
+
 @implementation MZAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -23,8 +27,21 @@
     [MobClick setLogSendInterval:60];
 
     
+    // 初始化必要的类
     self.imageCache = [SDImageCache.alloc initWithNamespace:@"mzbookstoreimg"];
+    self.bookStore = [MZBookStoreFactory initBookStoreOfType:kBookStoreCoreData];
+    
+    // 检查CoreData数据库是否需要升级
+    
+    MHWCoreDataController * coreDataCtrl = [MHWCoreDataController sharedInstance];
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource: [self.bookStore modelName ] withExtension:[self.bookStore modelExtension ]];
 
+    if ( [coreDataCtrl isMigrationNeededOfStoreURL:modelURL ofType: NSSQLiteStoreType forNewModel: [self.bookStore managedObjectModel] ]) {
+        NSLog(@"need migration");
+    } else {
+        NSLog(@"no need migration");
+    }
+    
     
     // Override point for customization after application launch.
     return YES;
