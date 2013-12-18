@@ -7,6 +7,7 @@
         <relationship name="book" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MZBookModel" inverseName="excerpts" inverseEntity="MZBookModel" syncable="YES"/>
     </entity>
     <entity name="MZBookModel" representedClassName="MZBookModel" syncable="YES">
+        <attribute name="addDateTime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="alt" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="altTitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="authorIntro" optional="YES" attributeType="String" syncable="YES"/>

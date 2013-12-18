@@ -2,7 +2,7 @@
 //  MZBookModel.m
 //  Elephant
 //
-//  Created by mazhao on 13-12-2.
+//  Created by mazhao on 13-12-19.
 //  Copyright (c) 2013年 mz. All rights reserved.
 //
 
@@ -14,35 +14,36 @@
 
 @implementation MZBookModel
 
+@dynamic alt;
+@dynamic altTitle;
+@dynamic authorIntro;
+@dynamic binding;
+@dynamic catalog;
+@dynamic exerptCount;
+@dynamic id;
+@dynamic imagePath;
+@dynamic imagePathLarge;
+@dynamic imagePathMedium;
+@dynamic imagePathSmall;
 @dynamic isbn10;
 @dynamic isbn13;
-@dynamic imagePath;
-@dynamic exerptCount;
-@dynamic title;
 @dynamic originTitle;
-@dynamic altTitle;
-@dynamic subTitle;
-@dynamic imagePathSmall;
-@dynamic imagePathMedium;
-@dynamic imagePathLarge;
-@dynamic publisher;
+@dynamic pages;
+@dynamic price;
 @dynamic pubdate;
-@dynamic ratingMin;
-@dynamic ratingMax;
+@dynamic publisher;
 @dynamic ratingAvg;
 @dynamic ratingCount;
-@dynamic binding;
-@dynamic price;
-@dynamic pages;
-@dynamic authorIntro;
+@dynamic ratingMax;
+@dynamic ratingMin;
+@dynamic subTitle;
 @dynamic summary;
+@dynamic title;
 @dynamic url;
-@dynamic alt;
-@dynamic id;
-@dynamic catalog;
+@dynamic addDateTime;
 @dynamic authors;
-@dynamic translators;
-@dynamic tags;
 @dynamic excerpts;
+@dynamic tags;
+@dynamic translators;
 
 @end

@@ -194,6 +194,14 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
         [tagSet addObject:tag];
     }
     [bookModel addTags:tagSet];
+    
+    
+    // add current date time
+   NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+   [formatter setDateFormat:@"dd-MM-yyyy HH:mm"];
+    
+    NSString * dateString = [formatter stringFromDate:[NSDate date]];
+    bookModel.addDateTime = dateString;
 }
 
 /**
@@ -323,6 +331,9 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
     NSEntityDescription *bookModel = [NSEntityDescription entityForName:@"MZBookModel"
                                                  inManagedObjectContext:self.managedObjectContext];
     [request setEntity:bookModel];
+    
+    NSSortDescriptor *sortByName = [[NSSortDescriptor alloc] initWithKey:@"addDateTime" ascending:NO];
+    [request setSortDescriptors: [NSArray arrayWithObject:sortByName]];
     
     NSError * error = [[NSError alloc] init];
     NSArray * books = [self.managedObjectContext executeFetchRequest:request error:&error];
@@ -503,7 +514,7 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
     
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:@{NSMigratePersistentStoresAutomaticallyOption:@YES, NSInferMappingModelAutomaticallyOption:@YES} error:&error]) {
         /*
          Replace this implementation with code to handle the error appropriately.
          

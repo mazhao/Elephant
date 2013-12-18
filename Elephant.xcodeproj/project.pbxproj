@@ -71,7 +71,6 @@
 		F7E5B1F3184C81D1009E3C2F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E5B1F2184C81D1009E3C2F /* MobileCoreServices.framework */; };
 		F7E5B1F8184C8FBA009E3C2F /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E5B1F7184C8FBA009E3C2F /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F7E5B214184CB07B009E3C2F /* MZBookTagModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E5B213184CB07B009E3C2F /* MZBookTagModel.m */; };
-		F7E5B217184CB07C009E3C2F /* MZBookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E5B216184CB07C009E3C2F /* MZBookModel.m */; };
 		F7E5B21D184CB07C009E3C2F /* MZBookWriterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E5B21C184CB07C009E3C2F /* MZBookWriterModel.m */; };
 		F7E5B221184CE9A8009E3C2F /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E5B220184CE9A8009E3C2F /* MBProgressHUD.m */; };
 		F7E9F54018449AB9000568AD /* images in Resources */ = {isa = PBXBuildFile; fileRef = F7E9F53F18449AB9000568AD /* images */; };
@@ -81,6 +80,7 @@
 		F7EE3E48184DB9CF007A55FB /* MZDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EE3E47184DB9CF007A55FB /* MZDetailVC.m */; };
 		F7EE3E57184E20DD007A55FB /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EE3E56184E20DD007A55FB /* ImageIO.framework */; };
 		F7EE3E59184E228C007A55FB /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EE3E58184E228C007A55FB /* SDWebImage.framework */; };
+		F7F600161861FE6200551DB7 /* MZBookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F600151861FE6200551DB7 /* MZBookModel.m */; };
 		F7FDB334184ED07900986347 /* MZExcerptVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FDB333184ED07900986347 /* MZExcerptVC.m */; };
 		F7FDB337184F6C5C00986347 /* MZBookExcerptModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FDB336184F6C5C00986347 /* MZBookExcerptModel.m */; };
 /* End PBXBuildFile section */
@@ -212,8 +212,6 @@
 		F7E5B1F7184C8FBA009E3C2F /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = ../../JSONKit/JSONKit.m; sourceTree = "<group>"; };
 		F7E5B212184CB07B009E3C2F /* MZBookTagModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZBookTagModel.h; sourceTree = "<group>"; };
 		F7E5B213184CB07B009E3C2F /* MZBookTagModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZBookTagModel.m; sourceTree = "<group>"; };
-		F7E5B215184CB07C009E3C2F /* MZBookModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZBookModel.h; sourceTree = "<group>"; };
-		F7E5B216184CB07C009E3C2F /* MZBookModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZBookModel.m; sourceTree = "<group>"; };
 		F7E5B21B184CB07C009E3C2F /* MZBookWriterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZBookWriterModel.h; sourceTree = "<group>"; };
 		F7E5B21C184CB07C009E3C2F /* MZBookWriterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZBookWriterModel.m; sourceTree = "<group>"; };
 		F7E5B21F184CE9A8009E3C2F /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = "../../MBProgressHUD-master/MBProgressHUD.h"; sourceTree = "<group>"; };
@@ -229,6 +227,9 @@
 		F7EE3E47184DB9CF007A55FB /* MZDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZDetailVC.m; sourceTree = "<group>"; };
 		F7EE3E56184E20DD007A55FB /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		F7EE3E58184E228C007A55FB /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
+		F7F600141861FE6200551DB7 /* MZBookModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZBookModel.h; sourceTree = "<group>"; };
+		F7F600151861FE6200551DB7 /* MZBookModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZBookModel.m; sourceTree = "<group>"; };
+		F7F60017186202E500551DB7 /* MZBookModel_1_0_0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = MZBookModel_1_0_0.xcdatamodel; sourceTree = "<group>"; };
 		F7FDB332184ED07900986347 /* MZExcerptVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZExcerptVC.h; sourceTree = "<group>"; };
 		F7FDB333184ED07900986347 /* MZExcerptVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZExcerptVC.m; sourceTree = "<group>"; };
 		F7FDB335184F6C5C00986347 /* MZBookExcerptModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZBookExcerptModel.h; sourceTree = "<group>"; };
@@ -500,12 +501,12 @@
 			children = (
 				F7E5B212184CB07B009E3C2F /* MZBookTagModel.h */,
 				F7E5B213184CB07B009E3C2F /* MZBookTagModel.m */,
-				F7E5B215184CB07C009E3C2F /* MZBookModel.h */,
-				F7E5B216184CB07C009E3C2F /* MZBookModel.m */,
 				F7E5B21B184CB07C009E3C2F /* MZBookWriterModel.h */,
 				F7E5B21C184CB07C009E3C2F /* MZBookWriterModel.m */,
 				F7FDB335184F6C5C00986347 /* MZBookExcerptModel.h */,
 				F7FDB336184F6C5C00986347 /* MZBookExcerptModel.m */,
+				F7F600141861FE6200551DB7 /* MZBookModel.h */,
+				F7F600151861FE6200551DB7 /* MZBookModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -735,6 +736,7 @@
 				F7E5B1F8184C8FBA009E3C2F /* JSONKit.m in Sources */,
 				F711C073184480F300D85598 /* MZViewController.m in Sources */,
 				F7EE3E42184DB9A6007A55FB /* MZDetailCell.m in Sources */,
+				F7F600161861FE6200551DB7 /* MZBookModel.m in Sources */,
 				F7E5B185184C2F35009E3C2F /* MZBookModel.xcdatamodeld in Sources */,
 				F7E5B221184CE9A8009E3C2F /* MBProgressHUD.m in Sources */,
 				F7239D911845E30D00AF44CB /* MZSearchVC.m in Sources */,
@@ -744,7 +746,6 @@
 				F7E541051861CB75003F5939 /* NSFileManager+MHWAdditions.m in Sources */,
 				F7E541001861CB46003F5939 /* MHWMigrationManager.m in Sources */,
 				F7E5B214184CB07B009E3C2F /* MZBookTagModel.m in Sources */,
-				F7E5B217184CB07C009E3C2F /* MZBookModel.m in Sources */,
 				F75812CF1855C7BA0061F8B8 /* PopoverView.m in Sources */,
 				F711C06A184480F300D85598 /* MZAppDelegate.m in Sources */,
 				F7E5B21D184CB07C009E3C2F /* MZBookWriterModel.m in Sources */,
@@ -1027,9 +1028,10 @@
 		F7E5B183184C2F35009E3C2F /* MZBookModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				F7F60017186202E500551DB7 /* MZBookModel_1_0_0.xcdatamodel */,
 				F7E5B184184C2F35009E3C2F /* MZBookModel.xcdatamodel */,
 			);
-			currentVersion = F7E5B184184C2F35009E3C2F /* MZBookModel.xcdatamodel */;
+			currentVersion = F7F60017186202E500551DB7 /* MZBookModel_1_0_0.xcdatamodel */;
 			path = MZBookModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
