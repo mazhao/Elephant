@@ -405,13 +405,13 @@
                                 <rect key="frame" x="277" y="143" width="36" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KZw-bi-ciI">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="点这里添加书摘" translatesAutoresizingMaskIntoConstraints="NO" id="KZw-bi-ciI">
                                 <rect key="frame" x="7" y="65" width="269" height="114"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Ni-T2-Aqa">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="images/placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="3Ni-T2-Aqa">
                                 <rect key="frame" x="7" y="181" width="306" height="230"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -457,6 +457,7 @@
         <image name="images/nav-plus" width="16" height="16"/>
         <image name="images/nav-settings" width="16" height="16"/>
         <image name="images/picplus" width="16" height="16"/>
+        <image name="images/placeholder" width="16" height="16"/>
         <image name="images/unix" width="16" height="16"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

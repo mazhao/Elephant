@@ -48,8 +48,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)viewWillAppear:(BOOL)animated{
-    NSLog(@"mzdetail vc will appear");
+- (void)fetchBook {
     // books init
     MZAppDelegate * delegate = (MZAppDelegate *)[[UIApplication sharedApplication] delegate];
     
@@ -62,7 +61,12 @@
     NSSortDescriptor *datetimeSortDesc = [NSSortDescriptor sortDescriptorWithKey:@"datetime" ascending:NO];
     NSArray* sortArray = [NSArray arrayWithObject:datetimeSortDesc];
     self.bookExcerpts = [self.bookModel.excerpts sortedArrayUsingDescriptors:sortArray];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    NSLog(@"mzdetail vc will appear");
     
+    [self fetchBook];
     [self.tableView reloadData];
     
 }
@@ -262,33 +266,26 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        // [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        
-        //dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         
-            MZDetailCell* cell = (MZDetailCell*)[tableView cellForRowAtIndexPath:indexPath];
-            NSLog(@"excerpt id:%@, excerpt:%@", cell.objectID, cell.excerptLabel.text);
-            
-            MZAppDelegate * delegate = (MZAppDelegate *)[[UIApplication sharedApplication] delegate];
-            
-            [delegate.bookStore deleteExpert:cell.objectID forBook:self.isbn13];
-            
-            [tableView reloadData];
+        MZDetailCell* cell = (MZDetailCell*)[tableView cellForRowAtIndexPath:indexPath];
+        NSLog(@"excerpt id:%@, excerpt:%@", cell.objectID, cell.excerptLabel.text);
         
-           // dispatch_async(dispatch_get_main_queue(), ^{
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
-                
-           // });
-       // });
+        MZAppDelegate * delegate = (MZAppDelegate *)[[UIApplication sharedApplication] delegate];
         
+        [delegate.bookStore deleteExpert:cell.objectID forBook:self.isbn13];
         
-    }   
+        [self fetchBook]; // reload new data 
+        
+        [tableView reloadData];
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+    }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    }
 }
 
 #pragma mark button action
@@ -308,6 +305,7 @@ static int deleteType ; // 1 for book, 2 for all excerpts
     [alertView show];
 }
 
+#pragma mark - AlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if(buttonIndex == 1  ) {
    

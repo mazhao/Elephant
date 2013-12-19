@@ -41,6 +41,8 @@
 {
     [super viewDidLoad];
     
+    self.shouldSave = NO;
+    
     // text border
 //    [[self.excerptText layer] setBorderColor:[[UIColor lightGrayColor] CGColor]];
 //    [[self.excerptText layer] setBorderWidth:0.5  ];
@@ -109,16 +111,50 @@
     
 }
 
+
+-(void) viewWillDisappear:(BOOL)animated {
+    
+    NSLog(@"will dissappear");
+    
+    if(self.shouldSave  &&
+       ([self.excerptText.text length ] > 0 || self.targetImageView.image != nil)) {
+        
+        NSLog(@"find update to be saved");
+        
+        MZAppDelegate * delegate = (MZAppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        if(self.opMode == MZExcerptOperationModeAdd) {
+            NSData * imageData = UIImageJPEGRepresentation(self.targetImageView.image, 0.75f);
+            [delegate.bookStore saveExpert:self.excerptText.text withImageData:imageData  ofBoook:self.isbn13];
+            
+            
+        } else if(self.opMode == MZExcerptOperationModeEdit) {
+                NSData * imageData = UIImageJPEGRepresentation(self.targetImageView.image, 1.0f);
+                [delegate.bookStore updateExpert:self.excerptText.text withImageData: imageData withExcerptId:self.objectID ofBoook:self.isbn13];
+        }
+    }
+    
+    [super viewWillDisappear:animated];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - AlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+}
+
 #pragma mark - actions
 
 -(IBAction) saveExcerpt:(id) sender {
     NSLog(@"save clicked");
+    
+    
+    self.shouldSave = NO;
+    
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
@@ -155,11 +191,14 @@
     } else {
         
     }
+    
+    
 }
 
 
 - (void) addImage:(UITapGestureRecognizer *)gesture {
-    
+    self.shouldSave = NO;
+
     UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
     imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
     imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
@@ -170,6 +209,7 @@
 }
 
 - (void) takePhoto:(UITapGestureRecognizer *)gesture {
+    self.shouldSave = NO;
     NSLog(@"take photo tapped");
     
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
@@ -184,7 +224,6 @@
 
 - (void) targetImgTap:(UITapGestureRecognizer *)gesture {
     NSLog(@"target img tapped");
-    
     if( self.targetImageView.image != nil ){
     
         MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
@@ -193,7 +232,7 @@
         browser.displayNavArrows = NO; // Whether to display left and right nav arrows on toolbar (defaults to NO)
         browser.zoomPhotosToFill = YES; // Images that almost fill the screen will be initially zoomed to fill (defaults to YES)
         [browser setCurrentPhotoIndex:0]; // Example: allows second image to be presented first
-        browser.wantsFullScreenLayout = YES; // iOS 5 & 6 only: Decide if you want the photo browser full screen, i.e. whether the status bar is affected (defaults to YES)
+       // browser.wantsFullScreenLayout = YES; // iOS 5 & 6 only: Decide if you want the photo browser full screen, i.e. whether the status bar is affected (defaults to YES)
         
         // Present
         
@@ -207,7 +246,7 @@
     }
 }
 
-#pragma mark - MWPhotoBrowserDelegate
+#pragma mark - MWPhotoBrowserDelegate: Show Image When click
 
 - (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser {
     return 1;
@@ -222,13 +261,18 @@
 
 
 
-#pragma mark - UIImagePickerControllerDelegate
+#pragma mark - UIImagePickerControllerDelegate: Choose Image from Album
 
 // This method is called when an image has been chosen from the library or taken from the camera.
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
     [self.targetImageView setImage:image];
+    
+    if(image != nil) {
+        self.shouldSave = YES;
+    }
+    
     [self dismissViewControllerAnimated:YES completion:NULL];
     
 }
@@ -238,20 +282,35 @@
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
-#pragma mark - UITextViewDelegate
+#pragma mark - UITextViewDelegate: Show or Hide Image Choose Button
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
     NSLog(@"text view begin editing");
     self.addImageView.hidden = NO;
     self.takePhotoView.hidden = NO;
+    
+    if ( [self.excerptText.text isEqualToString:@"点这里添加书摘"] ) {
+        self.excerptText.text = @"";
+    }
+    
 }
+
 - (void)textViewDidEndEditing:(UITextView *)textView {
     NSLog(@"text view end editing");
     self.addImageView.hidden = YES;
     self.takePhotoView.hidden = YES;
 }
 
+- (void)textViewDidChange:(UITextView *)textView {
+    self.shouldSave = YES;
+}
 
-
+//#pragma mark - Save excerpt Before Hide
+//- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+//    
+//    NSLog(@"segue id:%@ by sender:%@", identifier, sender);
+//    
+//    return YES;
+//}
 
 @end

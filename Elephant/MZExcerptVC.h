@@ -17,7 +17,7 @@ typedef NS_ENUM(NSInteger, MZExcerptOperationMode) {
     MZExcerptOperationModeDelete
 };
 
-@interface MZExcerptVC : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, MWPhotoBrowserDelegate, UITextViewDelegate>
+@interface MZExcerptVC : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, MWPhotoBrowserDelegate, UITextViewDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, retain) NSString * isbn10;
 @property (nonatomic, retain) NSString * isbn13;
@@ -32,6 +32,8 @@ typedef NS_ENUM(NSInteger, MZExcerptOperationMode) {
 
 @property (nonatomic, retain) IBOutlet UIImageView * targetImageView;
 
+
+@property (atomic) BOOL shouldSave;
 
 -(IBAction) saveExcerpt:(id) sender;
 

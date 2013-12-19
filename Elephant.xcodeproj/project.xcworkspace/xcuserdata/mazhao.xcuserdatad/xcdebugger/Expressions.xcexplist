@@ -29,6 +29,14 @@
          contextName = "-[MZBookStoreDefault bookExist:]:MZBookStoreDefault.m">
       </ContextState>
       <ContextState
+         contextName = "-[MZExcerptVC saveExcerpt:]:MZExcerptVC.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.shouldSave">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[MZDetailVC tableView:cellForRowAtIndexPath:]:MZDetailVC.m">
          <PersistentStrings>
             <PersistentString
@@ -44,6 +52,14 @@
          <PersistentStrings>
             <PersistentString
                value = "self.books">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MZExcerptVC viewWillDisappear:]:MZExcerptVC.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.shouldSave">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
