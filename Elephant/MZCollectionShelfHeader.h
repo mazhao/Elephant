@@ -10,6 +10,6 @@
 
 @interface MZCollectionShelfHeader : UICollectionReusableView
 
-@property (weak, nonatomic) IBOutlet UISearchBar * searchBar;
+@property (weak, nonatomic) IBOutlet UILabel *label;
 
 @end

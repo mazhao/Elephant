@@ -31,7 +31,10 @@
 
 @interface MZCollectionShelfVC : UICollectionViewController<UICollectionViewDataSource, UICollectionViewDelegate, ZXingDelegate, PopoverViewDelegate>
 
-@property (strong, nonatomic) NSArray * books;
+//@property (strong, nonatomic) NSArray * books;
+@property (strong, nonatomic) NSMutableArray * booksOfThisMonth;
+@property (strong, nonatomic) NSMutableArray * booksOfArchieve;
+
 @property (strong, nonatomic) IBOutlet UIButton * findButton;
 @property (strong, nonatomic) IBOutlet UINavigationItem * scanBtn;
 

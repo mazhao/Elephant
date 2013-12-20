@@ -26,10 +26,7 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[MZBookStoreDefault bookExist:]:MZBookStoreDefault.m">
-      </ContextState>
-      <ContextState
-         contextName = "-[MZExcerptVC saveExcerpt:]:MZExcerptVC.m">
+         contextName = "-[MZExcerptVC viewWillDisappear:]:MZExcerptVC.m">
          <PersistentStrings>
             <PersistentString
                value = "self.shouldSave">
@@ -48,6 +45,26 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[MZCollectionShelfVC reloadCollectionViewData]:MZCollectionShelfVC.mm">
+         <PersistentStrings>
+            <PersistentString
+               value = "[self.booksOfArchieve count]">
+            </PersistentString>
+            <PersistentString
+               value = "self.booksOfArchieve">
+            </PersistentString>
+            <PersistentString
+               value = "[self.booksOfThisMonth count]">
+            </PersistentString>
+            <PersistentString
+               value = "self.booksOfThisMonth">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MZBookStoreDefault bookExist:]:MZBookStoreDefault.m">
+      </ContextState>
+      <ContextState
          contextName = "-[MZCollectionShelfVC viewDidLoad]:MZCollectionShelfVC.mm">
          <PersistentStrings>
             <PersistentString
@@ -56,7 +73,7 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[MZExcerptVC viewWillDisappear:]:MZExcerptVC.m">
+         contextName = "-[MZExcerptVC saveExcerpt:]:MZExcerptVC.m">
          <PersistentStrings>
             <PersistentString
                value = "self.shouldSave">

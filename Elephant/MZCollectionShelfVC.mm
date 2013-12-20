@@ -13,20 +13,26 @@
 
 #import "MZCollectionShelfHeader.h"
 
-// constants
-static int kFindIconWidth = 22;
-static int kFindIconHeight = 32;
 
-static int kIndexBookScan = 0;
-static int kIndexBookSearch = 1;
-
-static BOOL loaded = NO;
 
 @interface MZCollectionShelfVC ()
+
 
 @end
 
 @implementation MZCollectionShelfVC
+
+// 漂浮搜索按钮
+static int kFindIconWidth = 22;
+static int kFindIconHeight = 32;
+
+// 单元格选中的背景色
+static UIColor * kCellSelectedColor = [UIColor lightTextColor];
+
+// 防止多次加载
+static BOOL loaded = NO;
+
+#pragma mark - ViewController Method
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,64 +51,56 @@ static BOOL loaded = NO;
 	// Do any additional setup after loading the view.
     
     // 背景设置
-    NSString * path = [[NSBundle mainBundle] pathForResource:@"images/bg-sea" ofType:@"png"];
-    UIImage * image = [UIImage imageWithContentsOfFile:path];
-    self.collectionView.backgroundView = [[UIImageView alloc] initWithImage:image];
+//    NSString * path = [[NSBundle mainBundle] pathForResource:@"images/bg-sea" ofType:@"png"];
+//    UIImage * image = [UIImage imageWithContentsOfFile:path];
+//    self.collectionView.backgroundView = [[UIImageView alloc] initWithImage:image];
     
-//    
+    // collection veiw
     UICollectionViewFlowLayout* flowLayout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
     flowLayout.sectionInset = UIEdgeInsetsMake(10, 0, 10, 0);
+    
+    self.collectionView.delegate = self;
     
     
     // floating button 设计
     [_findButton setFrame:CGRectMake( self.view.frame.size.width - 2*kFindIconWidth,
-                                        self.view.frame.size.height - kFindIconHeight,
-                                        kFindIconWidth, kFindIconHeight)];
-
+                                     self.view.frame.size.height - kFindIconHeight,
+                                     kFindIconWidth, kFindIconHeight)];
+    
     
     [_findButton setBackgroundImage:
-                [UIImage imageWithContentsOfFile:
-         [[NSBundle mainBundle] pathForResource:@"images/bulb" ofType:@"png"]]
-                             forState:UIControlStateNormal];
+     [UIImage imageWithContentsOfFile:
+      [[NSBundle mainBundle] pathForResource:@"images/bulb" ofType:@"png"]]
+                           forState:UIControlStateNormal];
     
     [self.view addSubview:_findButton];
     [self.view bringSubviewToFront:_findButton];
     
-    MZAppDelegate * delegate = (MZAppDelegate *)[[UIApplication sharedApplication] delegate];
-    //delegate.bookStore = [MZBookStoreFactory initBookStoreWithBookShelfRefreshDelegate:self
-    //                                                                            ofType:kBookStoreDefault];
-    self.books = [delegate.bookStore getAllBooksSummary];
-    [self.collectionView reloadData];
+//    self.booksOfThisMonth = [[NSMutableArray alloc] init];
+//    self.booksOfArchieve = [[NSMutableArray alloc] init];
+    
+    [self reloadCollectionViewData];
+    
+    
+       
     
     loaded = YES;
     
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    
-    
+    NSLog(@"view did appear");
     if (loaded) {
         loaded = NO;
     } else {
-        //[MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        
-        MZAppDelegate * delegate = (MZAppDelegate *)[[UIApplication sharedApplication] delegate];
-        //delegate.bookStore = [MZBookStoreFactory initBookStoreWithBookShelfRefreshDelegate:self
-        //                                                                            ofType:kBookStoreDefault];
-        self.books = [delegate.bookStore getAllBooksSummary];
-        [self.collectionView reloadData];
-        
-        //[MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [self reloadCollectionViewData];
     }
+
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    
-//    MZAppDelegate * delegate = (MZAppDelegate *)[[UIApplication sharedApplication] delegate];
-//    delegate.bookStore = [MZBookStoreFactory initBookStoreWithBookShelfRefreshDelegate:self
-//                                            ofType:kBookStoreDefault];
-//    self.books = [delegate.bookStore getAllBooksSummary];
-//    [self.collectionView reloadData];
+    NSLog(@"view will appear");
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -111,19 +109,81 @@ static BOOL loaded = NO;
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Reload Collection View Utility Method
+- (void)reloadCollectionViewData {
+    
+    self.booksOfThisMonth = [[NSMutableArray alloc] init];
+    self.booksOfArchieve = [[NSMutableArray alloc] init];
+    
+    MZAppDelegate * delegate = (MZAppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSArray * books = [delegate.bookStore getAllBooksSummary];
+    
+    for (MZBookModel * book in books) {
+        if ([self addInThisMonth:book]) {
+            [self.booksOfThisMonth addObject:book];
+        } else {
+            [self.booksOfArchieve addObject:book];
+        }
+    }
+    
+    NSLog(@"books count of     this month:%d", [self.booksOfThisMonth count]);
+    NSLog(@"books count before this month:%d", [self.booksOfArchieve count]);
+    
+    
+    
+    [self.collectionView reloadData];
+}
 
-#pragma mark - Collection view
+- (BOOL)addInThisMonth:(MZBookModel *) book {
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"dd-MM-yyyy HH:mm"];
+    NSDate *addDate = [dateFormat dateFromString:book.addDateTime];;
+    
+    NSLog(@"to be check date:%@", addDate);
+    
+    NSDateComponents *components = [[NSDateComponents alloc] init] ;
+    components.month = -1;
+    NSDate *oneMonthBeforeNow = [[NSCalendar currentCalendar] dateByAddingComponents:components toDate:[NSDate date] options:0];
+    
+    NSLog(@"check date:%@", oneMonthBeforeNow);
+    
+    if ( [addDate compare:oneMonthBeforeNow] > 0  ) {
+        NSLog(@"add book this month:%@", book.title);
+        return YES;
+    } else {
+        NSLog(@"add book before this mongth:%@", book.title);
+        return NO;
+    }
+}
+
+#pragma mark - Collection View Delegate
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell *datasetCell =[collectionView cellForItemAtIndexPath:indexPath];
+    datasetCell.backgroundColor = kCellSelectedColor; // highlight selection
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell *datasetCell =[collectionView cellForItemAtIndexPath:indexPath];
+    datasetCell.backgroundColor = [UIColor clearColor]; // Default color
+}
+
+
+#pragma mark - Collection View DataSource
 
 -(NSInteger)numberOfSectionsInCollectionView:
 (UICollectionView *)collectionView
 {
-    return 1;
+    return 2; // this month and before
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView
     numberOfItemsInSection:(NSInteger)section
 {
-    return [self.books count];
+    if (section == 0) {
+        return [self.booksOfThisMonth count];
+    } else {
+        return [self.booksOfArchieve count];
+    }
     
 }
 
@@ -133,120 +193,142 @@ static BOOL loaded = NO;
     
     MZCollectionShelfCell * bookCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"bookCell" forIndexPath:indexPath];
     
+    int section = [indexPath section];
     int row = [indexPath row];
-    MZBookModel * book =(MZBookModel *)[self.books objectAtIndex:row];
-    NSString *url = book.imagePath;
+    
+    
+    MZBookModel * book = nil;
+    if(section == 0) {
+        book = [self.booksOfThisMonth objectAtIndex:row];
+    } else {
+        book = [self.booksOfArchieve objectAtIndex:row];
+    }
     
     // check image exists, reload only not exists
     
-     MZAppDelegate * delegate = (MZAppDelegate *)[[UIApplication sharedApplication] delegate];
-    SDImageCache *imageCache = delegate.imageCache;
-
-    UIImage * cacheImg = [imageCache imageFromMemoryCacheForKey:book.isbn13];
-    if(cacheImg == nil) {
-        cacheImg = [imageCache imageFromDiskCacheForKey:book.isbn13];
-    }
-    
-    if(cacheImg != nil) {
-        [bookCell.imageView setImage:cacheImg];
-        NSLog(@"load image from disk or memory successfully");
-    } else {
-        [bookCell.imageView setImageWithURL:[NSURL URLWithString: url ]
-                          placeholderImage:[UIImage imageNamed:@"images/placeholder.png"]
-                                 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-                                     [imageCache storeImage:image forKey:book.isbn13];
-                                     NSLog(@"load image success");
-                                 }];
-        
-    }
-    
-    
+    [self setImageFromURL:book.imagePath
+                  withKey:book.isbn13
+             forImageView:bookCell.imageView];
     
     bookCell.label.text = [NSString stringWithFormat:@"%d 个摘要", [book.excerpts count]]; ;
     bookCell.isbn13 = book.isbn13;
     bookCell.isbn10 = book.isbn10;
     
+    if (bookCell.selected) {
+        [bookCell setBackgroundColor:kCellSelectedColor];
+    } else {
+        [bookCell setBackgroundColor:[UIColor clearColor]] ;
+    }
+    
     return bookCell;
+}
+
+- (void)setImageFromURL: (NSString*) url withKey:(NSString* )key  forImageView:(UIImageView *) imageView {
+    
+    MZAppDelegate * delegate = (MZAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    SDImageCache *imageCache = delegate.imageCache;
+    
+    UIImage * cacheImg = [imageCache imageFromMemoryCacheForKey:key];
+    if(cacheImg == nil) {
+        cacheImg = [imageCache imageFromDiskCacheForKey:key];
+    }
+    
+    if(cacheImg != nil) {
+        [imageView setImage:cacheImg];
+        NSLog(@"load image from disk or memory successfully");
+    } else {
+        [imageView setImageWithURL:[NSURL URLWithString: url ]
+                           placeholderImage:[UIImage imageNamed:@"images/placeholder.png"]
+                                  completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                                      [imageCache storeImage:image forKey:key];
+                                      NSLog(@"load & cache image success");
+                                  }];
+    }
 }
 
 - (void)showScanVC {
     NSLog(@"scan clicked " );
-
+    
     ZXingWidgetController *widController = [[ZXingWidgetController alloc] initWithDelegate:self showCancel:YES OneDMode:NO];
-
+    
     MultiFormatReader* qrcodeReader = [[MultiFormatReader alloc] init];
     NSSet *readers = [[NSSet alloc ] initWithObjects:qrcodeReader,nil];
     widController.readers = readers;
-
+    
     NSBundle *mainBundle = [NSBundle mainBundle];
     widController.soundToPlay = [NSURL fileURLWithPath:[mainBundle pathForResource:@"beep-beep" ofType:@"aiff"] isDirectory:NO];
-
-
+    
     [self presentViewController:widController animated:YES completion:^{
         NSLog(@"affter zxing barcode reader view controller present");
     }];
-
+    
 }
 
-/*
+
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionReusableView *reusableview = nil;
     
     if (kind == UICollectionElementKindSectionHeader) {
-        MZCollectionShelfHeader * header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"collectionHeader" forIndexPath:indexPath];
-            reusableview = header;
+        MZCollectionShelfHeader * header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"collectionSheldHeader" forIndexPath:indexPath];
+        if ([indexPath section] == 0) {
+            header.label.text = @"最近";
+        } else {
+            header.label.text = @"一个月之前";
+        }
+        
+        reusableview = header;
     }
     
-    if (kind == UICollectionElementKindSectionFooter) {
-        UICollectionReusableView *footerview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"collectionFooter" forIndexPath:indexPath];
-        
-        reusableview = footerview;
-    }
+//    if (kind == UICollectionElementKindSectionFooter) {
+//        UICollectionReusableView *footerview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"collectionFooter" forIndexPath:indexPath];
+//        
+//        reusableview = footerview;
+//    }
     
     return reusableview;
 }
-*/
+ 
+
 #pragma mark - PopoverView dismiss
 
 //Delegate receives this call as soon as the item has been selected
-- (void)popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index {
-    NSLog(@"dismiss with selected item index:%d" , index);
-    
-    if(kIndexBookScan == index) {
-        [self showScanVC];
-        
-    } else if(kIndexBookSearch == index) {
-        
-    } else {
-        
-    }
-    
-    
-    [popoverView performSelector:@selector(dismiss) withObject:nil afterDelay:0.1f];
-
-}
+//- (void)popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index {
+//    NSLog(@"dismiss with selected item index:%d" , index);
+//    
+//    if(kIndexBookScan == index) {
+//        [self showScanVC];
+//        
+//    } else if(kIndexBookSearch == index) {
+//        
+//    } else {
+//        
+//    }
+//    
+//    
+//    [popoverView performSelector:@selector(dismiss) withObject:nil afterDelay:0.1f];
+//    
+//}
 
 //Delegate receives this call once the popover has begun the dismissal animation
-- (void)popoverViewDidDismiss:(PopoverView *)popoverView {
-    NSLog(@"dismiss with nothing");
-}
+//- (void)popoverViewDidDismiss:(PopoverView *)popoverView {
+//    NSLog(@"dismiss with nothing");
+//}
 
 #pragma mark - nativationg bar menu item handler
 
 - (IBAction)scan:(id)sender {
-//    CGPoint point = CGPointMake(500.0f, 50.0f);
-//    [PopoverView showPopoverAtPoint:point inView:self.view withStringArray:@[@"扫描条码", @"书名搜索"] delegate:self ];
-//    
-
+    //    CGPoint point = CGPointMake(500.0f, 50.0f);
+    //    [PopoverView showPopoverAtPoint:point inView:self.view withStringArray:@[@"扫描条码", @"书名搜索"] delegate:self ];
+    //
     [self showScanVC];
-    
 }
 
 #pragma mark - ZXing barcode scancer handler
 
 - (void)zxingController:(ZXingWidgetController*)controller didScanResult:(NSString *)resultString {
-
+    
     NSLog(@"zxing scan isbn:%@", resultString);
     
     [self dismissViewControllerAnimated:YES completion:^{
@@ -255,12 +337,10 @@ static BOOL loaded = NO;
     
     // show loading view
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-
+    
     // create
     
     MZAppDelegate * delegate = (MZAppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    
     
     if( [delegate.bookStore bookExist:resultString]) {
         // alert exist
@@ -278,27 +358,20 @@ static BOOL loaded = NO;
         
     }
     
-    self.books = [delegate.bookStore getAllBooksSummary];
+    //self.books = [delegate.bookStore getAllBooksSummary];
     [self.collectionView reloadData];
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
-
-    // 1. query local database to check if the book dos alreay exist.
-    // 1.1 if exist then next to 2
-    // 1.2 if not exist then query douban book store with isbn
-    // 1.2.1 if query success then add to database
-    // 1.2.2 if query failed then alert failed
-    // 2. query local database use isbn
-    // 3. get into the detail view controller
     
 }
 
 
 - (void)zxingControllerDidCancel:(ZXingWidgetController*)controller {
     NSLog(@"zxing cancel");
-    [self dismissModalViewControllerAnimated:YES];
-  //  [MBProgressHUD hideHUDForView:self.view animated:YES];
-
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"zxing cancel success");
+    }];
 }
 
 // } zxing end
@@ -313,7 +386,7 @@ static BOOL loaded = NO;
 //    self.books = [bookStore getAllBooksSummary];
 //
 //    [self.collectionView reloadData];
-// 
+//
 //   // [MBProgressHUD hideHUDForView:self.view animated:YES];
 //
 //}
@@ -343,7 +416,7 @@ static BOOL loaded = NO;
             isbn10 = @"";
             isbn13 = @"";
         }
-
+        
         MZDetailVC * detailVC = (MZDetailVC *) [segue destinationViewController];
         detailVC.isbn10 = isbn10;
         detailVC.isbn13 = isbn13;

@@ -19,6 +19,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
+//    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7){
+//        UIColor * color = [UIColor colorWithRed:66/255.0f green:139/255.0f blue:202/255.0f alpha:1.0f];
+//        [[UINavigationBar appearance] setBarTintColor: color  ];
+//        
+//    }
+
+    
     NSLog(@"ios 应用发布后 .app 应用文件 路径::%@",[NSBundle mainBundle] );
     
     NSLog(@"ios 应用发布后 .app 应用包(文件) 的详细信息 ::%@",[[NSBundle mainBundle] infoDictionary]);

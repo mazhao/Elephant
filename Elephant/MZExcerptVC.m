@@ -14,15 +14,18 @@
 
 #import "MWPhotoBrowser.h"
 
-/**
- *  @TODO:
- *  1. 没有更新的情况下不保存，直接返回；没有更新图片的时候不更新图片，直接返回。
- *  2. 视觉效果调整。
- */
 
 @interface MZExcerptVC ()
 
 @property (nonatomic) UIImagePickerController *imagePickerController;
+@property (nonatomic, retain) IBOutlet UITextView * excerptText;
+@property (nonatomic, retain) IBOutlet UIImageView * addImageView;
+@property (nonatomic, retain) IBOutlet UIImageView * takePhotoView;
+@property (nonatomic, retain) IBOutlet UIImageView * targetImageView;
+
+-(IBAction) saveExcerpt:(id) sender;
+
+@property (atomic) BOOL shouldSave;
 
 @end
 
@@ -41,41 +44,33 @@
 {
     [super viewDidLoad];
     
+    // 初始化内容变更标记
     self.shouldSave = NO;
     
-    // text border
-//    [[self.excerptText layer] setBorderColor:[[UIColor lightGrayColor] CGColor]];
-//    [[self.excerptText layer] setBorderWidth:0.5  ];
-    
-    
+    // 第一次进入，默认为编辑模式；第二次进入，默认为查看模式
     if (self.excerpt == nil  || [self.excerpt length] == 0) {
+        // 编辑模式
         [self.excerptText becomeFirstResponder];
-        
-        // show button
         self.addImageView.hidden = NO;
         self.takePhotoView.hidden = NO;
-        
     } else {
+        // 查看模式
         [self.excerptText setText: self.excerpt];
-        // hide button
         self.addImageView.hidden = YES;
         self.takePhotoView.hidden = YES;
-        
     }
     
+    // 内容变更检查代理
     self.excerptText.delegate = self;
     
+    NSLog(@"enter excerpt vc with op:%d OID:%@", self.opMode, self.objectID);
     
-    NSLog(@"op:%d OID:%@", self.opMode, self.objectID);
-    
-    
-    // image data is large, so get the data each time get into excerpt edit vc.
-    
+    // 加载图片数据，由于内容比较大，所以不在列表中保存，仅仅在进入次页面时加载。
     UIImage * img = nil;
     
     MZAppDelegate * delegate = (MZAppDelegate *)[[UIApplication sharedApplication] delegate];
-    
     MZBookModel * book = [delegate.bookStore getBookDetail:self.isbn13];
+    
     NSSet * excerpts = book.excerpts;
     for (MZBookExcerptModel* excerpt in excerpts) {
         if (self.objectID == excerpt.objectID) {
@@ -85,13 +80,10 @@
     }
     
     if (img != nil) {
-        
         self.targetImageView.image = img;
-        
     }
     
-    // image & photo button event binding
-    
+    // 选择照片和拍照事件绑定
     UITapGestureRecognizer *addImgTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(addImage:)];
     [self.addImageView addGestureRecognizer:addImgTap];
     [self.addImageView setMultipleTouchEnabled:YES];
@@ -101,9 +93,8 @@
     [self.takePhotoView addGestureRecognizer:takePhotoTap];
     [self.takePhotoView setMultipleTouchEnabled:YES];
     [self.takePhotoView setUserInteractionEnabled:YES];
-	// Do any additional setup after loading the view.
-    
-    
+	
+    // 点击查看图片事件绑定
     UITapGestureRecognizer *targetPhotoTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(targetImgTap:)];
     [self.targetImageView addGestureRecognizer:targetPhotoTap];
     [self.targetImageView setMultipleTouchEnabled:YES];
@@ -114,8 +105,9 @@
 
 -(void) viewWillDisappear:(BOOL)animated {
     
-    NSLog(@"will dissappear");
+    NSLog(@"will disappear");
     
+    // 内容变更或者第一次添加内容后，退出需要保存。
     if(self.shouldSave  &&
        ([self.excerptText.text length ] > 0 || self.targetImageView.image != nil)) {
         
@@ -125,12 +117,15 @@
         
         if(self.opMode == MZExcerptOperationModeAdd) {
             NSData * imageData = UIImageJPEGRepresentation(self.targetImageView.image, 0.75f);
-            [delegate.bookStore saveExpert:self.excerptText.text withImageData:imageData  ofBoook:self.isbn13];
-            
-            
+            [delegate.bookStore saveExpert:self.excerptText.text
+                             withImageData:imageData
+                                   ofBoook:self.isbn13];
         } else if(self.opMode == MZExcerptOperationModeEdit) {
-                NSData * imageData = UIImageJPEGRepresentation(self.targetImageView.image, 1.0f);
-                [delegate.bookStore updateExpert:self.excerptText.text withImageData: imageData withExcerptId:self.objectID ofBoook:self.isbn13];
+            NSData * imageData = UIImageJPEGRepresentation(self.targetImageView.image, 1.0f);
+            [delegate.bookStore updateExpert: self.excerptText.text
+                               withImageData: imageData
+                               withExcerptId: self.objectID
+                                     ofBoook: self.isbn13];
         }
     }
     
@@ -143,21 +138,20 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - AlertViewDelegate
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-}
 
 #pragma mark - actions
 
 -(IBAction) saveExcerpt:(id) sender {
     NSLog(@"save clicked");
     
+    // 如果不需要修改，直接返回
+    if (!self.shouldSave) {
+        return ;
+    }
     
     self.shouldSave = NO;
     
-    
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
     
     MZAppDelegate * delegate = (MZAppDelegate *)[[UIApplication sharedApplication] delegate];
     
@@ -165,21 +159,21 @@
         // @TODO: bad smell to be modified later !!!
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
             NSData * imageData = UIImageJPEGRepresentation(self.targetImageView.image, 0.75f);
-            [delegate.bookStore saveExpert:self.excerptText.text withImageData:imageData  ofBoook:self.isbn13];
+            [delegate.bookStore saveExpert: self.excerptText.text
+                             withImageData: imageData
+                                   ofBoook: self.isbn13];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
                 [self.navigationController popViewControllerAnimated:YES];
-
             });
         });
-        
-        
     } else if(self.opMode == MZExcerptOperationModeEdit) {
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
             NSData * imageData = UIImageJPEGRepresentation(self.targetImageView.image, 1.0f);
-            
-            [delegate.bookStore updateExpert:self.excerptText.text withImageData: imageData withExcerptId:self.objectID ofBoook:self.isbn13];
-            
+            [delegate.bookStore updateExpert: self.excerptText.text
+                               withImageData: imageData
+                               withExcerptId: self.objectID
+                                     ofBoook: self.isbn13];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
                 [self.navigationController popViewControllerAnimated:YES];
@@ -189,15 +183,15 @@
         
         
     } else {
-        
+        NSLog(@"neigther add nor update");
     }
-    
-    
 }
 
 
 - (void) addImage:(UITapGestureRecognizer *)gesture {
-    self.shouldSave = NO;
+    NSLog(@"begin add image");
+    
+    self.shouldSave = NO; // 这个时候会导致willDisappear被调用，注意屏蔽。
 
     UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
     imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
@@ -205,19 +199,17 @@
     imagePickerController.delegate = self;
     self.imagePickerController = imagePickerController;
     [self presentViewController:self.imagePickerController animated:YES completion:nil];
-    NSLog(@"add image tapped");
 }
 
 - (void) takePhoto:(UITapGestureRecognizer *)gesture {
-    self.shouldSave = NO;
-    NSLog(@"take photo tapped");
+    NSLog(@"begin take photo");
+
+    self.shouldSave = NO;// 这个时候会导致willDisappear被调用，注意屏蔽。
     
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
     picker.allowsEditing = YES;
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    
-    
     
     [self presentViewController:picker animated:YES completion:NULL];
 }
@@ -231,18 +223,17 @@
         browser.displayActionButton = YES; // Show action button to allow sharing, copying, etc (defaults to YES)
         browser.displayNavArrows = NO; // Whether to display left and right nav arrows on toolbar (defaults to NO)
         browser.zoomPhotosToFill = YES; // Images that almost fill the screen will be initially zoomed to fill (defaults to YES)
+        
         [browser setCurrentPhotoIndex:0]; // Example: allows second image to be presented first
-       // browser.wantsFullScreenLayout = YES; // iOS 5 & 6 only: Decide if you want the photo browser full screen, i.e. whether the status bar is affected (defaults to YES)
         
         // Present
-        
         [self.navigationController pushViewController:browser animated:YES];
         
         // Manipulate!
         [browser showPreviousPhotoAnimated:YES];
         [browser showNextPhotoAnimated:YES];
     } else {
-        
+        NSLog(@"no image to show");
     }
 }
 
