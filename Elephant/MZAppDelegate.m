@@ -20,8 +20,7 @@
 {
     
 //    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7){
-//        UIColor * color = [UIColor colorWithRed:66/255.0f green:139/255.0f blue:202/255.0f alpha:1.0f];
-//        [[UINavigationBar appearance] setBarTintColor: color  ];
+//        UIColor * color = [UIColor colorWithRed:0/255.0f green:213/255.0f blue:247/255.0f alpha:0.6f];        [[UINavigationBar appearance] setBarTintColor: color  ];
 //        
 //    }
 

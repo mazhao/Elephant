@@ -233,7 +233,7 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
     [service get:query callback:^(DOUHttpRequest * req) {
         NSError *error = [req doubanError];
         if(error) {
-            NSLog(@"error code: %ld", (long)[error code]);
+            NSLog(@"       error code: %ld", (long)[error code]);
             NSLog(@"error description: %@", [error description]);
         } else {
             NSString* json = [req responseString];
@@ -242,6 +242,7 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
             MZBookModel * bookModel = [NSEntityDescription insertNewObjectForEntityForName:@"MZBookModel"
                                                                     inManagedObjectContext:self.managedObjectContext];
             if(bookDic && bookModel) {
+                NSLog(@"fetch book:%@", bookDic);
                 [self convertDictionaryl:bookDic toBookModel:bookModel];
                 
                 NSError * savingError = nil;

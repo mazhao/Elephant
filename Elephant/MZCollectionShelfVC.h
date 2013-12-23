@@ -29,7 +29,7 @@
 
 #import <SDWebImage/UIImageView+WebCache.h>
 
-@interface MZCollectionShelfVC : UICollectionViewController<UICollectionViewDataSource, UICollectionViewDelegate, ZXingDelegate, PopoverViewDelegate>
+@interface MZCollectionShelfVC : UICollectionViewController<UICollectionViewDataSource, /* UICollectionViewDelegateFlowLayout,*/ UICollectionViewDelegate, ZXingDelegate, PopoverViewDelegate>
 
 //@property (strong, nonatomic) NSArray * books;
 @property (strong, nonatomic) NSMutableArray * booksOfThisMonth;

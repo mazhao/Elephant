@@ -229,7 +229,7 @@
 		F7EE3E58184E228C007A55FB /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
 		F7F600141861FE6200551DB7 /* MZBookModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZBookModel.h; sourceTree = "<group>"; };
 		F7F600151861FE6200551DB7 /* MZBookModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZBookModel.m; sourceTree = "<group>"; };
-		F7F60017186202E500551DB7 /* MZBookModel_1_0_0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = MZBookModel_1_0_0.xcdatamodel; sourceTree = "<group>"; };
+		F7F60017186202E500551DB7 /* MZBookModel_1_0_0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MZBookModel_1_0_0.xcdatamodel; sourceTree = "<group>"; };
 		F7FDB332184ED07900986347 /* MZExcerptVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZExcerptVC.h; sourceTree = "<group>"; };
 		F7FDB333184ED07900986347 /* MZExcerptVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZExcerptVC.m; sourceTree = "<group>"; };
 		F7FDB335184F6C5C00986347 /* MZBookExcerptModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZBookExcerptModel.h; sourceTree = "<group>"; };
@@ -394,13 +394,12 @@
 		F711C0911844874800D85598 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				F7BA25F61868238500E5AFA8 /* Startup */,
 				F7F600111861F5DE00551DB7 /* Search */,
 				F7A20B051850E6AB00ACD69B /* Setting */,
 				F7FDB330184ED05B00986347 /* Excerpt */,
 				F7EE3E3C184DB90C007A55FB /* Detail */,
 				F7EE3E3B184DB8F1007A55FB /* Collection */,
-				F711C071184480F300D85598 /* MZViewController.h */,
-				F711C072184480F300D85598 /* MZViewController.m */,
 			);
 			name = VC;
 			sourceTree = "<group>";
@@ -477,6 +476,15 @@
 				F75812D51855E2DE0061F8B8 /* MZBookListVC.m */,
 			);
 			name = Setting;
+			sourceTree = "<group>";
+		};
+		F7BA25F61868238500E5AFA8 /* Startup */ = {
+			isa = PBXGroup;
+			children = (
+				F711C071184480F300D85598 /* MZViewController.h */,
+				F711C072184480F300D85598 /* MZViewController.m */,
+			);
+			name = Startup;
 			sourceTree = "<group>";
 		};
 		F7E540F61861CB1F003F5939 /* CoreDataMigration */ = {

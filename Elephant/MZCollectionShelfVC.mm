@@ -51,13 +51,15 @@ static BOOL loaded = NO;
 	// Do any additional setup after loading the view.
     
     // 背景设置
-//    NSString * path = [[NSBundle mainBundle] pathForResource:@"images/bg-sea" ofType:@"png"];
-//    UIImage * image = [UIImage imageWithContentsOfFile:path];
-//    self.collectionView.backgroundView = [[UIImageView alloc] initWithImage:image];
+    NSString * path = [[NSBundle mainBundle] pathForResource:@"images/bg-wood" ofType:@"png"];
+    UIImage * image = [UIImage imageWithContentsOfFile:path];
+    self.collectionView.backgroundView = [[UIImageView alloc] initWithImage:image];
     
     // collection veiw
     UICollectionViewFlowLayout* flowLayout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
-    flowLayout.sectionInset = UIEdgeInsetsMake(10, 0, 10, 0);
+    flowLayout.sectionInset = UIEdgeInsetsMake(10, 5, 10, 5);
+    [flowLayout setMinimumInteritemSpacing:0.0f];
+    
     
     self.collectionView.delegate = self;
     
@@ -209,16 +211,22 @@ static BOOL loaded = NO;
     [self setImageFromURL:book.imagePath
                   withKey:book.isbn13
              forImageView:bookCell.imageView];
-    
-    bookCell.label.text = [NSString stringWithFormat:@"%d 个摘要", [book.excerpts count]]; ;
+      
+    bookCell.label.text = [NSString stringWithFormat:@"%d 个摘要", [book.excerpts count]];
+//    bookCell.label.textColor = [UIColor colorWithRed:173/255.0f green:223/255.0f blue:173/255.0f alpha:0.5];
+
+    bookCell.label.font = [UIFont fontWithName:@"HanziPenTC-W5" size:12.0f];
+       
     bookCell.isbn13 = book.isbn13;
     bookCell.isbn10 = book.isbn10;
     
-    if (bookCell.selected) {
-        [bookCell setBackgroundColor:kCellSelectedColor];
-    } else {
-        [bookCell setBackgroundColor:[UIColor clearColor]] ;
-    }
+//    if (bookCell.selected) {
+//        [bookCell setBackgroundColor:kCellSelectedColor];
+//    } else {
+//        [bookCell setBackgroundColor:[UIColor clearColor]] ;
+//    }
+    
+    [bookCell setBackgroundColor:[UIColor blueColor]] ;
     
     return bookCell;
 }
@@ -278,6 +286,8 @@ static BOOL loaded = NO;
             header.label.text = @"一个月之前";
         }
         
+        header.label.font = [UIFont fontWithName:@"HanziPenTC-W5" size:16.0f];
+        
         reusableview = header;
     }
     
@@ -289,7 +299,16 @@ static BOOL loaded = NO;
     
     return reusableview;
 }
- 
+
+//- (UIEdgeInsets)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+//    return UIEdgeInsetsMake(5, 0, 5, 0); // top, left, bottom, right
+//}
+//
+//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+//    
+//    return 0.0;
+//}
+
 
 #pragma mark - PopoverView dismiss
 

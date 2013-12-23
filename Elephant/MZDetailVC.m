@@ -66,7 +66,13 @@
 - (void)viewWillAppear:(BOOL)animated{
     NSLog(@"mzdetail vc will appear");
     
+//    self.tableView.contentInset = UIEdgeInsetsMake(10, 5, 10, 5);
+    
     [self fetchBook];
+    
+    self.tableView.contentSize = CGSizeMake(self.tableView.frame.size.width, self.tableView.contentSize.height);
+    
+    
     [self.tableView reloadData];
     
 }
@@ -109,7 +115,7 @@
         if( cell == nil ) {
             cell = [[MZDetailHeaderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:headerCellId];
         }
-        
+//        cell.separatorInset = UIEdgeInsetsMake(0, 10000, 0, 0);
         
         [cell.coverImage setImageWithURL:[NSURL URLWithString: self.bookModel.imagePath ]
                            placeholderImage:[UIImage imageNamed:@"images/placeholder.png"]
@@ -157,11 +163,12 @@
     } else if (  [self isFooterCell:indexPath] ) {
         static NSString *footerCellId = @"detailFooterCell";
         MZDetailFooterCell *cell = [tableView dequeueReusableCellWithIdentifier:footerCellId];
-        
+
         if( cell == nil ) {
             cell = [[MZDetailFooterCell alloc] init] ;
         }
-        
+//        cell.separatorInset = UIEdgeInsetsMake(0, 10000, 0, 0);
+
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
         return cell;
@@ -173,12 +180,13 @@
         if( cell == nil ) {
             cell = [[MZDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
         }
-        
+//        cell.separatorInset = UIEdgeInsetsMake(0, 10000, 0, 0);
+
         // Configure the cell...
         
         MZBookExcerptModel* excerptModel = (MZBookExcerptModel*)[self.bookExcerpts objectAtIndex:([indexPath row] -1)];
         
-        cell.excerptLabel.text = excerptModel.text;
+        cell.excerptLabel.text = [excerptModel.text stringByAppendingString:@"\n\n\n"];
         cell.dateTimeLabel.text = excerptModel.datetime;
         cell.objectID = excerptModel.objectID;
         
@@ -190,6 +198,7 @@
         }
         
         // cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleDefault;
         return cell;
     }
    
