@@ -288,7 +288,7 @@ static int kTargetImageHeight = DEFAULT_EXCERPT_IMAGE_HEIGHT;
 
 - (id<MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index {
     MWPhoto * photo = [[MWPhoto alloc]initWithImage: self.targetImageView.image];
-    photo.caption = self.excerptText.text;
+    photo.caption = [self.excerptText.text stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]   ];
     
     return photo;
 }
