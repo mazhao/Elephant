@@ -13,7 +13,7 @@
 
 #import "MZCollectionShelfHeader.h"
 
-
+#import "Config.h"
 
 @interface MZCollectionShelfVC ()
 
@@ -215,7 +215,7 @@ static BOOL loaded = NO;
     bookCell.label.text = [NSString stringWithFormat:@"%d 个摘要", [book.excerpts count]];
 //    bookCell.label.textColor = [UIColor colorWithRed:173/255.0f green:223/255.0f blue:173/255.0f alpha:0.5];
 
-    bookCell.label.font = [UIFont fontWithName:@"HanziPenTC-W5" size:12.0f];
+    bookCell.label.font = [UIFont fontWithName:DEFAULT_FONT_NAME size:12.0f];
        
     bookCell.isbn13 = book.isbn13;
     bookCell.isbn10 = book.isbn10;
@@ -286,7 +286,7 @@ static BOOL loaded = NO;
             header.label.text = @"一个月之前";
         }
         
-        header.label.font = [UIFont fontWithName:@"HanziPenTC-W5" size:16.0f];
+        header.label.font = [UIFont fontWithName:DEFAULT_FONT_NAME size:16.0f];
         
         reusableview = header;
     }

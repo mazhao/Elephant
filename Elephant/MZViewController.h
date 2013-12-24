@@ -10,4 +10,9 @@
 
 @interface MZViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UIButton* buttonGo;
+@property (strong, nonatomic) IBOutlet UILabel* labelFirst;
+@property (strong, nonatomic) IBOutlet UILabel* labelSecond;
+
+
 @end

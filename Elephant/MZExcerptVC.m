@@ -14,6 +14,7 @@
 
 #import "MWPhotoBrowser.h"
 
+#import "Config.h"
 
 @interface MZExcerptVC ()
 
@@ -31,6 +32,9 @@
 
 @implementation MZExcerptVC
 
+static int kTargetImageHeight = DEFAULT_EXCERPT_IMAGE_HEIGHT;
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -43,6 +47,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
     
     // 初始化内容变更标记
     self.shouldSave = NO;
@@ -99,8 +105,44 @@
     [self.targetImageView addGestureRecognizer:targetPhotoTap];
     [self.targetImageView setMultipleTouchEnabled:YES];
     [self.targetImageView setUserInteractionEnabled:YES];
+
+    
+    
+
+}
+
+- (void)viewDidLayoutSubviews {
+    if (self.targetImageView.image != nil) {
+        
+        self.targetImageView.frame = CGRectMake(self.targetImageView.frame.origin.x,
+                                                self.targetImageView.frame.origin.y,
+                                                self.targetImageView.frame.size.width,
+                                                kTargetImageHeight);
+        [self.targetImageView setNeedsLayout];
+        
+        self.excerptText.frame =CGRectMake(self.excerptText.frame.origin.x,
+                                           self.excerptText.frame.origin.y + kTargetImageHeight,
+                                           self.excerptText.frame.size.width,
+                                           self.excerptText.frame.size.height);
+        
+        
+        self.addImageView.frame = CGRectMake(self.addImageView.frame.origin.x,
+                                             self.addImageView.frame.origin.y + kTargetImageHeight,
+                                             self.addImageView.frame.size.width,
+                                             self.addImageView.frame.size.height);
+        
+        self.takePhotoView.frame = CGRectMake(self.takePhotoView.frame.origin.x,
+                                              self.takePhotoView.frame.origin.y + kTargetImageHeight,
+                                              self.takePhotoView.frame.size.width,
+                                              self.takePhotoView.frame.size.height );
+        
+    }
+}
+
+- (void) viewDidAppear:(BOOL)animated {
     
 }
+
 
 
 -(void) viewWillDisappear:(BOOL)animated {
@@ -128,6 +170,7 @@
                                      ofBoook: self.isbn13];
         }
     }
+    
     
     [super viewWillDisappear:animated];
 }
@@ -258,7 +301,30 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+    
+    
     [self.targetImageView setImage:image];
+    
+    
+//    [UIView animateWithDuration:0.5 animations:^{
+//        
+//        self.targetImageView.frame = CGRectMake(self.targetImageView.frame.origin.x, self.targetImageView.frame.origin.y,
+//                                                self.targetImageView.frame.size.width, kTargetImageHeight);
+//    
+//   
+//        self.excerptText.frame =CGRectMake(self.excerptText.frame.origin.x, self.excerptText.frame.origin.y + kTargetImageHeight,
+//                                           self.excerptText.frame.size.width, self.excerptText.frame.size.height);
+//    
+//    
+//        self.addImageView.frame = CGRectMake(self.addImageView.frame.origin.x, self.addImageView.frame.origin.y + kTargetImageHeight,
+//                                             self.addImageView.frame.size.width, self.addImageView.frame.size.height);
+//    
+//        self.takePhotoView.frame = CGRectMake(self.takePhotoView.frame.origin.x, self.takePhotoView.frame.origin.y + kTargetImageHeight,
+//                                              self.takePhotoView.frame.size.width, self.takePhotoView.frame.size.height );
+//    
+//
+//    }];
+//    
     
     if(image != nil) {
         self.shouldSave = YES;

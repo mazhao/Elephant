@@ -189,6 +189,7 @@
 		F7CD1BA918458F4D00BA22A0 /* MZCollectionShelfVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZCollectionShelfVC.h; sourceTree = "<group>"; };
 		F7CD1BAC18458FB300BA22A0 /* MZCollectionShelfCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZCollectionShelfCell.h; sourceTree = "<group>"; };
 		F7CD1BAD18458FB300BA22A0 /* MZCollectionShelfCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZCollectionShelfCell.m; sourceTree = "<group>"; };
+		F7D7C5031869F93300E85C51 /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		F7E540F71861CB46003F5939 /* MHWCoreDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHWCoreDataController.h; sourceTree = "<group>"; };
 		F7E540F81861CB46003F5939 /* MHWCoreDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHWCoreDataController.m; sourceTree = "<group>"; };
 		F7E540F91861CB46003F5939 /* MHWMigrationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHWMigrationManager.h; sourceTree = "<group>"; };
@@ -400,6 +401,7 @@
 				F7FDB330184ED05B00986347 /* Excerpt */,
 				F7EE3E3C184DB90C007A55FB /* Detail */,
 				F7EE3E3B184DB8F1007A55FB /* Collection */,
+				F7D7C5031869F93300E85C51 /* Config.h */,
 			);
 			name = VC;
 			sourceTree = "<group>";

@@ -34,6 +34,28 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[MZExcerptVC viewWillAppear:]:MZExcerptVC.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.targetImageView">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MZExcerptVC imagePickerController:didFinishPickingMediaWithInfo:]:MZExcerptVC.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.targetImageView.frame">
+            </PersistentString>
+            <PersistentString
+               value = "self.targetImageView">
+            </PersistentString>
+            <PersistentString
+               value = "self.takePhotoView.frame">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[MZDetailVC tableView:cellForRowAtIndexPath:]:MZDetailVC.m">
          <PersistentStrings>
             <PersistentString
@@ -45,24 +67,41 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[MZBookStoreDefault bookExist:]:MZBookStoreDefault.m">
+      </ContextState>
+      <ContextState
          contextName = "-[MZCollectionShelfVC reloadCollectionViewData]:MZCollectionShelfVC.mm">
          <PersistentStrings>
             <PersistentString
-               value = "[self.booksOfArchieve count]">
+               value = "[self.booksOfThisMonth count]">
             </PersistentString>
             <PersistentString
                value = "self.booksOfArchieve">
             </PersistentString>
             <PersistentString
-               value = "[self.booksOfThisMonth count]">
+               value = "self.booksOfThisMonth">
             </PersistentString>
             <PersistentString
-               value = "self.booksOfThisMonth">
+               value = "[self.booksOfArchieve count]">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[MZBookStoreDefault bookExist:]:MZBookStoreDefault.m">
+         contextName = "-[MZExcerptVC viewDidLoad]:MZExcerptVC.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.targetImageView.bounds.origin.x">
+            </PersistentString>
+            <PersistentString
+               value = "self.targetImageView.bounds.origin">
+            </PersistentString>
+            <PersistentString
+               value = "targetImageView.bounds">
+            </PersistentString>
+            <PersistentString
+               value = "self.targetImageView">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "-[MZCollectionShelfVC viewDidLoad]:MZCollectionShelfVC.mm">
@@ -77,6 +116,14 @@
          <PersistentStrings>
             <PersistentString
                value = "self.shouldSave">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MZExcerptVC viewDidAppear:]:MZExcerptVC.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.targetImageView">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

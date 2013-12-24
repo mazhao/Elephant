@@ -7,6 +7,8 @@
 //
 
 #import "MZViewController.h"
+#import "Config.h"
+
 
 @interface MZViewController ()
 
@@ -32,12 +34,11 @@
 //    self.navigationController.navigationBar.translucent = NO;
     
     
-    for (NSString *familyName in [UIFont familyNames]) {
-        for (NSString *fontName in [UIFont fontNamesForFamilyName:familyName]) {
-            NSLog(@"%@", fontName);
-        }
-    }
-
+   
+    self.buttonGo.titleLabel.font = [UIFont fontWithName:DEFAULT_FONT_NAME size:24.0f];
+    self.labelFirst.font = [UIFont fontWithName:DEFAULT_FONT_NAME size:18.0f];
+    self.labelSecond.font = [UIFont fontWithName:DEFAULT_FONT_NAME size:18.0f];
+    
     
 }
 
