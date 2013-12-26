@@ -306,26 +306,6 @@ static int kTargetImageHeight = DEFAULT_EXCERPT_IMAGE_HEIGHT;
     [self.targetImageView setImage:image];
     
     
-//    [UIView animateWithDuration:0.5 animations:^{
-//        
-//        self.targetImageView.frame = CGRectMake(self.targetImageView.frame.origin.x, self.targetImageView.frame.origin.y,
-//                                                self.targetImageView.frame.size.width, kTargetImageHeight);
-//    
-//   
-//        self.excerptText.frame =CGRectMake(self.excerptText.frame.origin.x, self.excerptText.frame.origin.y + kTargetImageHeight,
-//                                           self.excerptText.frame.size.width, self.excerptText.frame.size.height);
-//    
-//    
-//        self.addImageView.frame = CGRectMake(self.addImageView.frame.origin.x, self.addImageView.frame.origin.y + kTargetImageHeight,
-//                                             self.addImageView.frame.size.width, self.addImageView.frame.size.height);
-//    
-//        self.takePhotoView.frame = CGRectMake(self.takePhotoView.frame.origin.x, self.takePhotoView.frame.origin.y + kTargetImageHeight,
-//                                              self.takePhotoView.frame.size.width, self.takePhotoView.frame.size.height );
-//    
-//
-//    }];
-//    
-    
     if(image != nil) {
         self.shouldSave = YES;
     }

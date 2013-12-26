@@ -18,15 +18,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
-//    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7){
-//        UIColor * color = [UIColor colorWithRed:0/255.0f green:213/255.0f blue:247/255.0f alpha:0.6f];        [[UINavigationBar appearance] setBarTintColor: color  ];
-//        
-//    }
 
-    
     NSLog(@"ios 应用发布后 .app 应用文件 路径::%@",[NSBundle mainBundle] );
-    
     NSLog(@"ios 应用发布后 .app 应用包(文件) 的详细信息 ::%@",[[NSBundle mainBundle] infoDictionary]);
     
     [MobClick startWithAppkey:@"52ac4dd556240b9353098a52" reportPolicy:REALTIME channelId:@"Beta"];
@@ -39,14 +32,14 @@
     
     // 检查CoreData数据库是否需要升级
     
-    MHWCoreDataController * coreDataCtrl = [MHWCoreDataController sharedInstance];
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource: [self.bookStore modelName ] withExtension:[self.bookStore modelExtension ]];
-
-    if ( [coreDataCtrl isMigrationNeededOfStoreURL:modelURL ofType: NSSQLiteStoreType forNewModel: [self.bookStore managedObjectModel] ]) {
-        NSLog(@"need migration");
-    } else {
-        NSLog(@"no need migration");
-    }
+//    MHWCoreDataController * coreDataCtrl = [MHWCoreDataController sharedInstance];
+//    NSURL *modelURL = [[NSBundle mainBundle] URLForResource: [self.bookStore modelName ] withExtension:[self.bookStore modelExtension ]];
+//
+//    if ( [coreDataCtrl isMigrationNeededOfStoreURL:modelURL ofType: NSSQLiteStoreType forNewModel: [self.bookStore managedObjectModel] ]) {
+//        NSLog(@"need migration");
+//    } else {
+//        NSLog(@"no need migration");
+//    }
     
     
     // Override point for customization after application launch.

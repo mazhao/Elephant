@@ -20,24 +20,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    
-    // choice 1:
-//    UIColor * navColor = [UIColor colorWithRed:28/255.0f green:129/255.0f blue:233/255.0f alpha:0.6f];
-//    UIColor * navColor = [UIColor colorWithRed:173/255.0f green:223/255.0f blue:173/255.0f alpha:1.0];
-//        UIColor * navColor = [UIColor colorWithRed:254/255.0f green:214/255.0f blue:103/255.0f alpha:1];
-    
-    
-//    self.navigationController.navigationBar.barTintColor = navColor;
-    
-//    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-//    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
-//    self.navigationController.navigationBar.translucent = NO;
-    
-    
    
-    self.buttonGo.titleLabel.font = [UIFont fontWithName:DEFAULT_FONT_NAME size:24.0f];
-    self.labelFirst.font = [UIFont fontWithName:DEFAULT_FONT_NAME size:18.0f];
-    self.labelSecond.font = [UIFont fontWithName:DEFAULT_FONT_NAME size:18.0f];
+    self.buttonGo.titleLabel.font = [UIFont fontWithName:DEFAULT_FONT_NAME size:20.0f];
+    self.labelFirst.font = [UIFont fontWithName:DEFAULT_FONT_NAME size:16.0f];
+    self.labelFirst.text = @"畅游在知识的海洋~";
+    self.labelSecond.font = [UIFont fontWithName:DEFAULT_FONT_NAME size:16.0f];
+    self.labelSecond.text = @"您还记得当年的摘要吗？";
     
     
 }

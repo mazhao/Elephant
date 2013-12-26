@@ -83,6 +83,31 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - UITableViewDelegate
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if ([self isHeaderCell:indexPath]) {
+        
+    } /* else if([self isFooterCell:indexPath]) {
+        
+    } */ else {
+        
+        cell.frame = CGRectMake(cell.frame.origin.x,
+                                cell.frame.origin.y + 40,
+                                cell.frame.size.width,
+                                cell.frame.size.height);
+        
+        [UIView animateWithDuration:1.0f animations:^{
+            cell.frame = CGRectMake(cell.frame.origin.x,
+                                    cell.frame.origin.y - 40,
+                                    cell.frame.size.width,
+                                    cell.frame.size.height);
+        }];
+    }
+    
+}
+
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

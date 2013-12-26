@@ -51,7 +51,7 @@ static BOOL loaded = NO;
 	// Do any additional setup after loading the view.
     
     // 背景设置
-    NSString * path = [[NSBundle mainBundle] pathForResource:@"images/bg-wood" ofType:@"png"];
+    NSString * path = [[NSBundle mainBundle] pathForResource:DEFAULT_COLLECTION_BACKGROUND_NAME ofType:DEFAULT_COLLECTION_BACKGROUND_TYPE];
     UIImage * image = [UIImage imageWithContentsOfFile:path];
     self.collectionView.backgroundView = [[UIImageView alloc] initWithImage:image];
     
@@ -213,7 +213,6 @@ static BOOL loaded = NO;
              forImageView:bookCell.imageView];
       
     bookCell.label.text = [NSString stringWithFormat:@"%d 个摘要", [book.excerpts count]];
-//    bookCell.label.textColor = [UIColor colorWithRed:173/255.0f green:223/255.0f blue:173/255.0f alpha:0.5];
 
     bookCell.label.font = [UIFont fontWithName:DEFAULT_FONT_NAME size:12.0f];
        
@@ -228,8 +227,54 @@ static BOOL loaded = NO;
     
     [bookCell setBackgroundColor:[UIColor blueColor]] ;
     
+//    UIInterpolatingMotionEffect * xAxis;
+//    xAxis = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+//    xAxis.minimumRelativeValue = @-40;
+//    xAxis.maximumRelativeValue = @40;
+//    
+//    
+//    UIInterpolatingMotionEffect * yAxis;
+//    yAxis = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+//    yAxis.minimumRelativeValue = @-40;
+//    yAxis.maximumRelativeValue = @40;
+//    
+//    UIMotionEffectGroup * group = [[UIMotionEffectGroup alloc] init];
+//    group.motionEffects = @[xAxis, yAxis];
+//    
+//    
+//    [bookCell addMotionEffect:group];
+    
+    [self addMotionEffectToView: bookCell];
+    
     return bookCell;
 }
+
+- (void) addMotionEffectToView: (UIView *) view {
+    
+    
+    if ([view.motionEffects count] > 0) {
+        return ;
+    }
+
+    NSLog(@"add motion effect to view");
+
+    UIInterpolatingMotionEffect * xAxis;
+    xAxis = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+    xAxis.minimumRelativeValue = @-15;
+    xAxis.maximumRelativeValue = @15;
+    
+    UIInterpolatingMotionEffect * yAxis;
+    yAxis = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+    yAxis.minimumRelativeValue = @-15;
+    yAxis.maximumRelativeValue = @15;
+    
+    UIMotionEffectGroup * group = [[UIMotionEffectGroup alloc] init];
+    group.motionEffects = @[xAxis, yAxis];
+    
+    
+    [view addMotionEffect:group];
+}
+
 
 - (void)setImageFromURL: (NSString*) url withKey:(NSString* )key  forImageView:(UIImageView *) imageView {
     
@@ -296,6 +341,8 @@ static BOOL loaded = NO;
 //        
 //        reusableview = footerview;
 //    }
+    
+    [self addMotionEffectToView:reusableview];
     
     return reusableview;
 }
