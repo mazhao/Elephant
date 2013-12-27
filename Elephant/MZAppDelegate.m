@@ -9,10 +9,15 @@
 #import "MZAppDelegate.h"
 
 #import "MobClick.h"
+#import "UMSocial.h"
+
 
 #import "MZBookStoreAPI.h"
 
 #import "MHWCoreDataController.h"
+
+#import "Config.h"
+
 
 @implementation MZAppDelegate
 
@@ -22,9 +27,20 @@
     NSLog(@"ios 应用发布后 .app 应用文件 路径::%@",[NSBundle mainBundle] );
     NSLog(@"ios 应用发布后 .app 应用包(文件) 的详细信息 ::%@",[[NSBundle mainBundle] infoDictionary]);
     
-    [MobClick startWithAppkey:@"52ac4dd556240b9353098a52" reportPolicy:REALTIME channelId:@"Beta"];
+    
+    // 友盟统计
+    [MobClick startWithAppkey:kUMKey reportPolicy:REALTIME channelId:@"Beta"];
     [MobClick setLogSendInterval:60];
 
+    // 友盟社会化分享
+    
+    [UMSocialData setAppKey:kUMKey];
+    
+    [UMSocialConfig setWXAppId:kWeiXinKey url:kWeiXinShareUrl];
+    [UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskLandscape];
+    
+    [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeApp;
+    [UMSocialData defaultData].extConfig.title = @"大象书摘，快乐分享~";
     
     // 初始化必要的类
     self.imageCache = [SDImageCache.alloc initWithNamespace:@"mzbookstoreimg"];

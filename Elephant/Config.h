@@ -23,4 +23,14 @@
 #define DEFAULT_COLLECTION_BACKGROUND_NAME @"images/bg"
 #define DEFAULT_COLLECTION_BACKGROUND_TYPE @"png"
 
+
+// umeng key and channel id
+static NSString* kUMKey = @"52ac4dd556240b9353098a52";
+static NSString* kUMChannelId = @"Beta";
+
+static NSString* kWeiXinKey = @"wx798aabdf9e0e7273";
+
+static NSString* kWeiXinShareUrl = @"http://surveylet.com";
+
+
 #endif

@@ -19,6 +19,10 @@
 
 #import "MBProgressHUD.h"
 
+#import "UMSocial.h"
+
+#import "Config.h"
+
 @interface MZDetailVC ()
 
 @end
@@ -337,6 +341,55 @@ static int deleteType ; // 1 for book, 2 for all excerpts
     deleteType = 2;
     UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"删除所有摘要确认" message:@"您确认要删除本书的所有摘要吗？" delegate:self cancelButtonTitle:@"不删除" otherButtonTitles:@"删除", nil];
     [alertView show];
+}
+
+- (IBAction) shareBookAndExcerpt:(id)sender {
+    
+    NSString * msg = [NSString stringWithFormat:@"最近我在读%@时的一些感想，希望对你也有用。", self.title, nil];
+    
+    [UMSocialSnsService presentSnsIconSheetView:self
+                                         appKey:kUMKey
+                                      shareText:msg
+                                     shareImage:[UIImage imageNamed:@"松鼠58.png"]
+                                shareToSnsNames:[NSArray arrayWithObjects: UMShareToWechatSession, UMShareToWechatTimeline, nil]
+                                       delegate:self];
+}
+
+#pragma mark - UMSocialUIDelegate
+
+-(void)didSelectSocialPlatform:(NSString *)platformName withSocialData:(UMSocialData *)socialData
+{
+    // 在这里设置分享URL
+    [UMSocialConfig setWXAppId:kWeiXinKey url:kWeiXinShareUrl];
+    
+
+    if (platformName == UMShareToWechatSession) {
+        
+        socialData.shareText = [NSString stringWithFormat:@"最近我在读《%@》，发现大象书摘很好用，你也来下载试试吧～", self.bookModel.title, nil];
+        socialData.title = @"大象书摘、读书必备～";
+        socialData.commentText = @"lalala";
+        socialData.urlResource =[[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeDefault url:@"http://surveylet.com" ];
+        
+        NSURL *imageUrl = [NSURL URLWithString:self.bookModel.imagePathSmall];
+        socialData.shareImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:imageUrl]];
+        
+        
+    } else if(platformName == UMShareToWechatTimeline ) {
+        socialData.shareText = [NSString stringWithFormat:@"最近我在读《%@》，发现大象书摘很好用，你也来下载试试吧～", self.bookModel.title, nil];
+        socialData.title = @"大象书摘、读书必备～";
+        socialData.urlResource =[[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeDefault url:@"http://surveylet.com" ];
+        
+        NSURL *imageUrl = [NSURL URLWithString:self.bookModel.imagePathSmall];
+        socialData.shareImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:imageUrl]];
+        
+
+    }
+     else{
+        socialData.title = [NSString stringWithFormat:@"最近我在读《%@》，发现大象书摘很好用，你也来下载试试吧～", self.bookModel.title, nil];
+        socialData.urlResource =[[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeDefault url:@"http://surveylet.com" ];
+        NSURL *imageUrl = [NSURL URLWithString:self.bookModel.imagePathSmall];
+        socialData.shareImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:imageUrl]];
+    }
 }
 
 #pragma mark - AlertViewDelegate

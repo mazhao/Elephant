@@ -18,8 +18,10 @@
 
 #import <SDWebImage/UIImageView+WebCache.h>
 
+#import "UMSocial.h"
 
-@interface MZDetailVC : UITableViewController <UIAlertViewDelegate>
+
+@interface MZDetailVC : UITableViewController <UIAlertViewDelegate, UMSocialUIDelegate>
 
 @property (strong, nonatomic) NSString * isbn10;
 @property (strong, nonatomic) NSString * isbn13;
@@ -32,6 +34,6 @@
 
 -(IBAction) deleteAllExcerpt:(id) sender;
 
-
+- (IBAction) shareBookAndExcerpt:(id)sender;
 
 @end
