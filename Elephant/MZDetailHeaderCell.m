@@ -16,7 +16,6 @@
     if (self) {
         // Initialization code
         
-        
     }
     return self;
 }
@@ -27,5 +26,16 @@
 
     // Configure the view for the selected state
 }
+
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    CGSize stageSize = self.contentView.bounds.size;
+    self.backgroundView.frame = CGRectMake(10.0, 5.0, stageSize.width - 20.0, stageSize.height - 10.0);
+    self.selectedBackgroundView.frame = CGRectMake(10.0, 5.0, stageSize.width - 20.0, stageSize.height - 10.0);
+}
+
+
 
 @end

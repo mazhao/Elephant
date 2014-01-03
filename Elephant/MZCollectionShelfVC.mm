@@ -53,12 +53,14 @@ static BOOL loaded = NO;
     // 背景设置
     NSString * path = [[NSBundle mainBundle] pathForResource:DEFAULT_COLLECTION_BACKGROUND_NAME ofType:DEFAULT_COLLECTION_BACKGROUND_TYPE];
     UIImage * image = [UIImage imageWithContentsOfFile:path];
-    self.collectionView.backgroundView = [[UIImageView alloc] initWithImage:image];
+    //self.collectionView.backgroundView = [[UIImageView alloc] initWithImage:image];
+    
+    self.view.backgroundColor = [UIColor colorWithRed:243.0/255.0f green:243.0/255.0f  blue:243.0/255.0f  alpha:1];
     
     // collection veiw
     UICollectionViewFlowLayout* flowLayout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
     flowLayout.sectionInset = UIEdgeInsetsMake(10, 5, 10, 5);
-    [flowLayout setMinimumInteritemSpacing:0.0f];
+    [flowLayout setMinimumInteritemSpacing:5.0f];
     
     
     self.collectionView.delegate = self;
@@ -103,6 +105,13 @@ static BOOL loaded = NO;
 - (void)viewWillAppear:(BOOL)animated{
     NSLog(@"view will appear");
 
+}
+
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -211,38 +220,22 @@ static BOOL loaded = NO;
     [self setImageFromURL:book.imagePath
                   withKey:book.isbn13
              forImageView:bookCell.imageView];
-      
+    
+    CALayer * layer = [bookCell.imageView layer];
+    [layer setMasksToBounds:YES];
+    [layer setCornerRadius:5.0f];
+    
     bookCell.label.text = [NSString stringWithFormat:@"%d 个摘要", [book.excerpts count]];
 
-    bookCell.label.font = [UIFont fontWithName:DEFAULT_FONT_NAME size:12.0f];
+    bookCell.label.font = [UIFont fontWithName:kDefaultFontName size:12.0f];
        
     bookCell.isbn13 = book.isbn13;
     bookCell.isbn10 = book.isbn10;
     
-//    if (bookCell.selected) {
-//        [bookCell setBackgroundColor:kCellSelectedColor];
-//    } else {
-//        [bookCell setBackgroundColor:[UIColor clearColor]] ;
-//    }
+    bookCell.backgroundView =[[UIImageView alloc] initWithImage:[ [UIImage imageNamed:@"images/cell_bg.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:10.0] ];
     
-    [bookCell setBackgroundColor:[UIColor blueColor]] ;
+    bookCell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:@"images/cell_bg_selected.png" ] stretchableImageWithLeftCapWidth:10.0 topCapHeight:10.0] ];
     
-//    UIInterpolatingMotionEffect * xAxis;
-//    xAxis = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
-//    xAxis.minimumRelativeValue = @-40;
-//    xAxis.maximumRelativeValue = @40;
-//    
-//    
-//    UIInterpolatingMotionEffect * yAxis;
-//    yAxis = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
-//    yAxis.minimumRelativeValue = @-40;
-//    yAxis.maximumRelativeValue = @40;
-//    
-//    UIMotionEffectGroup * group = [[UIMotionEffectGroup alloc] init];
-//    group.motionEffects = @[xAxis, yAxis];
-//    
-//    
-//    [bookCell addMotionEffect:group];
     
     [self addMotionEffectToView: bookCell];
     
@@ -270,7 +263,6 @@ static BOOL loaded = NO;
     
     UIMotionEffectGroup * group = [[UIMotionEffectGroup alloc] init];
     group.motionEffects = @[xAxis, yAxis];
-    
     
     [view addMotionEffect:group];
 }
@@ -328,10 +320,17 @@ static BOOL loaded = NO;
         if ([indexPath section] == 0) {
             header.label.text = @"最近";
         } else {
-            header.label.text = @"一个月之前";
+            header.label.text = @"一个月前";
         }
         
-        header.label.font = [UIFont fontWithName:DEFAULT_FONT_NAME size:16.0f];
+        header.label.font = [UIFont fontWithName:kDefaultFontName size:16.0f];
+        UIColor *ios7BlueColor = [UIColor colorWithRed:31.0/255.0f
+                                                 green:117.0/255.0
+                                                  blue:254.0/255.0f alpha:1.0];
+
+        header.label.textColor = ios7BlueColor;
+        
+        
         
         reusableview = header;
     }

@@ -44,6 +44,10 @@
 
     NSLog(@"input isbn10:%@ isbn13:%@", self.isbn10, self.isbn13);
     
+    [self.tableView setSeparatorColor:[UIColor clearColor]];
+
+    
+    self.view.backgroundColor = [UIColor colorWithRed:243.0/255.0f green:243.0/255.0f  blue:243.0/255.0f  alpha:1];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -70,15 +74,14 @@
 - (void)viewWillAppear:(BOOL)animated{
     NSLog(@"mzdetail vc will appear");
     
-//    self.tableView.contentInset = UIEdgeInsetsMake(10, 5, 10, 5);
+    //self.tableView.contentInset = UIEdgeInsetsMake(10,10, 10, 10);
     
     [self fetchBook];
     
-    self.tableView.contentSize = CGSizeMake(self.tableView.frame.size.width, self.tableView.contentSize.height);
-    
-    
     [self.tableView reloadData];
     
+
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -187,6 +190,14 @@
         cell.authorLabel.text = [NSString stringWithFormat:@"作者：%@",   authorMutable];
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        UIImageView* bg =[[UIImageView alloc] initWithImage:[ [UIImage imageNamed:@"images/cell_bg.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:10.0] ];
+        
+        cell.backgroundView = bg;
+        
+        
+        cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:@"images/cell_bg_selected.png" ] stretchableImageWithLeftCapWidth:10.0 topCapHeight:10.0] ];
+        
+
         
         return cell;
     } else if (  [self isFooterCell:indexPath] ) {
@@ -199,6 +210,14 @@
 //        cell.separatorInset = UIEdgeInsetsMake(0, 10000, 0, 0);
 
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        UIImageView* bg =[[UIImageView alloc] initWithImage:[ [UIImage imageNamed:@"images/cell_bg.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:10.0] ];
+        
+        cell.backgroundView = bg;
+        
+        
+        cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:@"images/cell_bg_selected.png" ] stretchableImageWithLeftCapWidth:10.0 topCapHeight:10.0] ];
+        
+        
 
         return cell;
         
@@ -209,7 +228,6 @@
         if( cell == nil ) {
             cell = [[MZDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
         }
-//        cell.separatorInset = UIEdgeInsetsMake(0, 10000, 0, 0);
 
         // Configure the cell...
         
@@ -228,6 +246,14 @@
         
         // cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+        
+        UIImageView* bg =[[UIImageView alloc] initWithImage:[ [UIImage imageNamed:@"images/cell_bg.png"] stretchableImageWithLeftCapWidth:22.0 topCapHeight:22.0] ];
+    
+        cell.backgroundView = bg;
+        
+        
+        cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:@"images/cell_bg_selected.png" ] stretchableImageWithLeftCapWidth:22.0 topCapHeight:22.0] ];
+        
         return cell;
     }
    

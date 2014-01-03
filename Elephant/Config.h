@@ -12,8 +12,8 @@
 
 #pragma mark UI Appearance
 
-#define DEFAULT_FONT_NAME @"HanziPenTC-W5"
-// #define DEFAULT_FONT_NAME @"PMingLiU"
+// #define DEFAULT_FONT_NAME @"HanziPenTC-W5"
+static NSString* kDefaultFontName = @"PMingLiU";
 
 
 

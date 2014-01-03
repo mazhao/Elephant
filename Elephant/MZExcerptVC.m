@@ -48,7 +48,15 @@ static int kTargetImageHeight = DEFAULT_EXCERPT_IMAGE_HEIGHT;
 {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor colorWithRed:243.0/255.0f green:243.0/255.0f  blue:243.0/255.0f  alpha:1];
+    CALayer * layer = [self.targetImageView layer];
+    [layer setMasksToBounds:YES];
+    [layer setCornerRadius:5.0f];
     
+    
+    layer = [self.excerptText layer];
+    [layer setMasksToBounds:YES];
+    [layer setCornerRadius:5.0f];
     
     // 初始化内容变更标记
     self.shouldSave = NO;

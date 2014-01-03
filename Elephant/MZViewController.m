@@ -21,10 +21,10 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
    
-    self.buttonGo.titleLabel.font = [UIFont fontWithName:DEFAULT_FONT_NAME size:20.0f];
-    self.labelFirst.font = [UIFont fontWithName:DEFAULT_FONT_NAME size:16.0f];
+    self.buttonGo.titleLabel.font = [UIFont fontWithName:kDefaultFontName size:20.0f];
+    self.labelFirst.font = [UIFont fontWithName:kDefaultFontName size:16.0f];
     self.labelFirst.text = @"畅游在知识的海洋~";
-    self.labelSecond.font = [UIFont fontWithName:DEFAULT_FONT_NAME size:16.0f];
+    self.labelSecond.font = [UIFont fontWithName:kDefaultFontName size:16.0f];
     self.labelSecond.text = @"您还记得当年的摘要吗？";
     
     
