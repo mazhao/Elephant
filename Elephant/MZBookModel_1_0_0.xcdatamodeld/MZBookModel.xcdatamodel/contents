@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="MZBookExcerptModel" representedClassName="MZBookExcerptModel" syncable="YES">
+        <attribute name="datetime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="book" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MZBookModel" inverseName="excerpts" inverseEntity="MZBookModel" syncable="YES"/>
+    </entity>
+    <entity name="MZBookModel" representedClassName="MZBookModel" syncable="YES">
+        <attribute name="alt" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="altTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="authorIntro" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="binding" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="catalog" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="exerptCount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imagePath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imagePathLarge" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imagePathMedium" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imagePathSmall" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isbn10" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isbn13" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="originTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pages" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pubdate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="publisher" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ratingAvg" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ratingCount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="ratingMax" optional="YES" attributeType="Integer 32" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="ratingMin" optional="YES" attributeType="Integer 32" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="subTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="authors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MZBookWriterModel" inverseName="books" inverseEntity="MZBookWriterModel" syncable="YES"/>
+        <relationship name="excerpts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MZBookExcerptModel" inverseName="book" inverseEntity="MZBookExcerptModel" syncable="YES"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MZBookTagModel" inverseName="books" inverseEntity="MZBookTagModel" syncable="YES"/>
+        <relationship name="translators" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MZBookWriterModel" inverseName="translatedBooks" inverseEntity="MZBookWriterModel" syncable="YES"/>
+    </entity>
+    <entity name="MZBookTagModel" representedClassName="MZBookTagModel" syncable="YES">
+        <attribute name="count" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MZBookModel" inverseName="tags" inverseEntity="MZBookModel" syncable="YES"/>
+    </entity>
+    <entity name="MZBookWriterModel" representedClassName="MZBookWriterModel" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MZBookModel" inverseName="authors" inverseEntity="MZBookModel" syncable="YES"/>
+        <relationship name="translatedBooks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MZBookModel" inverseName="translators" inverseEntity="MZBookModel" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="MZBookExcerptModel" positionX="-171" positionY="432" width="128" height="105"/>
+        <element name="MZBookModel" positionX="-389" positionY="171" width="128" height="495"/>
+        <element name="MZBookTagModel" positionX="-180" positionY="642" width="128" height="105"/>
+        <element name="MZBookWriterModel" positionX="-675" positionY="576" width="128" height="90"/>
+    </elements>
+</model>

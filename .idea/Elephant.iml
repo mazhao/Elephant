@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="CIDR_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$/../zxing-2.2/cpp/core/src">
+      <sourceFolder url="file://$MODULE_DIR$/../zxing-2.2/cpp/core/src" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../zxing-2.2/iphone/ZXingWidget">
+      <sourceFolder url="file://$MODULE_DIR$/../zxing-2.2/iphone/ZXingWidget" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
+
