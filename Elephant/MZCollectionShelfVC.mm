@@ -387,7 +387,46 @@ static BOOL loaded = NO;
     //    CGPoint point = CGPointMake(500.0f, 50.0f);
     //    [PopoverView showPopoverAtPoint:point inView:self.view withStringArray:@[@"扫描条码", @"书名搜索"] delegate:self ];
     //
-    [self showScanVC];
+    
+    // 检查APP是否运行在模拟器中。
+    UIDevice *currentDevice = [UIDevice currentDevice];
+    if ([currentDevice.model rangeOfString:@"Simulator"].location == NSNotFound) {
+        [self showScanVC];
+    } else {
+        NSLog(@"running on device~");
+        
+        // show loading view
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
+        // create
+        
+        NSString * resultString = @"978-7-208-06164-4";
+        
+        MZAppDelegate * delegate = (MZAppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        if( [delegate.bookStore bookExist:resultString]) {
+            // alert exist
+            NSLog(@"book exists");
+            
+        } else {
+            if([delegate.bookStore fetchBook:resultString] ) {
+                // fetch success
+                NSLog(@"fetch success");
+                
+            } else {
+                // fetch error
+                NSLog(@"fetch failed");
+            }
+            
+        }
+        
+        //self.books = [delegate.bookStore getAllBooksSummary];
+        [self.collectionView reloadData];
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+
+    }
+    
 }
 
 #pragma mark - ZXing barcode scancer handler

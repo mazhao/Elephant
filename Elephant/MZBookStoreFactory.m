@@ -11,32 +11,7 @@
 
 @implementation MZBookStoreFactory
 
-//    +( id<MZBookStore> ) initBookStoreWithBookShelfRefreshDelegate:(id<BookShelfRefreshDelegate>) delegate
-//                                                            ofType:(BookStoreType) t{
-//        
-//        switch (t) {
-//            case kBookStoreDefault:
-//                return [MZBookStoreDefault instance:delegate];
-//                break;
-//                
-//            case kBookStoreCoreData:
-//                
-//            case kBookStoreSQLite:
-//            case kBookStoreRemoteDateSource:
-//                return[MZBookStoreDefault instance:delegate]; // @todo return specific book store type
-//                break;
-//                
-//            default:
-//                return [MZBookStoreDefault instance:delegate];
-//                break;
-//        }
-//        
-//        
-//        
-//    }
-
-
-+( id<MZBookStore> ) initBookStoreOfType: (BookStoreType) t {
++ (id <MZBookStore>)initBookStoreOfType:(BookStoreType)t {
     switch (t) {
         case kBookStoreDefault:
             return [MZBookStoreDefault instance];

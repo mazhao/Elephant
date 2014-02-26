@@ -39,8 +39,13 @@
     [UMSocialConfig setWXAppId:kWeiXinKey url:kWeiXinShareUrl];
     [UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskLandscape];
     
+    [UMSocialConfig setSupportSinaSSO:YES];
+    
     [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeApp;
     [UMSocialData defaultData].extConfig.title = @"大象书摘，快乐分享~";
+    
+//    [UMSocialData openLog:YES];
+
     
     // 初始化必要的类
     self.imageCache = [SDImageCache.alloc initWithNamespace:@"mzbookstoreimg"];
@@ -58,10 +63,39 @@
 //    }
     
     
+    
+    UIColor *mainColor =[UIColor colorWithRed:222.0/255 green:59.0/255 blue:47.0/255 alpha:1.0f];
+    
+    //[[UINavigationBar appearance] setBackgroundColor: mainColor];
+    [[UINavigationBar appearance] setBarTintColor:mainColor];
+    
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    
     // Override point for customization after application launch.
     return YES;
 }
-							
+
+/**
+ 这里处理新浪微博SSO授权之后跳转回来，和微信分享完成之后跳转回来
+ */
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    return  [UMSocialSnsService handleOpenURL:url wxApiDelegate:nil];
+}
+
+/**
+ 这里处理新浪微博SSO授权进入新浪微博客户端后进入后台，再返回原来应用
+ */
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    [UMSocialSnsService  applicationDidBecomeActive];
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    return  [UMSocialSnsService handleOpenURL:url wxApiDelegate:nil];
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -79,10 +113,6 @@
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-}
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {

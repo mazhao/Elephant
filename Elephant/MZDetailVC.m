@@ -377,11 +377,28 @@ static int deleteType ; // 1 for book, 2 for all excerpts
                                          appKey:kUMKey
                                       shareText:msg
                                      shareImage:[UIImage imageNamed:@"松鼠58.png"]
-                                shareToSnsNames:[NSArray arrayWithObjects: UMShareToWechatSession, UMShareToWechatTimeline, nil]
+                                shareToSnsNames:[NSArray arrayWithObjects:
+                                                 // UMShareToSina,
+                                                 UMShareToWechatSession,
+                                                 UMShareToWechatTimeline,
+                                                 UMShareToEmail,
+                                                 UMShareToSms,
+                                                 // UMShareToLWSession,
+                                                 nil]
                                        delegate:self];
 }
 
 #pragma mark - UMSocialUIDelegate
+
+-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+{
+    //根据`responseCode`得到发送结果,如果分享成功
+    if(response.responseCode == UMSResponseCodeSuccess)
+    {
+        //得到分享到的微博平台名
+        NSLog(@"share to sns name is %@",[[response.data allKeys] objectAtIndex:0]);
+    }
+}
 
 -(void)didSelectSocialPlatform:(NSString *)platformName withSocialData:(UMSocialData *)socialData
 {
@@ -409,12 +426,27 @@ static int deleteType ; // 1 for book, 2 for all excerpts
         socialData.shareImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:imageUrl]];
         
 
-    }
-     else{
-        socialData.title = [NSString stringWithFormat:@"最近我在读《%@》，发现大象书摘很好用，你也来下载试试吧～", self.bookModel.title, nil];
+    } else if (platformName == UMShareToSina) {
+        
+        [UMSocialData defaultData].extConfig.sinaData.shareText = @"分享到新浪微博内容";
+
+        socialData.shareText = [NSString stringWithFormat:@"最近我在读《%@》，发现大象书摘很好用，你也来下载试试吧～", self.bookModel.title, nil];
+        socialData.title = @"大象书摘、读书必备～";
         socialData.urlResource =[[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeDefault url:@"http://surveylet.com" ];
+        
         NSURL *imageUrl = [NSURL URLWithString:self.bookModel.imagePathSmall];
         socialData.shareImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:imageUrl]];
+        
+    } else{
+         
+         socialData.shareText = [NSString stringWithFormat:@"最近我在读《%@》，发现大象书摘很好用，你也来下载试试吧～", self.bookModel.title, nil];
+         socialData.title = @"大象书摘、读书必备～";
+         socialData.urlResource =[[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeDefault url:@"http://surveylet.com" ];
+         
+         NSURL *imageUrl = [NSURL URLWithString:self.bookModel.imagePathSmall];
+         socialData.shareImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:imageUrl]];
+         
+
     }
 }
 

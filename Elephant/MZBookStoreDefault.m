@@ -9,6 +9,22 @@
 #import "MZBookStoreDefault.h"
 
 
+// dto & core data model header
+#import "MZBookModel.h"
+#import "MZBookWriterModel.h"
+#import "MZBookExcerptModel.h"
+#import "MZBookTagModel.h"
+
+// douban header
+#import <libDoubanApiEngine/DOUService.h>
+#import <libDoubanApiEngine/DOUQuery.h>
+#import <libDoubanApiEngine/DOUHttpRequest.h>
+#import <libDoubanApiEngine/DOUAPIConfig.h>
+
+// json kit
+#import "JSONKit.h"
+
+
 /**
  *  singleton instance - static instance variable
  */
@@ -78,7 +94,7 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
     return instance;
 }
 */
-+(MZBookStoreDefault *) instance {
++ (MZBookStoreDefault *)instance {
     if(!instance) {
         instance = [[MZBookStoreDefault alloc] init];
 
@@ -87,13 +103,10 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
         doubanService.clientSecret = kClientSecret;
         if ([doubanService isValid]) {
             doubanService.apiBaseUrlString =  kHttpsApiBaseUrl;
-        }
-        else {
+        } else {
             doubanService.apiBaseUrlString = kHttpApiBaseUrl;
         }
-        
     }
-    
     return instance;
 }
 
@@ -103,8 +116,6 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
-
-
 
 #pragma mark - Book Section
 
@@ -116,10 +127,8 @@ static NSString* kModelSqliteName = @"MZBookModel.sqlite";
  *  @return YES for exist NO for not exist
  */
 -(BOOL) bookExist:(NSString *) isbn {
-    
     return [self getBookSummary:isbn] != nil;
 }
-
 
 /**
  *  convert book from NSDictionary to MZBookModel
